@@ -2,10 +2,11 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iran War Watch</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; padding: 4vh 5vw; }
+    body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; padding: 0; }
     #header { background: #cc0000; padding: 0 24px; display: flex; justify-content: space-evenly; align-items: center; flex-shrink: 0; }
     #logo { display: flex; align-self: center; }
     #logo-img { height: 80px; width: auto; display: block; mix-blend-mode: multiply; }
@@ -82,6 +83,7 @@
     .mw-badge.bear { color:#ef4444; background:rgba(239,68,68,.1); }
     .mw-badge.vol  { color:#f59e0b; background:rgba(245,158,11,.1); }
     #mw-disc { display:none; }
+    .region-tag { font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #aaa; background: #222; padding: 1px 5px; border-radius: 2px; white-space: nowrap; flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -211,10 +213,42 @@
       return "";
     }
 
+    var SOURCE_REGIONS = {
+      "BBC":"UK","Sky News":"UK","The Guardian":"UK","The Telegraph":"UK","The Times":"UK","Daily Mail":"UK",
+      "AP News":"USA","NPR":"USA","Fox News":"USA","CNN":"USA","Washington Post":"USA","New York Times":"USA",
+      "Bloomberg":"USA","Wall Street Journal":"USA","The Nation":"USA","Foreign Policy":"USA",
+      "Al Jazeera":"Middle East","Arab News":"Middle East","Al Arabiya":"Middle East","The National UAE":"Middle East",
+      "Gulf News":"Middle East","Khaleej Times":"Middle East","Anadolu Agency":"Middle East",
+      "Middle East Eye":"Middle East","Saudi Gazette":"Middle East","Gulf Daily":"Middle East",
+      "Iran International":"Iran","Radio Farda":"Iran","Tehran Times":"Iran","IRNA":"Iran","Press TV":"Iran",
+      "Reuters":"Global","AFP":"Global","Associated Press":"Global","The Diplomat":"Global","UN":"Global",
+      "TASS":"Russia","RT":"Russia","Kremlin":"Russia","Russian MFA":"Russia",
+      "Xinhua":"China","Global Times":"China","CGTN":"China","Caixin":"China",
+      "Haaretz":"Israel","Times of Israel":"Israel","Jerusalem Post":"Israel","YNet":"Israel",
+      "Dawn":"Asia","Geo News":"Asia","NHK World":"Asia","The Hindu":"Asia","South China Morning Post":"Asia",
+      "Euronews":"Europe","Deutsche Welle":"Europe","France 24":"Europe","POLITICO":"Europe",
+      "El Pais":"Europe","Le Monde":"Europe","Spiegel":"Europe",
+    };
+
+    function getRegion(src) {
+      var keys = Object.keys(SOURCE_REGIONS);
+      for (var i = 0; i < keys.length; i++) {
+        if (src.indexOf(keys[i]) !== -1) return SOURCE_REGIONS[keys[i]];
+      }
+      return null;
+    }
+
     function makeCard(h, tier) {
       var href = h.link ? 'href="' + h.link + '" target="_blank"' : "";
+      var regionHtml = '';
+      if (tier === 'breaking') {
+        var reg = getRegion(h.source);
+        if (reg) regionHtml = '<span class="region-tag">' + reg + '</span>';
+      }
       return '<div class="card ' + tier + '">'
-        + '<div class="card-top"><span class="source">' + getFlag(h.source) + h.source + '</span><span class="time">' + formatTime(h.published) + '</span></div>'
+        + '<div class="card-top"><span class="source">' + getFlag(h.source) + h.source + '</span>'
+        + regionHtml
+        + '<span class="time">' + formatTime(h.published) + '</span></div>'
         + '<a class="title" ' + href + '>' + h.title + '</a>'
         + '</div>';
     }
@@ -472,8 +506,7 @@
     }, 1000);
 
     // ── MARKET WIDGET ─────────────────────────────────────────
-    var MW_CORS = 'https://corsproxy.io/?url=';
-    var MW_YF   = 'https://query1.finance.yahoo.com/v8/finance/chart/';
+    // Market data fetched server-side via /markets endpoint (no CORS proxy needed)
     var MW_IMPACT = { bull:'🟢 Bullish', bear:'🔴 Bearish', vol:'🟡 Volatile' };
     var MW_GROUPS = [
       { icon:'🛢️', label:'Energy', two:false, assets:[
@@ -548,13 +581,15 @@
       }).join('');
       track.innerHTML = html + html + html + html;
     }
-    function mwFetchCG() {
-      return fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,gold,silver&vs_currencies=usd&include_24hr_change=true')
+    function mwFetchServer() {
+      return fetch('/markets', { cache:'no-store' })
         .then(function(r) { return r.json(); })
         .then(function(d) {
-          ['bitcoin','gold','silver'].forEach(function(id) {
-            if (d[id]) mwCache[id] = { price: d[id].usd, change: d[id].usd_24h_change };
+          Object.keys(d).forEach(function(k) {
+            if (d[k] && d[k].price != null) mwCache[k] = d[k];
           });
+          // alias BTC-USD to 'bitcoin' so the MW_GROUPS cg asset resolves
+          if (d['BTC-USD']) mwCache['bitcoin'] = d['BTC-USD'];
         });
     }
     function mwFetchFX() {
@@ -571,24 +606,9 @@
         });
       });
     }
-    function mwFetchYF(ticker) {
-      var url = MW_CORS + encodeURIComponent(MW_YF + ticker);
-      return fetch(url, { cache:'no-store' })
-        .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-        .then(function(d) {
-          var m = d.chart.result[0].meta;
-          var price = m.regularMarketPrice, prev = m.previousClose;
-          mwCache[ticker] = { price: price, change: (prev && prev !== 0) ? ((price - prev) / prev * 100) : null };
-        });
-    }
     function mwLoad(isRefresh) {
       if (!isRefresh) mwRender(true);
-      var yfIds = [];
-      MW_GROUPS.forEach(function(g) { g.assets.forEach(function(a) { if (a.src === 'yf' && yfIds.indexOf(a.id) < 0) yfIds.push(a.id); }); });
-      var yfP = yfIds.map(function(t, i) {
-        return new Promise(function(res) { setTimeout(function() { mwFetchYF(t).then(res).catch(res); }, i * 60); });
-      });
-      Promise.allSettled([mwFetchCG(), mwFetchFX()].concat(yfP)).then(function() {
+      Promise.allSettled([mwFetchServer(), mwFetchFX()]).then(function() {
         mwRender(false);
         var now = new Date();
         document.getElementById('mw-ts').textContent = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');

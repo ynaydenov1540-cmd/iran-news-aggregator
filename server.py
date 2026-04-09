@@ -25,7 +25,7 @@ def widget():
 @app.route("/headlines")
 def headlines():
     try:
-        with open("headlines.json", "r", encoding="utf-8") as f:
+        with open(os.path.join(BASE_DIR, "headlines.json"), "r", encoding="utf-8") as f:
             data = json.load(f)
         return jsonify(data)
     except:
@@ -33,36 +33,22 @@ def headlines():
 
 @app.route("/markets")
 def markets():
-    symbols = {
-        "gold":   "GC=F",
-        "silver": "SI=F",
-        "oil":    "CL=F",
-        "brent":  "BZ=F",
-        "btc":    "BTC-USD",
-        "copper": "HG=F",
-        "sp":     "^GSPC",
-        "dow":    "^DJI",
-        "nasdaq": "^IXIC",
-        "vix":    "^VIX",
-        "eurusd": "EURUSD=X",
-        "irr":    "IRR=X",
-        "ils":    "ILSUSD=X",
-        "aed":    "AEDUSD=X",
-        "tnx":    "^TNX",
-        "dxy":    "DX-Y.NYB",
-    }
+    symbols = [
+        "GC=F", "SI=F", "CL=F", "BZ=F", "NG=F", "USO", "BNO",
+        "BTC-USD", "SPY", "QQQ", "XOM", "CVX", "RTX", "LMT", "UAL", "LUV",
+        "UUP", "ALI=F", "ZC=F", "HG=F", "DX-Y.NYB", "^TNX", "^VIX",
+    ]
     results = {}
-    for key, symbol in symbols.items():
+    for sym in symbols:
         try:
-            ticker = yf.Ticker(symbol)
-            info = ticker.fast_info
-            price = round(info.last_price, 2)
-            prev = round(info.previous_close, 2)
-            change = round(((price - prev) / prev) * 100, 2)
-            results[key] = {"price": price, "change": change}
+            info = yf.Ticker(sym).fast_info
+            price = round(float(info.last_price), 4)
+            prev  = round(float(info.previous_close), 4)
+            chg   = round(((price - prev) / prev) * 100, 2) if prev else None
+            results[sym] = {"price": price, "change": chg}
         except Exception as e:
-            print(f"Error fetching {symbol}: {e}")
-            results[key] = {"price": None, "change": None}
+            print(f"Error fetching {sym}: {e}")
+            results[sym] = {"price": None, "change": None}
     return jsonify(results)
 
 @app.route("/polymarket")

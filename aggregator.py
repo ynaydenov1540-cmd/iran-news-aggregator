@@ -1,10 +1,15 @@
 import feedparser
 import requests
 import json
+import os
 import time
 from datetime import datetime
 from email.utils import parsedate_to_datetime
 from bs4 import BeautifulSoup
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+HEADLINES_FILE = os.path.join(BASE_DIR, "headlines.json")
 
 feedparser.USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
@@ -119,35 +124,44 @@ def parse_time(entry):
                 pass
     return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:00Z")
 
+def fetch_one_feed(feed, tier):
+    results = []
+    try:
+        resp = requests.get(feed["url"], headers={"User-Agent": feedparser.USER_AGENT}, timeout=8)
+        parsed = feedparser.parse(resp.content)
+        for entry in parsed.entries[:20]:
+            title = entry.get("title", "").strip()
+            link = entry.get("link", "")
+            if is_relevant(title):
+                results.append({
+                    "source": feed["name"],
+                    "title": title,
+                    "link": link,
+                    "published": parse_time(entry),
+                    "tier": tier
+                })
+    except Exception as e:
+        print(f"Error fetching {feed['name']}: {e}")
+    return results
+
 def fetch_from_feeds(feeds, tier):
     headlines = []
-    for feed in feeds:
-        try:
-            try:
-                resp = requests.get(feed["url"], headers={"User-Agent": feedparser.USER_AGENT}, timeout=10)
-                parsed = feedparser.parse(resp.content)
-            except:
-                continue
-            for entry in parsed.entries[:20]:
-                title = entry.get("title", "").strip()
-                link = entry.get("link", "")
-                if is_relevant(title):
-                    headlines.append({
-                        "source": feed["name"],
-                        "title": title,
-                        "link": link,
-                        "published": parse_time(entry),
-                        "tier": tier
-                    })
-        except Exception as e:
-            print(f"Error fetching {feed['name']}: {e}")
+    with ThreadPoolExecutor(max_workers=12) as ex:
+        futures = {ex.submit(fetch_one_feed, feed, tier): feed for feed in feeds}
+        for f in as_completed(futures):
+            headlines.extend(f.result())
     return headlines
 
 REDDIT_ECON_SUBS_SET = {"wallstreetbets", "investing"}
 
 def fetch_reddit():
     headlines = []
-    headers = {"User-Agent": "Mozilla/5.0"}
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+    }
     for sub in REDDIT_SUBS:
         try:
             if sub in REDDIT_ECON_SUBS_SET:
@@ -177,7 +191,7 @@ def fetch_reddit():
 
 def load_iran_sources():
     try:
-        with open("iran_sources.json", "r", encoding="utf-8") as f:
+        with open(os.path.join(BASE_DIR, "iran_sources.json"), "r", encoding="utf-8") as f:
             data = json.load(f)
         existing_names = {feed["name"] for feed in BIG_FEEDS + BREAKING_FEEDS}
         extra = []
@@ -204,7 +218,7 @@ def load_iran_sources():
 def fetch_telegram():
     headlines = []
     try:
-        with open("telegram_feeds_config.json", "r", encoding="utf-8") as f:
+        with open(os.path.join(BASE_DIR, "telegram_feeds_config.json"), "r", encoding="utf-8") as f:
             config = json.load(f)
     except Exception as e:
         print(f"Could not load telegram_feeds_config.json: {e}")
@@ -265,7 +279,7 @@ def fetch_all():
     return unique
 
 def save(headlines):
-    with open("headlines.json", "w", encoding="utf-8") as f:
+    with open(HEADLINES_FILE, "w", encoding="utf-8") as f:
         json.dump(headlines, f, ensure_ascii=False, indent=2)
     counts = {}
     for h in headlines:
