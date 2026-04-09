@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.log
+headlines.json
+aggregator.log
+server.log
+.env
+Procfile.txt
+requirements.txt.txt

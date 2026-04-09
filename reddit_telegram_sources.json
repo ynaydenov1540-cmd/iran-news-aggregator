@@ -1,0 +1,2305 @@
+{
+  "meta": {
+    "title": "Iran Aggregator — Reddit & Telegram Sources",
+    "description": "60 social and messaging sources covering the Iran war across 4 groups: big subreddits, regional subreddits, official MFA Telegram channels, and war/news Telegram channels",
+    "total_sources": 60,
+    "total_groups": 4,
+    "generated": "2026-03-24",
+    "note": "Telegram handles verified to best knowledge as of early 2026 — always double-check before hardcoding. Reddit RSS feeds are stable and free."
+  },
+  "groups": [
+    {
+      "id": "g1",
+      "name": "Big General Subreddits",
+      "platform": "reddit",
+      "description": "High-traffic general politics, war, and finance subreddits covering Iran",
+      "count": 15,
+      "sources": [
+        {
+          "id": "g1_01",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/worldnews",
+          "handle": "reddit.com/r/worldnews",
+          "url": "https://reddit.com/r/worldnews",
+          "lean": "Neutral-mixed",
+          "languages": [
+            "EN"
+          ],
+          "size": "XL · 33M+",
+          "must_watch": true,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "The single highest-traffic source for Iran war breaking news on Reddit . Every major Iran-Israel strike, missile exchange, or diplomatic development hits here within minutes. Enormous comment sections provide crowdsourced verification and multiple POVs simultaneously. Quality varies wildly — sort by \"new\" for speed, \"top\" for verified stories. RSS feed is clean and free.",
+          "badges": [
+            {
+              "label": "XL · 33M+",
+              "kind": "size"
+            },
+            {
+              "label": "Neutral-mixed",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/worldnews.rss"
+        },
+        {
+          "id": "g1_02",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/geopolitics",
+          "handle": "reddit.com/r/geopolitics",
+          "url": "https://reddit.com/r/geopolitics",
+          "lean": "Neutral-analytical",
+          "languages": [
+            "EN"
+          ],
+          "size": "LG · 1.8M+",
+          "must_watch": true,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Best Reddit community for analytical Iran coverage — deeper, slower, and more substantive than r/worldnews. Heavily moderated; low-quality posts get removed. Iran nuclear file, JCPOA diplomacy, and regional power dynamics get serious treatment here. Good for strategic context around breaking events. Contributors often include academics and policy professionals.",
+          "badges": [
+            {
+              "label": "LG · 1.8M+",
+              "kind": "size"
+            },
+            {
+              "label": "Neutral-analytical",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/geopolitics.rss"
+        },
+        {
+          "id": "g1_03",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/CredibleDefense",
+          "handle": "reddit.com/r/CredibleDefense",
+          "url": "https://reddit.com/r/CredibleDefense",
+          "lean": "Neutral-technical",
+          "languages": [
+            "EN"
+          ],
+          "size": "MD · 350K+",
+          "must_watch": true,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "The best Reddit community for military-technical analysis of the Iran-Israel war. Covers Iranian missile and drone capabilities, Iron Dome performance, Israeli strike packages, IRGC order of battle, and Iranian nuclear site vulnerabilities in granular detail. Contributors include defence analysts, former military, and serious researchers. Strict sourcing rules keep quality high.",
+          "badges": [
+            {
+              "label": "MD · 350K+",
+              "kind": "size"
+            },
+            {
+              "label": "Neutral-technical",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/CredibleDefense.rss"
+        },
+        {
+          "id": "g1_04",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/CombatFootage",
+          "handle": "reddit.com/r/CombatFootage",
+          "url": "https://reddit.com/r/CombatFootage",
+          "lean": "Neutral",
+          "languages": [
+            "EN"
+          ],
+          "size": "LG · 1.2M+",
+          "must_watch": true,
+          "real_time": true,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Primary source for verified video footage of Iran-Israel strikes — missile impacts, drone intercepts, explosions at Iranian facilities. Often posts before any news organisation. Useful for OSINT verification of strike locations and damage assessment. Content is graphic by nature. Use RSS to monitor for new uploads; filter by flair \"Iran\" or \"Middle East\".",
+          "badges": [
+            {
+              "label": "LG · 1.2M+",
+              "kind": "size"
+            },
+            {
+              "label": "Neutral",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/CombatFootage.rss"
+        },
+        {
+          "id": "g1_05",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/politics",
+          "handle": "reddit.com/r/politics",
+          "url": "https://reddit.com/r/politics",
+          "lean": "Left-US",
+          "languages": [
+            "EN"
+          ],
+          "size": "XL · 9M+",
+          "must_watch": true,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "US-focused but essential for American domestic political reaction to the Iran war — Congressional debates, Trump administration Iran policy, sanctions decisions, and Pentagon announcements. Left-leaning community but links to primary sources. Covers Iran through the lens of US interests, Israel lobby, and military spending debates. Very high traffic during Iran-US incidents.",
+          "badges": [
+            {
+              "label": "XL · 9M+",
+              "kind": "size"
+            },
+            {
+              "label": "Left-US",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/politics.rss"
+        },
+        {
+          "id": "g1_06",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/news",
+          "handle": "reddit.com/r/news",
+          "url": "https://reddit.com/r/news",
+          "lean": "Mixed",
+          "languages": [
+            "EN"
+          ],
+          "size": "XL · 31M+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Companion to r/worldnews but US-domestic focus. Covers Iran war through the lens of American casualties, US military deployments in the Gulf, and domestic protests . When US forces engage Iranian proxies or conduct strikes, r/news is where American public reaction concentrates. Moderately lower quality than r/worldnews for international nuance.",
+          "badges": [
+            {
+              "label": "XL · 31M+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/news.rss"
+        },
+        {
+          "id": "g1_07",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/wallstreetbets",
+          "handle": "reddit.com/r/wallstreetbets",
+          "url": "https://reddit.com/r/wallstreetbets",
+          "lean": "Mixed/chaotic",
+          "languages": [
+            "EN"
+          ],
+          "size": "XL · 17M+",
+          "must_watch": true,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Unexpected but genuinely useful: WSB is the fastest indicator of how financial markets are pricing Iran war risk . When Iranian strikes threaten the Strait of Hormuz, oil options trades, energy stock plays, and defence contractor positions appear here before most financial press catches up. Useful as a real-time sentiment gauge for economic impact of Iran events. Filter by \"oil\", \"energy\", \"Iran\".",
+          "badges": [
+            {
+              "label": "XL · 17M+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed/chaotic",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/wallstreetbets.rss"
+        },
+        {
+          "id": "g1_08",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/investing",
+          "handle": "reddit.com/r/investing",
+          "url": "https://reddit.com/r/investing",
+          "lean": "Neutral",
+          "languages": [
+            "EN"
+          ],
+          "size": "XL · 23M+",
+          "must_watch": true,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "More serious financial analysis than WSB. Covers how Iran war escalation/de-escalation affects oil futures, defence stocks, and global supply chain risk. Good quality analytical threads on sanctions economics, OPEC+ disruption, and Iranian oil export scenarios. Contributors include professional fund managers. Useful for the economic intelligence layer of your aggregator.",
+          "badges": [
+            {
+              "label": "XL · 23M+",
+              "kind": "size"
+            },
+            {
+              "label": "Neutral",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/investing.rss"
+        },
+        {
+          "id": "g1_09",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/NeutralNews",
+          "handle": "reddit.com/r/NeutralNews",
+          "url": "https://reddit.com/r/NeutralNews",
+          "lean": "Strictly neutral",
+          "languages": [
+            "EN"
+          ],
+          "size": "MD · 200K+",
+          "must_watch": true,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Heavily moderated — no opinion pieces, headlines only from credible wire services . Excellent as a clean signal feed for Iran war events. Only AP, Reuters, BBC-level sourcing is allowed. No takes, no spin. Perfect for your aggregator's \"verified facts\" layer. Much lower volume than r/worldnews but near-zero noise ratio.",
+          "badges": [
+            {
+              "label": "MD · 200K+",
+              "kind": "size"
+            },
+            {
+              "label": "Strictly neutral",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/NeutralNews.rss"
+        },
+        {
+          "id": "g1_10",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/worldpolitics",
+          "handle": "reddit.com/r/worldpolitics",
+          "url": "https://reddit.com/r/worldpolitics",
+          "lean": "Mixed/unrestricted",
+          "languages": [
+            "EN"
+          ],
+          "size": "LG · 1.1M+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Less moderated than r/geopolitics — this is where contrarian, alternative, and fringe Iran narratives surface , alongside mainstream ones. Useful for understanding what non-mainstream perspectives exist. Covers Iran from all angles without heavy curation. Treat with appropriate scepticism but monitor for stories that break before mainstream coverage.",
+          "badges": [
+            {
+              "label": "LG · 1.1M+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed/unrestricted",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/worldpolitics.rss"
+        },
+        {
+          "id": "g1_11",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/MiddleEast",
+          "handle": "reddit.com/r/MiddleEast",
+          "url": "https://reddit.com/r/MiddleEast",
+          "lean": "Mixed",
+          "languages": [
+            "EN"
+          ],
+          "size": "LG · 700K+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Regional focus makes this unusually good for the Iran war's spillover effects — Lebanon, Syria, Iraq, Yemen, and Bahrain dimensions are covered here alongside the direct Iran-Israel conflict. Diverse community including actual regional residents. Useful for non-Western POVs on the conflict that r/worldnews doesn't surface.",
+          "badges": [
+            {
+              "label": "LG · 700K+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/MiddleEast.rss"
+        },
+        {
+          "id": "g1_12",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/inthenews",
+          "handle": "reddit.com/r/inthenews",
+          "url": "https://reddit.com/r/inthenews",
+          "lean": "Centre-left",
+          "languages": [
+            "EN"
+          ],
+          "size": "LG · 900K+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "General news aggregator with strong US readership. Good secondary source for Iran war US reaction pieces — op-eds, analysis, and editorial coverage from major US outlets. Complements r/worldnews by catching long-form pieces that don't get traction on faster-moving subs.",
+          "badges": [
+            {
+              "label": "LG · 900K+",
+              "kind": "size"
+            },
+            {
+              "label": "Centre-left",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/inthenews.rss"
+        },
+        {
+          "id": "g1_13",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/PoliticalDiscussion",
+          "handle": "reddit.com/r/PoliticalDiscussion",
+          "url": "https://reddit.com/r/PoliticalDiscussion",
+          "lean": "Mixed",
+          "languages": [
+            "EN"
+          ],
+          "size": "LG · 900K+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Higher-quality discussion sub with strict civility rules. Good for \"what should the US/EU policy be on Iran?\" debate threads — different from breaking news coverage. Useful for understanding shifts in Western public opinion on Iran intervention, sanctions, and diplomacy. More balanced than r/politics.",
+          "badges": [
+            {
+              "label": "LG · 900K+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/PoliticalDiscussion.rss"
+        },
+        {
+          "id": "g1_14",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/OSINT",
+          "handle": "reddit.com/r/OSINT",
+          "url": "https://reddit.com/r/OSINT",
+          "lean": "Neutral-technical",
+          "languages": [
+            "EN"
+          ],
+          "size": "MD · 250K+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Best Reddit community for satellite imagery analysis and open-source verification of Iran war events. Posts include Maxar/Planet satellite images of strike damage at Iranian facilities, ship-tracking OSINT for Iranian tanker movements, and flight-tracking analysis of military aircraft. Essential cross-reference for any claim in your aggregator. Methodologically serious community.",
+          "badges": [
+            {
+              "label": "MD · 250K+",
+              "kind": "size"
+            },
+            {
+              "label": "Neutral-technical",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/OSINT.rss"
+        },
+        {
+          "id": "g1_15",
+          "group": "g1",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/conspiracy",
+          "handle": "reddit.com/r/conspiracy",
+          "url": "https://reddit.com/r/conspiracy",
+          "lean": "Alternative/sceptic",
+          "languages": [
+            "EN"
+          ],
+          "size": "XL · 2.3M+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Monitor — don't trust, but watch. Conspiracy theories about Iran war origins, false flag accusations, and alternative narratives surface here first and then migrate to mainstream discourse. Useful as an early-warning system for disinformation narratives you'll need to flag or debunk in your aggregator. Treat every post with scepticism.",
+          "badges": [
+            {
+              "label": "XL · 2.3M+",
+              "kind": "size"
+            },
+            {
+              "label": "Alternative/sceptic",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/conspiracy.rss"
+        }
+      ]
+    },
+    {
+      "id": "g2",
+      "name": "Regional Subreddits",
+      "platform": "reddit",
+      "description": "Country and region-specific subreddits with local perspectives on Iran",
+      "count": 15,
+      "sources": [
+        {
+          "id": "g2_01",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/iran",
+          "handle": "reddit.com/r/iran",
+          "url": "https://reddit.com/r/iran",
+          "lean": "Mixed — diaspora + inside",
+          "languages": [
+            "EN",
+            "FA"
+          ],
+          "size": "MD · 120K+",
+          "must_watch": true,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "The closest thing to an inside-Iran civilian perspective on Reddit. Mix of diaspora Iranians abroad and Iranians accessing via VPN. Covers domestic sentiment — how ordinary Iranians feel about the war, economic hardship, regime fear vs. opposition hope. Culturally rich. Genuinely diverse politically: reformists, monarchists, MEK-sympathisers, and regime apologists all present. Essential for gauging Iranian public mood.",
+          "badges": [
+            {
+              "label": "MD · 120K+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed — diaspora + inside",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "FA",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/iran.rss"
+        },
+        {
+          "id": "g2_02",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/israel",
+          "handle": "reddit.com/r/israel",
+          "url": "https://reddit.com/r/israel",
+          "lean": "Pro-Israel",
+          "languages": [
+            "EN",
+            "HE"
+          ],
+          "size": "MD · 160K+",
+          "must_watch": true,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Primary Israeli civilian and diaspora community perspective on the Iran war. Covers Israeli government decisions, IDF statements, and home front response to Iranian missile attacks from a strongly pro-Israel standpoint. First-person accounts from Israelis during strikes. Useful for Israeli public mood, government messaging reception, and how Israel frames every development.",
+          "badges": [
+            {
+              "label": "MD · 160K+",
+              "kind": "size"
+            },
+            {
+              "label": "Pro-Israel",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "HE",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/israel.rss"
+        },
+        {
+          "id": "g2_03",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/IsraelPalestine",
+          "handle": "reddit.com/r/IsraelPalestine",
+          "url": "https://reddit.com/r/IsraelPalestine",
+          "lean": "Mixed/contested",
+          "languages": [
+            "EN"
+          ],
+          "size": "MD · 120K+",
+          "must_watch": true,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Contested but important — covers how the Iran war intersects with the Palestinian issue , which is at the core of Iran's regional strategy. Pro-Palestinian voices here argue Iran's framing of the conflict; pro-Israel voices counter it. Useful for understanding the Hamas-Iran ideological link and how that shapes Western left vs. right positions on the war. Heavy moderation struggles to keep up.",
+          "badges": [
+            {
+              "label": "MD · 120K+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed/contested",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/IsraelPalestine.rss"
+        },
+        {
+          "id": "g2_04",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/dubai",
+          "handle": "reddit.com/r/dubai",
+          "url": "https://reddit.com/r/dubai",
+          "lean": "Mixed — expat heavy",
+          "languages": [
+            "EN"
+          ],
+          "size": "MD · 280K+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Best source for how the Iran war affects the large expatriate and Iranian diaspora community in Dubai. Covers flight disruptions, business impact, currency moves, and whether Iranians in Dubai fear regime reach. Large Iranian community (~400K) in the UAE means this sub has direct voices from people with families on both sides. Good for economic ground-truth on UAE-Iran trade disruption.",
+          "badges": [
+            {
+              "label": "MD · 280K+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed — expat heavy",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/dubai.rss"
+        },
+        {
+          "id": "g2_05",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/UAE",
+          "handle": "reddit.com/r/UAE",
+          "url": "https://reddit.com/r/UAE",
+          "lean": "Mixed — expat",
+          "languages": [
+            "EN"
+          ],
+          "size": "MD · 180K+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Companion to r/dubai with Abu Dhabi and federal UAE focus. Covers official UAE government messaging on the Iran conflict and how UAE residents — including many Indians, Pakistanis, and Iranians — experience the regional tension. Good for how UAE's pragmatic stance toward Iran plays out at street level versus official policy.",
+          "badges": [
+            {
+              "label": "MD · 180K+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed — expat",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/UAE.rss"
+        },
+        {
+          "id": "g2_06",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/europe",
+          "handle": "reddit.com/r/europe",
+          "url": "https://reddit.com/r/europe",
+          "lean": "Mixed — EU-wide",
+          "languages": [
+            "EN",
+            "MULTI"
+          ],
+          "size": "LG · 6M+",
+          "must_watch": true,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Best Reddit source for pan-European reaction to the Iran war. Covers EU sanctions debates, Iranian drone supply to Russia (directly relevant to European security), Iranian assassination plots on European soil, and European energy price impacts. Massive community with voices from all 27 EU states. Lean is moderately centre-left but broad. Essential for European public opinion monitoring.",
+          "badges": [
+            {
+              "label": "LG · 6M+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed — EU-wide",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "MULTI",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/europe.rss"
+        },
+        {
+          "id": "g2_07",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/saudiarabia",
+          "handle": "reddit.com/r/saudiarabia",
+          "url": "https://reddit.com/r/saudiarabia",
+          "lean": "Mixed",
+          "languages": [
+            "EN",
+            "AR"
+          ],
+          "size": "MD · 100K+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Saudi civilian and diaspora perspective on the Iran conflict. Covers how Saudis perceive Iran's regional role, Houthi threat to Saudi cities, and the Saudi-Iran rapprochement dynamics. Mix of Saudi nationals, expats, and observers. Useful for ground-level Saudi opinion that official outlets like Arab News sanitise.",
+          "badges": [
+            {
+              "label": "MD · 100K+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "AR",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/saudiarabia.rss"
+        },
+        {
+          "id": "g2_08",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/Turkey",
+          "handle": "reddit.com/r/Turkey",
+          "url": "https://reddit.com/r/Turkey",
+          "lean": "Mixed",
+          "languages": [
+            "EN",
+            "TR"
+          ],
+          "size": "MD · 180K+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Turkey occupies a unique position — NATO member with deep Iran trade ties. r/Turkey covers Turkish government's balancing act, Turkish-Iranian gas deals, and Erdogan's mediation attempts. Good for understanding why Turkey refuses to sanction Iran despite Western pressure. Turkish public opinion on the war is divided and this sub reflects that.",
+          "badges": [
+            {
+              "label": "MD · 180K+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "TR",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/Turkey.rss"
+        },
+        {
+          "id": "g2_09",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/iraq",
+          "handle": "reddit.com/r/iraq",
+          "url": "https://reddit.com/r/iraq",
+          "lean": "Mixed",
+          "languages": [
+            "EN",
+            "AR"
+          ],
+          "size": "MD · 80K+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Iraq is the primary battleground for Iran-US proxy conflict. r/iraq covers IRGC-linked militia attacks on US bases in Iraq, Iraqi government's impossible position between Iran and the US, and the Popular Mobilisation Forces (PMF) — Iran's most important proxy force. Authentic Iraqi voices on how the Iran war affects their country directly. Often breaks regional stories before international press.",
+          "badges": [
+            {
+              "label": "MD · 80K+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "AR",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/iraq.rss"
+        },
+        {
+          "id": "g2_10",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/telaviv",
+          "handle": "reddit.com/r/telaviv",
+          "url": "https://reddit.com/r/telaviv",
+          "lean": "Pro-Israel",
+          "languages": [
+            "EN",
+            "HE"
+          ],
+          "size": "MD · 35K+",
+          "must_watch": true,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Ground-level civilian life in Tel Aviv during Iranian missile attacks. Smaller but uniquely authentic — first-person accounts of air raid sirens, shelter experience, and everyday life disruption. Real-time posts during Iranian strikes from people actually there. Useful for the human dimension of Israeli home front coverage that official Israeli media professionalises away.",
+          "badges": [
+            {
+              "label": "MD · 35K+",
+              "kind": "size"
+            },
+            {
+              "label": "Pro-Israel",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "HE",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/telaviv.rss"
+        },
+        {
+          "id": "g2_11",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/lebanon",
+          "handle": "reddit.com/r/lebanon",
+          "url": "https://reddit.com/r/lebanon",
+          "lean": "Mixed",
+          "languages": [
+            "EN",
+            "AR"
+          ],
+          "size": "MD · 110K+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Lebanon is Iran's most important proxy battleground. r/lebanon covers Hezbollah-Iran relations and Lebanese civilian perspective on how Iran's war affects their country. Strong anti-Hezbollah Lebanese voices here who are critical of Iranian interference. Also covers reconstruction, Hezbollah disarmament debates, and Israeli strikes on Hezbollah infrastructure. Essential for the Lebanon-Iran axis.",
+          "badges": [
+            {
+              "label": "MD · 110K+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "AR",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/lebanon.rss"
+        },
+        {
+          "id": "g2_12",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/Persianculture",
+          "handle": "reddit.com/r/Persianculture",
+          "url": "https://reddit.com/r/Persianculture",
+          "lean": "Diaspora Iranian",
+          "languages": [
+            "EN",
+            "FA"
+          ],
+          "size": "MD · 40K+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "Culture-focused but politically important. Covers Iranian diaspora sentiment that separates \"Iran the people\" from \"Iran the regime\" — the distinction that official press often collapses. Useful for understanding Iranian-American, Iranian-European, and Iranian-Canadian perspectives that want regime change without endorsing foreign military action. A window into the politically complex Iranian diaspora.",
+          "badges": [
+            {
+              "label": "MD · 40K+",
+              "kind": "size"
+            },
+            {
+              "label": "Diaspora Iranian",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "FA",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/Persianculture.rss"
+        },
+        {
+          "id": "g2_13",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/russia",
+          "handle": "reddit.com/r/russia",
+          "url": "https://reddit.com/r/russia",
+          "lean": "Mixed",
+          "languages": [
+            "EN",
+            "RU"
+          ],
+          "size": "MD · 190K+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "The Iran-Russia arms link makes this essential. r/russia covers Iranian drone and missile supply to Russia, Russian diplomatic support for Iran at the UN, and the Russia-Iran-China alignment against Western sanctions. Predominantly Russian-diaspora and Western observers. Useful for tracking how Russia frames the Iran war and its own stake in Iran's survival.",
+          "badges": [
+            {
+              "label": "MD · 190K+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "RU",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/russia.rss"
+        },
+        {
+          "id": "g2_14",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/china",
+          "handle": "reddit.com/r/china",
+          "url": "https://reddit.com/r/china",
+          "lean": "Mixed",
+          "languages": [
+            "EN"
+          ],
+          "size": "MD · 380K+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "China is Iran's largest oil customer and most important strategic partner. r/china covers Chinese government statements on the Iran war, Chinese oil imports from Iran under sanctions, and Chinese diplomatic manoeuvring at the UN. Predominantly China-critical Western diaspora community — useful for English-language analysis of China's Iran position that Chinese state media won't provide.",
+          "badges": [
+            {
+              "label": "MD · 380K+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/china.rss"
+        },
+        {
+          "id": "g2_15",
+          "group": "g2",
+          "platform": "reddit",
+          "platform_type": "subreddit",
+          "name": "r/india",
+          "handle": "reddit.com/r/india",
+          "url": "https://reddit.com/r/india",
+          "lean": "Mixed — nationalist tilt",
+          "languages": [
+            "EN"
+          ],
+          "size": "XL · 8M+",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": true,
+          "blocked_some_regions": false,
+          "editorial_note": "India's Iran dilemma — Chabahar port partner vs US pressure — gets extensive coverage here. Covers Indian oil import decisions, Chabahar development debates, and Modi government's Iran policy. Useful for Global South non-aligned perspective on the war. Largest non-Western English-language national sub on Reddit. Nationalist lean but diverse voices on foreign policy.",
+          "badges": [
+            {
+              "label": "XL · 8M+",
+              "kind": "size"
+            },
+            {
+              "label": "Mixed — nationalist tilt",
+              "kind": "lean"
+            },
+            {
+              "label": "FREE RSS",
+              "kind": "access"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ],
+          "rss_url": "reddit.com/r/india.rss"
+        }
+      ]
+    },
+    {
+      "id": "g3",
+      "name": "Telegram Official MFA/Gov",
+      "platform": "telegram",
+      "description": "Official government and ministry of foreign affairs Telegram channels",
+      "count": 15,
+      "sources": [
+        {
+          "id": "g3_01",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Israel Ministry of Foreign Affairs",
+          "handle": "t.me/IsraelMFA",
+          "url": "https://t.me/IsraelMFA",
+          "lean": "mixed",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": true,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Primary official Israeli government channel for the Iran war. Direct statements from the Foreign Minister, UN ambassador statements, and official Israeli positions on every Iranian action. Essential — this is where Israel makes its official case internationally. Posts in English within minutes of major developments. Also posts simultaneous Hebrew versions. Verified official channel.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            }
+          ]
+        },
+        {
+          "id": "g3_02",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "IDF (Israel Defense Forces)",
+          "handle": "t.me/idfofficial",
+          "url": "https://t.me/idfofficial",
+          "lean": "mixed",
+          "languages": [
+            "EN",
+            "HE"
+          ],
+          "size": "",
+          "must_watch": true,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Operational military announcements from the IDF — strike confirmations, interception statistics, and military communiqués. When Israel strikes Iranian facilities, the IDF posts the official acknowledgement here first. Also covers Iron Dome/Arrow interception data during Iranian missile attacks. Active during every escalation. This is the primary source that every journalist monitors during Iranian-Israeli exchanges.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "HE",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            }
+          ]
+        },
+        {
+          "id": "g3_03",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Russian MFA (МИД России)",
+          "handle": "t.me/MID_Russia",
+          "url": "https://t.me/MID_Russia",
+          "lean": "mixed",
+          "languages": [
+            "RU",
+            "EN partial"
+          ],
+          "size": "",
+          "must_watch": true,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Russia's official diplomatic position on Iran — critical for understanding the Russia-Iran axis. MID_Russia posts Lavrov statements on Iran sanctions, Russian UN Security Council vetoes protecting Iran, and Russian diplomatic backing for Tehran. Mostly in Russian — use DeepL or Google Translate. Extremely active during UNSC votes on Iran. The primary source for Russian official framing of the Iran conflict.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "RU",
+              "kind": "language"
+            },
+            {
+              "label": "EN partial",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            }
+          ]
+        },
+        {
+          "id": "g3_04",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Iranian MFA (وزارت امور خارجه)",
+          "handle": "t.me/IRIForeignMinistry",
+          "url": "https://t.me/IRIForeignMinistry",
+          "lean": "mixed",
+          "languages": [
+            "FA",
+            "EN partial"
+          ],
+          "size": "",
+          "must_watch": true,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Iran's official diplomatic voice on the war — essential for the Iranian government's framing. Posts Foreign Minister statements, responses to Israeli and US actions, and formal diplomatic notes. Mix of Persian and English. Persian posts are the primary channel; English summaries follow. Translate with Google Translate (FA→EN). Particularly active during IAEA meetings and when announcing retaliatory intentions.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "FA",
+              "kind": "language"
+            },
+            {
+              "label": "EN partial",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            }
+          ]
+        },
+        {
+          "id": "g3_05",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "US State Department",
+          "handle": "t.me/statedeptspox",
+          "url": "https://t.me/statedeptspox",
+          "lean": "mixed",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": true,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Official US diplomatic channel — spokesperson briefings, sanctions announcements, and OFAC actions against Iran. Posts full text of press briefings, official condemnations of Iranian actions, and US policy statements. English only. Useful for every US-Iran diplomatic development: new sanctions packages, JCPOA status updates, and US reactions to Iranian strikes. Dry but authoritative — primary source material.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            }
+          ]
+        },
+        {
+          "id": "g3_06",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Saudi MFA (وزارة الخارجية)",
+          "handle": "t.me/KSAmofaEN",
+          "url": "https://t.me/KSAmofaEN",
+          "lean": "mixed",
+          "languages": [
+            "EN",
+            "AR"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Saudi Arabia's official English diplomatic channel — statements on Iranian actions in the Gulf, Houthi attacks on Saudi territory, and Riyadh's positions in Arab League Iran debates. The English channel (@KSAmofaEN) is specifically for international audiences. Useful for tracking when Saudi Arabia escalates or de-escalates its public posture toward Iran.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "AR",
+              "kind": "language"
+            }
+          ]
+        },
+        {
+          "id": "g3_07",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Chinese MFA Spokesperson",
+          "handle": "t.me/MFAChina",
+          "url": "https://t.me/MFAChina",
+          "lean": "mixed",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "China's official diplomatic stance on the Iran war — the \"other superpower\" perspective. Posts daily MFA spokesperson briefings in English covering China's opposition to US sanctions on Iran, Chinese UN Security Council vetoes, and China-Iran strategic partnership statements. English-language channel makes it directly usable in your aggregator without translation.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            }
+          ]
+        },
+        {
+          "id": "g3_08",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Turkish MFA",
+          "handle": "t.me/TC_Disisleri",
+          "url": "https://t.me/TC_Disisleri",
+          "lean": "mixed",
+          "languages": [
+            "TR",
+            "EN partial"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Turkey's unique NATO-member-but-Iran-trade-partner position makes this valuable. FM Fidan's statements on the Iran war reflect Ankara's balancing act. Posts in Turkish primarily — translate via DeepL (TR→EN is excellent). Covers Turkish mediation offers, Turkish-Iranian energy deals that continue despite sanctions, and Ankara's position on IRGC designation debates within NATO.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "TR",
+              "kind": "language"
+            },
+            {
+              "label": "EN partial",
+              "kind": "language"
+            }
+          ]
+        },
+        {
+          "id": "g3_09",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "French MFA (Diplomatie française)",
+          "handle": "t.me/francediplomatie",
+          "url": "https://t.me/francediplomatie",
+          "lean": "mixed",
+          "languages": [
+            "EN",
+            "FR"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "France is part of the E3 nuclear negotiating group — French MFA statements on Iran carry outsized weight in European diplomacy. Covers French positions at the IAEA, E3 coordination with Germany and UK, and Paris's reaction to Iranian nuclear milestones. Posts in both French and English. Essential for tracking where Europe's diplomatic consensus on Iran is heading.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "FR",
+              "kind": "language"
+            }
+          ]
+        },
+        {
+          "id": "g3_10",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "UK Foreign Office (FCDO)",
+          "handle": "t.me/FCDOGovUK",
+          "url": "https://t.me/FCDOGovUK",
+          "lean": "mixed",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "UK's official diplomatic position — part of the E3 alongside France and Germany. Covers British sanctions designations against Iran, FCDO travel warnings for UK nationals in the region, and British statements at the UN Security Council. Active during Iranian hostage cases involving UK dual nationals. All in English.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ]
+        },
+        {
+          "id": "g3_11",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "UAE Ministry of Foreign Affairs",
+          "handle": "t.me/UAEMoFA",
+          "url": "https://t.me/UAEMoFA",
+          "lean": "mixed",
+          "languages": [
+            "EN",
+            "AR"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Covers UAE's pragmatic and often more conciliatory stance toward Iran compared to Saudi Arabia. When UAE makes unusual diplomatic outreach to Tehran — which it has done several times — UAEMoFA is where the official statement appears first. Also covers UAE's positions in GCC security meetings on Iran and formal reactions to Houthi/Iranian attacks on UAE territory.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "AR",
+              "kind": "language"
+            }
+          ]
+        },
+        {
+          "id": "g3_12",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Qatar Ministry of Foreign Affairs",
+          "handle": "t.me/MofaQatar_EN",
+          "url": "https://t.me/MofaQatar_EN",
+          "lean": "mixed",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Qatar is the back-channel mediator between Iran and the West — this channel is where Qatar announces prisoner swaps, confirms mediation meetings, and signals diplomatic progress. English-language official channel. When Qatar hosts Iran-US indirect talks, the MoFA channel is where the outcome is disclosed. One of the most strategically important official channels to monitor for Iran diplomacy.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ]
+        },
+        {
+          "id": "g3_13",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "IAEA (International Atomic Energy Agency)",
+          "handle": "t.me/iaeaorg",
+          "url": "https://t.me/iaeaorg",
+          "lean": "mixed",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "The single most important official technical source for Iran nuclear coverage. IAEA posts Director General Grossi's statements on Iranian enrichment levels, centrifuge counts, and inspection access. When Iran crosses a nuclear threshold or IAEA issues a critical report, this channel posts the official document first. Essential for your aggregator's nuclear layer. Dry but indispensable.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            }
+          ]
+        },
+        {
+          "id": "g3_14",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "German Federal Foreign Office (AA)",
+          "handle": "t.me/AuswaertigesAmt",
+          "url": "https://t.me/AuswaertigesAmt",
+          "lean": "mixed",
+          "languages": [
+            "DE",
+            "EN partial"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Germany's MFA is the third leg of the E3. Covers German sanctions designations against Iran, IRGC terrorist designation debates within the EU (Germany has led this effort), and Baerbock/Scholz statements on Iran. Posts primarily in German — DeepL (DE→EN) is excellent. Important for EU Iran policy coordination, particularly when Germany and France diverge.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "DE",
+              "kind": "language"
+            },
+            {
+              "label": "EN partial",
+              "kind": "language"
+            }
+          ]
+        },
+        {
+          "id": "g3_15",
+          "group": "g3",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "UN News",
+          "handle": "t.me/UN_News_Centre",
+          "url": "https://t.me/UN_News_Centre",
+          "lean": "mixed",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Official UN News Centre channel. Covers UNSC resolutions on Iran, Secretary-General statements on the Iran-Israel war, UN Special Rapporteur reports on Iranian human rights, and IAEA reports submitted to the Security Council. Essential for the multilateral/international law dimension of your aggregator. Neutral by mandate.",
+          "badges": [
+            {
+              "label": "TELEGRAM OFFICIAL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g4",
+      "name": "Telegram War & News Channels",
+      "platform": "telegram",
+      "description": "Telegram news and war-coverage channels for real-time Iran conflict monitoring",
+      "count": 15,
+      "sources": [
+        {
+          "id": "g4_01",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Intel Slava Z",
+          "handle": "t.me/intelslava",
+          "url": "https://t.me/intelslava",
+          "lean": "Pro-Russia lean",
+          "languages": [
+            "RU",
+            "EN partial"
+          ],
+          "size": "",
+          "must_watch": true,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "One of the largest and fastest war news channels on Telegram — covers both Ukraine and Iran-Israel fronts with equal speed. Pro-Russian editorial line but posts raw footage and claims from all sides. Extremely active during Iran war escalations, posting intercept footage, strike claims, and military updates within seconds. Must be cross-referenced — speed comes at cost of accuracy. Primary in Russian, many posts in English.",
+          "badges": [
+            {
+              "label": "WAR CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "RU",
+              "kind": "language"
+            },
+            {
+              "label": "EN partial",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            },
+            {
+              "label": "Pro-Russia lean",
+              "kind": "lean"
+            }
+          ]
+        },
+        {
+          "id": "g4_02",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "OSINTdefender",
+          "handle": "t.me/OSINTdefender",
+          "url": "https://t.me/OSINTdefender",
+          "lean": "Neutral-OSINT",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": true,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Best English-language OSINT channel for the Iran war. Covers verified satellite imagery of strike damage, flight tracking of military aircraft, ship tracking of Iranian tankers, and cross-referenced claims from multiple sources. Run by a credible OSINT practitioner with strong track record. When Israeli strikes on Iranian nuclear or military sites are claimed, OSINTdefender is often first with satellite verification. Essential cross-reference tool.",
+          "badges": [
+            {
+              "label": "WAR CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            },
+            {
+              "label": "Neutral-OSINT",
+              "kind": "lean"
+            }
+          ]
+        },
+        {
+          "id": "g4_03",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "War Monitor",
+          "handle": "t.me/warmonitor2",
+          "url": "https://t.me/warmonitor2",
+          "lean": "Neutral",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": true,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "High-volume, fast, multi-conflict war news aggregator. Covers Iran-Israel conflict alongside other active war zones. English-language with no strong editorial lean — aggregates claims from all sides and labels sources. Good balance of speed and basic sourcing discipline. Active 24/7 during Iran war escalations. One of the most-followed English-language war channels on Telegram.",
+          "badges": [
+            {
+              "label": "WAR CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            },
+            {
+              "label": "Neutral",
+              "kind": "lean"
+            }
+          ]
+        },
+        {
+          "id": "g4_04",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Middle East Eye",
+          "handle": "t.me/MiddleEastEye",
+          "url": "https://t.me/MiddleEastEye",
+          "lean": "Centre-left",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": true,
+          "real_time": false,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "London-based independent outlet's Telegram — one of the best journalistically credible Iran war channels. Posts full articles, breaking stories, and exclusive reporting. Less pro-Israel than most Western outlets. Strong on Iranian civil society voices and diplomatic back-channel reporting. Covers stories Western mainstream press ignores. Cross-links to full articles for depth.",
+          "badges": [
+            {
+              "label": "NEWS CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "Centre-left",
+              "kind": "lean"
+            }
+          ]
+        },
+        {
+          "id": "g4_05",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Iran International",
+          "handle": "t.me/iranintl",
+          "url": "https://t.me/iranintl",
+          "lean": "Opposition-leaning",
+          "languages": [
+            "EN",
+            "FA"
+          ],
+          "size": "",
+          "must_watch": true,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "The most important Persian-language news channel on Telegram — and Iranians inside Iran watch it via VPN. Covers the war from a strongly anti-Islamic Republic standpoint. Has been the target of Iranian assassination plots (moved from London due to threats). Breaks inside-Iran stories that no other outlet has — protests, IRGC movements, domestic dissent. Essential for understanding what Iranians inside Iran are seeing. Also has an English channel.",
+          "badges": [
+            {
+              "label": "NEWS CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "FA",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            },
+            {
+              "label": "Opposition-leaning",
+              "kind": "lean"
+            }
+          ]
+        },
+        {
+          "id": "g4_06",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Al Arabiya English",
+          "handle": "t.me/AlArabiya_Eng",
+          "url": "https://t.me/AlArabiya_Eng",
+          "lean": "Pro-Saudi",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": true,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Fast-breaking Gulf war news from the Saudi-aligned broadcaster. Posts English-language breaking news on Iranian strikes, Houthi attacks, Gulf security incidents, and Saudi-Iran developments at near-real-time speed. Anti-Iran editorial line — strong on Iranian proxy activity (Houthis, Hezbollah, Iraq militias) and weak on Iranian civilian perspectives. One of the highest-volume English Iran war channels.",
+          "badges": [
+            {
+              "label": "NEWS CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            },
+            {
+              "label": "Pro-Saudi",
+              "kind": "lean"
+            }
+          ]
+        },
+        {
+          "id": "g4_07",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Al Jazeera English",
+          "handle": "t.me/aljazeeraenglish",
+          "url": "https://t.me/aljazeeraenglish",
+          "lean": "Neutral-Qatar",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "The most credible and balanced major Arab broadcaster's Telegram. More sympathetic to Iranian civil society than Al Arabiya; more critical of Israeli actions. Covers the Iran war with professional journalism standards and real correspondents on the ground. Essential counterweight to Al Arabiya's pro-Saudi framing. Posts full video reports, not just headlines.",
+          "badges": [
+            {
+              "label": "NEWS CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "Neutral-Qatar",
+              "kind": "lean"
+            }
+          ]
+        },
+        {
+          "id": "g4_08",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Meduza English",
+          "handle": "t.me/meduzaio",
+          "url": "https://t.me/meduzaio",
+          "lean": "mixed",
+          "languages": [
+            "EN",
+            "RU"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Russia's premier independent exiled news outlet (based in Latvia). Best source for Russian internal debate about the Iran alliance — covers Russian military dependence on Iranian drones, internal Russian criticism of the Iran arms deal, and Kremlin decision-making on Iran. Anti-Putin but credible and sourced. The only Russian outlet that will report things the Kremlin suppresses about the Russia-Iran relationship.",
+          "badges": [
+            {
+              "label": "NEWS CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "RU",
+              "kind": "language"
+            },
+            {
+              "label": "Independent",
+              "kind": "other"
+            }
+          ]
+        },
+        {
+          "id": "g4_09",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Haaretz English",
+          "handle": "t.me/haaretzcom",
+          "url": "https://t.me/haaretzcom",
+          "lean": "Left-Israeli",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Israel's left-liberal newspaper — the dissenting Israeli voice on the Iran war. Covers Israeli government criticism of military operations, Israeli peace camp arguments for diplomacy over strikes, and the domestic political opposition to Netanyahu's Iran policy. Essential counterweight to IDF and government channels. Posts Haaretz exclusives on Israeli intelligence assessments and military planning debates.",
+          "badges": [
+            {
+              "label": "NEWS CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "Left-Israeli",
+              "kind": "lean"
+            }
+          ]
+        },
+        {
+          "id": "g4_10",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "IRNA News Agency",
+          "handle": "t.me/irnafanews",
+          "url": "https://t.me/irnafanews",
+          "lean": "Official Iranian",
+          "languages": [
+            "FA",
+            "EN partial"
+          ],
+          "size": "",
+          "must_watch": true,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Iran's state wire on Telegram — first with official Iranian government reactions, retaliatory statements, and IRGC communiqués. The Persian feed moves faster than the English version. Use Google Translate on the Persian channel for real-time Iranian official announcements. When Iran confirms or denies strikes, IRNA posts first. Essential for Iranian official narrative monitoring at speed.",
+          "badges": [
+            {
+              "label": "NEWS CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "FA",
+              "kind": "language"
+            },
+            {
+              "label": "EN partial",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            },
+            {
+              "label": "Official Iranian",
+              "kind": "lean"
+            }
+          ]
+        },
+        {
+          "id": "g4_11",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Tasnim News Agency",
+          "handle": "t.me/tasnimagencies",
+          "url": "https://t.me/tasnimagencies",
+          "lean": "IRGC-aligned",
+          "languages": [
+            "FA",
+            "EN partial"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Semi-official IRGC-linked Iranian news agency — closer to the IRGC's own perspective than IRNA. Covers Iranian military operations, missile launches, and IRGC claims in real time. More aggressive and less diplomatic than IRNA — posts IRGC strike claims before official government confirmation. Useful for understanding the military-security apparatus's framing, which sometimes diverges from the civilian government line.",
+          "badges": [
+            {
+              "label": "NEWS CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "FA",
+              "kind": "language"
+            },
+            {
+              "label": "EN partial",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            },
+            {
+              "label": "IRGC-aligned",
+              "kind": "lean"
+            }
+          ]
+        },
+        {
+          "id": "g4_12",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Times of Israel",
+          "handle": "t.me/timesofisrael",
+          "url": "https://t.me/timesofisrael",
+          "lean": "Centre-Israeli",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Fastest English-language Israeli news outlet on Telegram. Posts breaking news on Iranian missile launches, Israeli military responses, and political developments at high speed. More centrist than IDF official channel — covers government criticism and Israeli public debate alongside military news. Excellent for the Israeli government's \"live feed\" perspective on the war without the pure PR spin of official channels.",
+          "badges": [
+            {
+              "label": "NEWS CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            },
+            {
+              "label": "Centre-Israeli",
+              "kind": "lean"
+            }
+          ]
+        },
+        {
+          "id": "g4_13",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "CGTN",
+          "handle": "t.me/CGTNofficial",
+          "url": "https://t.me/CGTNofficial",
+          "lean": "Pro-Beijing",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "China's international English broadcaster on Telegram — the pro-Iran great-power framing. Covers the Iran war through a lens deeply critical of US and Israeli actions, frames Iranian nuclear programme as a response to Western aggression, and amplifies Chinese diplomatic support for Iran. Essential for the \"multipolar world\" counter-narrative to Western coverage. Pairs with Russian channels for the full alternative-framing picture.",
+          "badges": [
+            {
+              "label": "NEWS CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "Pro-Beijing",
+              "kind": "lean"
+            }
+          ]
+        },
+        {
+          "id": "g4_14",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "Iran Observer",
+          "handle": "t.me/IranObserver1",
+          "url": "https://t.me/IranObserver1",
+          "lean": "Analytical",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": false,
+          "free_rss": false,
+          "blocked_some_regions": false,
+          "editorial_note": "Dedicated Iran-focused analysis channel — covers Iran's domestic politics, IRGC factionalism, nuclear programme technical developments, and strategic decision-making. Less breaking-news and more contextual than most war channels. Good for understanding Iranian regime internal dynamics and the gap between hardliner and pragmatist positions on the war. Aggregates Iranian press and translates key excerpts.",
+          "badges": [
+            {
+              "label": "ANALYSIS CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "Analytical",
+              "kind": "lean"
+            }
+          ]
+        },
+        {
+          "id": "g4_15",
+          "group": "g4",
+          "platform": "telegram",
+          "platform_type": "telegram_channel",
+          "name": "RT (Russia Today)",
+          "handle": "t.me/RTcom",
+          "url": "https://t.me/RTcom",
+          "lean": "Pro-Russia/Iran",
+          "languages": [
+            "EN"
+          ],
+          "size": "",
+          "must_watch": false,
+          "real_time": true,
+          "free_rss": false,
+          "blocked_some_regions": true,
+          "editorial_note": "Monitor — don't trust, but watch. RT is banned in the EU but remains active on Telegram. Covers the Iran war from an unambiguously pro-Iran, anti-Western angle — useful for understanding Russian-Iranian shared framing of the conflict. Also the fastest channel for Russian MFA amplification of Iranian government talking points. Apply strong scepticism. Cross-reference everything. Available on Telegram even in regions where the website is blocked.",
+          "badges": [
+            {
+              "label": "NEWS CHANNEL",
+              "kind": "platform_type"
+            },
+            {
+              "label": "EN",
+              "kind": "language"
+            },
+            {
+              "label": "REAL-TIME",
+              "kind": "speed"
+            },
+            {
+              "label": "Pro-Russia/Iran",
+              "kind": "lean"
+            },
+            {
+              "label": "BLOCKED EU",
+              "kind": "access"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

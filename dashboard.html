@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Iran War Watch</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; padding: 4vh 5vw; }
+    #header { background: #cc0000; padding: 0 24px; display: flex; justify-content: space-evenly; align-items: center; flex-shrink: 0; }
+    #logo { display: flex; align-self: center; }
+    #logo-img { height: 80px; width: auto; display: block; mix-blend-mode: multiply; }
+    #logo-date { font-size: 30px; font-weight: bold; letter-spacing: 2px; white-space: nowrap; align-self: center; }
+    #live-badge { background: #fff; color: #cc0000; padding: 6px 16px; border-radius: 4px; font-weight: bold; font-size: 20px; letter-spacing: 2px; align-self: center; }
+    #clocks { display: flex; gap: 20px; align-self: center; }
+    .clock-item { text-align: center; }
+    .clock-city { font-size: 12px; opacity: 0.85; text-transform: uppercase; letter-spacing: 1px; }
+    .clock-time { font-size: 22px; font-weight: bold; }
+    #main { display: flex; flex: 1; overflow: hidden; gap: 1px; background: #1a1a1a; }
+    #col-main { flex: 2; display: flex; flex-direction: column; overflow: hidden; background: #0a0a0a; }
+    #col-breaking { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #0a0a0a; }
+    #col-social { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #0a0a0a; }
+    .col-header { padding: 8px 12px; font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; background: #111; border-bottom: 1px solid #222; flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; }
+    .col-count { font-weight: normal; color: #777; letter-spacing: 0; font-size: 9px; }
+    #col-main .col-header { color: #f0a500; }
+    #col-breaking .col-header { color: #cc0000; }
+    #col-social .col-header { color: #0088cc; }
+    #col-main .col-body { flex: 1; overflow: hidden; padding: 8px; gap: 8px; display: flex; flex-direction: column; }
+    .card-main { background: #141414; border-left: 4px solid #f0a500; padding: 0 14px; border-radius: 0 4px 4px 0; flex: 1; display: flex; flex-direction: column; justify-content: center; margin-bottom: 0; overflow: hidden; transition: opacity 0.4s ease; }
+    .card-main .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-shrink: 0; }
+    .card-main .source { font-size: 15px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #f0a500; }
+    .card-main .time { font-size: 13px; color: #999; }
+    .card-main .title { font-size: 32px; line-height: 1.35; color: #fff; text-decoration: none; font-weight: 600; display: -webkit-box; -webkit-line-clamp: 4; line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-main .title:hover { color: #f0a500; }
+    .card-main.fade { opacity: 0; }
+    #col-breaking .col-body { flex: 1; overflow: hidden; padding: 6px; gap: 6px; display: flex; flex-direction: column; }
+    #col-breaking .card { margin-bottom: 0; overflow: hidden; }
+    #col-breaking .card .title { display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    #col-social .col-body { flex: 1; overflow: hidden; padding: 6px; gap: 6px; display: flex; flex-direction: column; }
+    #col-social .card { margin-bottom: 0; overflow: hidden; }
+    #col-social .card .title { display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-align: justify; }
+    .card { background: #141414; border-left: 4px solid #333; padding: 9px 10px; border-radius: 0 3px 3px 0; margin-bottom: 7px; }
+    .card.breaking { border-left-color: #cc0000; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .card.breaking:last-child { margin-bottom: 0; }
+    .card.social { border-left-color: #f0a500; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .card.social:last-child { margin-bottom: 0; }
+    .card.telegram { border-left-color: #0088cc; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .card.telegram:last-child { margin-bottom: 0; }
+    .card.telegram-agg { border-left-color: #a855f7; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .card.telegram-agg:last-child { margin-bottom: 0; }
+    .card-top { display: flex; justify-content: space-between; margin-bottom: 4px; gap: 4px; }
+    .source { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 65%; }
+    .card.breaking .source { color: #cc0000; }
+    .card.social .source { color: #f0a500; }
+    .card.social-market { border-left-color: #22c55e; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .card.social-market:last-child { margin-bottom: 0; }
+    .card.social-market .source { color: #22c55e; }
+    .card.telegram .source { color: #0088cc; }
+    .card.telegram-agg .source { color: #a855f7; }
+    .time { font-size: 9px; color: #999; white-space: nowrap; }
+    .title { font-size: 14px; line-height: 1.4; color: #ffffff; text-decoration: none; display: block; }
+    #main-progress { height: 3px; background: #1a1a1a; flex-shrink: 0; }
+    #main-progress-bar { height: 3px; background: #f0a500; width: 100%; transition: width 1s linear; }
+    .title:hover { color: #fff; }
+    #obs-widget-area { height:92px; border-top:1px solid #1a1a1a; flex-shrink:0; display:flex; flex-direction:column; }
+    /* ── MARKET WIDGET ───────────────────────────────────────── */
+    #mw-hdr { display:flex; align-items:center; justify-content:space-between; height:36px; padding:0 8px; background:#0d0d0d; border-bottom:1px solid #1c1c1c; flex-shrink:0; }
+    #mw-title { color:#fff; font-size:13px; font-weight:bold; letter-spacing:1.5px; font-family:'Courier New',monospace; }
+    #mw-meta { font-size:11px; color:#555; font-family:'Courier New',monospace; }
+    #mw-ts { color:#888; }
+    #mw-cd { color:#f59e0b; font-weight:bold; min-width:18px; display:inline-block; }
+    #mw-main { flex:1; overflow:hidden; display:flex; align-items:center; }
+    #mw-track { display:flex; align-items:center; white-space:nowrap; animation:mw-scroll 130s linear infinite; }
+    #mw-track:hover { animation-play-state:paused; }
+    @keyframes mw-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    .mw-tick { display:inline-flex; align-items:center; gap:5px; padding:0 24px; border-right:1px solid #222; font-family:'Courier New',monospace; }
+    .mw-tick-name { color:#666; font-size:13px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; }
+    .mw-tick-price { color:#fff; font-size:18px; font-weight:bold; }
+    .mw-chg { font-size:13px; font-weight:bold; }
+    .mw-chg.up { color:#22c55e; } .mw-chg.down { color:#ef4444; } .mw-chg.na { color:#444; }
+    .mw-badge { font-size:11px; padding:2px 5px; border-radius:2px; font-family:'Courier New',monospace; }
+    .mw-badge.bull { color:#22c55e; background:rgba(34,197,94,.1); }
+    .mw-badge.bear { color:#ef4444; background:rgba(239,68,68,.1); }
+    .mw-badge.vol  { color:#f59e0b; background:rgba(245,158,11,.1); }
+    #mw-disc { display:none; }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <div id="logo">
+      <img id="logo-img" src="/static/logo.png" alt="Iran War Watch">
+    </div>
+    <span id="live-badge">● LIVE</span>
+    <div id="logo-date"></div>
+    <div id="clocks">
+      <div class="clock-item"><div class="clock-city">Tehran</div><div class="clock-time" id="clock-tehran">--:--</div></div>
+      <div class="clock-item"><div class="clock-city">Tel Aviv</div><div class="clock-time" id="clock-telaviv">--:--</div></div>
+      <div class="clock-item"><div class="clock-city">Brussels</div><div class="clock-time" id="clock-brussels">--:--</div></div>
+      <div class="clock-item"><div class="clock-city">Washington</div><div class="clock-time" id="clock-washington">--:--</div></div>
+      <div class="clock-item"><div class="clock-city">London</div><div class="clock-time" id="clock-london">--:--</div></div>
+    </div>
+  </div>
+
+  <div id="main">
+    <div id="col-main">
+      <div class="col-header">
+        <span>Main stories today</span>
+        <span class="col-count" id="count-main"></span>
+      </div>
+      <div id="main-progress"><div id="main-progress-bar"></div></div>
+      <div class="col-body" id="body-main"></div>
+    </div>
+    <div id="col-breaking">
+      <div class="col-header">
+        <span>● Breaking news</span>
+        <span class="col-count" id="count-breaking"></span>
+      </div>
+      <div class="col-body" id="body-breaking"></div>
+    </div>
+    <div id="col-social">
+      <div class="col-header">
+        <span>● TELEGRAM</span>
+        <span class="col-count" id="count-social"></span>
+      </div>
+      <div class="col-body" id="body-social"></div>
+    </div>
+  </div>
+  <div id="obs-widget-area">
+    <div id="mw-hdr">
+      <div id="mw-title">&#9889; IRAN WAR &middot; MARKET IMPACT</div>
+      <div id="mw-meta">Updated: <span id="mw-ts">&#8212;</span> &nbsp;|&nbsp; &#8635; <span id="mw-cd">60</span>s</div>
+    </div>
+    <div id="mw-main"><div id="mw-track"></div></div>
+    <div id="mw-disc">Data from CoinGecko, Frankfurter &amp; Yahoo Finance (public free APIs). Not financial advice.</div>
+  </div>
+
+  <script>
+    var CITIES = [
+      { id: "tehran", tz: "Asia/Tehran" },
+      { id: "telaviv", tz: "Asia/Jerusalem" },
+      { id: "brussels", tz: "Europe/Brussels" },
+      { id: "washington", tz: "America/New_York" },
+      { id: "london", tz: "Europe/London" },
+    ];
+
+    function updateClocks() {
+      var now = new Date();
+      CITIES.forEach(function(c) {
+        var el = document.getElementById("clock-" + c.id);
+        if (el) el.textContent = now.toLocaleTimeString("en-GB", { timeZone: c.tz, hour: "2-digit", minute: "2-digit", second: "2-digit" });
+      });
+      var dateEl = document.getElementById("logo-date");
+      if (dateEl) dateEl.textContent = now.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+    }
+    setInterval(updateClocks, 1000);
+    updateClocks();
+
+    function formatTime(str) {
+      if (!str) return "";
+      var d = new Date(str);
+      if (isNaN(d)) return str;
+      return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) + " · " + d.toLocaleDateString([], { day: "numeric", month: "short" });
+    }
+
+    var SOURCE_FLAGS = {
+      "AP News":"🇺🇸","Fox News":"🇺🇸","NPR":"🇺🇸","The Nation":"🇺🇸","CNN":"🇺🇸","Foreign Policy":"🇺🇸","Radio Farda":"🇺🇸","Newsweek":"🇺🇸","The Hill":"🇺🇸",
+      "Reuters":"🇬🇧","BBC":"🇬🇧","Middle East Eye":"🇬🇧","The Telegraph":"🇬🇧","Financial Times":"🇬🇧","Iran International":"🇬🇧",
+      "Euronews":"🇪🇺","POLITICO":"🇪🇺",
+      "Deutsche Welle":"🇩🇪","Der Spiegel":"🇩🇪",
+      "France 24":"🇫🇷","RFI":"🇫🇷",
+      "Bellingcat":"🇳🇱","Dutch News":"🇳🇱",
+      "TVP World":"🇵🇱","Notes from Poland":"🇵🇱",
+      "Novinite":"🇧🇬",
+      "Slovak Spectator":"🇸🇰",
+      "Brussels Times":"🇧🇪",
+      "Yle News":"🇫🇮","Helsingin Sanomat":"🇫🇮",
+      "ERR News":"🇪🇪",
+      "LRT English":"🇱🇹",
+      "LSM English":"🇱🇻","Baltic Times":"🇱🇻",
+      "Cyprus Mail":"🇨🇾",
+      "HRT English":"🇭🇷",
+      "Czech Radio":"🇨🇿",
+      "Hungary Today":"🇭🇺",
+      "Ekathimerini":"🇬🇷","Athens News Agency":"🇬🇷",
+      "Irish Times":"🇮🇪",
+      "Times of Malta":"🇲🇹","Malta Independent":"🇲🇹",
+      "Al Jazeera":"🇶🇦","Doha News":"🇶🇦","Gulf Times":"🇶🇦","The Peninsula":"🇶🇦","Qatar News":"🇶🇦",
+      "Tehran Times":"🇮🇷","Press TV":"🇮🇷","IRNA":"🇮🇷","IFP News":"🇮🇷","Financial Tribune":"🇮🇷",
+      "Arab News":"🇸🇦","Al Arabiya":"🇸🇦","Saudi Press Agency":"🇸🇦","Saudi Gazette":"🇸🇦","Arabian Business":"🇸🇦",
+      "Gulf News":"🇦🇪","Khaleej Times":"🇦🇪","The National":"🇦🇪","WAM":"🇦🇪",
+      "Jordan Times":"🇯🇴","Petra News":"🇯🇴","Roya News":"🇯🇴",
+      "Times of Oman":"🇴🇲",
+      "Anadolu Agency":"🇹🇷","Daily Sabah":"🇹🇷",
+      "Bahrain News":"🇧🇭","Gulf Daily News":"🇧🇭","Daily Tribune Bahrain":"🇧🇭",
+      "South China Morning Post":"🇭🇰",
+      "Caixin":"🇨🇳","Xinhua":"🇨🇳","Global Times":"🇨🇳","CGTN":"🇨🇳",
+      "The Hindu":"🇮🇳","India Today":"🇮🇳","Times of India":"🇮🇳","The Wire":"🇮🇳","The Print":"🇮🇳",
+      "NHK World":"🇯🇵","Japan Times":"🇯🇵","Nikkei Asia":"🇯🇵","Kyodo News":"🇯🇵","The Diplomat":"🇯🇵",
+      "Korea Herald":"🇰🇷","Yonhap":"🇰🇷",
+      "Dawn":"🇵🇰","Geo News":"🇵🇰","The News International":"🇵🇰",
+      "El Pais":"🇪🇸","El Mundo":"🇪🇸","The Local Spain":"🇪🇸",
+      "TASS":"🇷🇺","RT":"🇷🇺",
+      "SBS News":"🇦🇺","ABC News Australia":"🇦🇺","Guardian Australia":"🇦🇺","The Australian":"🇦🇺",
+      "The Guardian":"🇬🇧",
+    };
+
+    function getFlag(src) {
+      var keys = Object.keys(SOURCE_FLAGS);
+      for (var i = 0; i < keys.length; i++) {
+        if (src.indexOf(keys[i]) !== -1) return SOURCE_FLAGS[keys[i]] + " ";
+      }
+      return "";
+    }
+
+    function makeCard(h, tier) {
+      var href = h.link ? 'href="' + h.link + '" target="_blank"' : "";
+      return '<div class="card ' + tier + '">'
+        + '<div class="card-top"><span class="source">' + getFlag(h.source) + h.source + '</span><span class="time">' + formatTime(h.published) + '</span></div>'
+        + '<a class="title" ' + href + '>' + h.title + '</a>'
+        + '</div>';
+    }
+
+    var MAIN_SOURCES = [
+      { label: "BBC NEWS",        match: "BBC" },
+      { label: "AL JAZEERA",      match: "Al Jazeera" },
+      { label: "AP NEWS",         match: "AP News" },
+      { label: "REUTERS",         match: "Reuters" },
+      { label: "THE GUARDIAN",    match: "The Guardian" },
+      { label: "GOOGLE NEWS",     match: "Google News" },
+      { label: "MIDDLE EAST EYE", match: "Middle East Eye" },
+      { label: "EURONEWS",        match: "Euronews" },
+      { label: "POLITICO",        match: "POLITICO" },
+      { label: "FOREIGN POLICY",  match: "Foreign Policy" },
+      { label: "THE DIPLOMAT",    match: "The Diplomat" },
+      { label: "BELLINGCAT",      match: "Bellingcat" },
+      { label: "SCMP",            match: "South China Morning Post" },
+    ];
+
+    function buildMainPool(data) {
+      var cutoff = Date.now() - 24 * 60 * 60 * 1000;
+      return MAIN_SOURCES.map(function(s) {
+        var stories = data.filter(function(h) {
+          return h.source.indexOf(s.match) !== -1
+            && new Date(h.published).getTime() >= cutoff;
+        });
+        return { label: s.label, stories: stories };
+      }).filter(function(g) { return g.stories.length >= 3; });
+    }
+
+    function onePerSource(items) {
+      var seen = {};
+      return items.filter(function(h) {
+        if (seen[h.source]) return false;
+        seen[h.source] = true;
+        return true;
+      });
+    }
+
+    function interleaveSources(items, maxInRow) {
+      var bySource = {};
+      items.forEach(function(h) {
+        if (!bySource[h.source]) bySource[h.source] = [];
+        bySource[h.source].push(h);
+      });
+      var result = [];
+      var streak = {};
+      var remaining = items.map(function(h) { return h; });
+      var safety = 0;
+      while (remaining.length > 0 && safety < 2000) {
+        safety++;
+        var placed = false;
+        for (var i = 0; i < remaining.length; i++) {
+          var h = remaining[i];
+          var s = h.source;
+          if ((streak[s] || 0) < maxInRow) {
+            result.push(h);
+            remaining.splice(i, 1);
+            Object.keys(streak).forEach(function(k) { if (k !== s) streak[k] = 0; });
+            streak[s] = (streak[s] || 0) + 1;
+            placed = true;
+            break;
+          }
+        }
+        if (!placed) {
+          streak = {};
+        }
+      }
+      return result;
+    }
+
+    function applyBreakingRules(items, maxBurst, cooldown) {
+      var burst = {};       // stories shown in current burst per source
+      var cdLeft = {};      // other stories still needed before source can show again
+      var result = [];
+      items.forEach(function(h) {
+        var s = h.source;
+        if ((cdLeft[s] || 0) > 0) return; // in cooldown, skip
+        result.push(h);
+        burst[s] = (burst[s] || 0) + 1;
+        if (burst[s] >= maxBurst) {
+          cdLeft[s] = cooldown;
+          burst[s] = 0;
+        }
+        // every shown story counts as one tick for all other sources in cooldown
+        Object.keys(cdLeft).forEach(function(other) {
+          if (other !== s && cdLeft[other] > 0) cdLeft[other]--;
+        });
+      });
+      return result;
+    }
+
+    var allMainGroups = [];
+    var mainSourceIndex = 0;
+    var mainLastRender = Date.now();
+    var MAIN_INTERVAL = 30000;
+
+    function renderMainPage() {
+      if (allMainGroups.length === 0) return;
+      mainLastRender = Date.now();
+      var group = allMainGroups[mainSourceIndex % allMainGroups.length];
+      mainSourceIndex++;
+      var slice = group.stories.slice(0, 2);
+      var header = document.querySelector("#col-main .col-header span:first-child");
+      if (header) header.textContent = group.label;
+      var container = document.getElementById("body-main");
+      container.querySelectorAll(".card-main").forEach(function(c) { c.classList.add("fade"); });
+      setTimeout(function() {
+        container.innerHTML = slice.map(function(h) {
+          var href = h.link ? 'href="' + h.link + '" target="_blank"' : "";
+          return '<div class="card-main">'
+            + '<div class="meta"><span class="source">' + h.source + '</span><span class="time">' + formatTime(h.published) + '</span></div>'
+            + '<a class="title" ' + href + '>' + h.title + '</a>'
+            + '</div>';
+        }).join("");
+      }, 400);
+    }
+
+    var allBreakingItems = [];
+    var breakingPageOffset = 0;
+
+    function buildBreakingPool(data) {
+      var cutoff = Date.now() - 48 * 60 * 60 * 1000;
+      allBreakingItems = data.filter(function(h) {
+        return h.tier === "breaking" && new Date(h.published).getTime() >= cutoff;
+      });
+      allBreakingItems.sort(function(a, b) {
+        return new Date(b.published).getTime() - new Date(a.published).getTime();
+      });
+    }
+
+    function renderBreakingPage() {
+      var pool = onePerSource(allBreakingItems);
+      if (pool.length === 0) {
+        document.getElementById("body-breaking").innerHTML = '<div style="color:#333;font-size:13px;padding:8px">No breaking news yet</div>';
+        return;
+      }
+      var start = (breakingPageOffset * 4) % pool.length;
+      var items = pool.slice(start, start + 4);
+      if (items.length < 4 && pool.length >= 4) {
+        items = items.concat(pool.slice(0, 4 - items.length));
+      }
+      breakingPageOffset++;
+      document.getElementById("body-breaking").innerHTML = items.map(function(h) { return makeCard(h, "breaking"); }).join("");
+      var header = document.querySelector("#col-breaking .col-header span:first-child");
+      if (header) header.textContent = "● BREAKING NEWS";
+      document.getElementById("count-breaking").textContent = pool.length + " src";
+    }
+
+    var allTelegramItems = [];
+    var allRedditItems = [];
+    var allRedditGeneralItems = [];
+    var allRedditEconItems = [];
+    var allTelegramOfficialItems = [];
+    var allTelegramAggregatorItems = [];
+    var socialViewIndex = 0;
+    var socialPageOffsets = [0, 0, 0, 0];
+
+    var REDDIT_ECON_SUBS = ["r/wallstreetbets","r/investing"];
+    var TELEGRAM_OFFICIAL_SOURCES = [
+      "IAEA","United Nations","NATO","Kremlin","UN News",
+      "Israel MFA","IDF","Ukraine MFA","US Department of State","US State Dept",
+      "European Commission","EU Council","CGTN","Russian MFA",
+      "Chinese MFA","Saudi MFA","UK Foreign Office","UAE Ministry","Qatar Ministry","French MFA"
+    ];
+
+    var VIEW_CONFIG = [
+      { label: "💬 REDDIT · POLITICS",   color: "#f0a500", tier: "social",
+        getData: function() { return allRedditGeneralItems.slice(0, 16); } },
+      { label: "📡 TELEGRAM · OFFICIAL", color: "#0088cc", tier: "telegram",
+        getData: function() { return onePerSource(allTelegramOfficialItems); } },
+      { label: "📈 REDDIT · MARKETS",    color: "#22c55e", tier: "social", cssClass: "social-market",
+        getData: function() { return allRedditEconItems.slice(0, 16); } },
+      { label: "📡 TELEGRAM · NEWS",     color: "#a855f7", tier: "telegram-agg",
+        getData: function() { return onePerSource(allTelegramAggregatorItems); } },
+    ];
+
+    function renderSocialView(idx) {
+      var viewIdx = idx % 4;
+      var v = VIEW_CONFIG[viewIdx];
+      var allItems = v.getData();
+      var page = socialPageOffsets[viewIdx];
+      var start = allItems.length > 0 ? (page * 4) % allItems.length : 0;
+      var items = allItems.slice(start, start + 4);
+      if (items.length < 4 && allItems.length >= 4) {
+        items = items.concat(allItems.slice(0, 4 - items.length));
+      }
+      socialPageOffsets[viewIdx]++;
+      var header = document.querySelector("#col-social .col-header span:first-child");
+      if (header) { header.textContent = "● " + v.label; header.style.color = v.color; }
+      document.getElementById("body-social").innerHTML = items.length
+        ? items.map(function(h) { return makeCard(h, v.cssClass || v.tier); }).join("")
+        : '<div style="color:#333;font-size:13px;padding:8px">No updates yet</div>';
+      document.getElementById("count-social").textContent = items.length + " / " + allItems.length;
+    }
+
+    function renderSocialPage() {
+      renderSocialView(socialViewIndex % 4);
+      socialViewIndex++;
+    }
+
+    var mainInitialized = false;
+    var breakingInitialized = false;
+    var socialInitialized = false;
+
+    function loadHeadlines() {
+      fetch("/headlines")
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          allMainGroups = buildMainPool(data);
+          document.getElementById("count-main").textContent = allMainGroups.length + " sources";
+          if (!mainInitialized) { renderMainPage(); mainInitialized = true; }
+
+          buildBreakingPool(data);
+          if (!breakingInitialized) { renderBreakingPage(); breakingInitialized = true; }
+
+          var cutoff24 = Date.now() - 24 * 60 * 60 * 1000;
+          var cutoff72 = Date.now() - 72 * 60 * 60 * 1000;
+          var cutoff168 = Date.now() - 168 * 60 * 60 * 1000;
+          allTelegramItems = data.filter(function(h) {
+            return h.tier === "telegram" && new Date(h.published).getTime() >= cutoff72;
+          });
+          allTelegramOfficialItems = allTelegramItems.filter(function(h) {
+            return TELEGRAM_OFFICIAL_SOURCES.some(function(s) { return h.source.indexOf(s) !== -1; });
+          });
+          allTelegramAggregatorItems = allTelegramItems.filter(function(h) {
+            return !TELEGRAM_OFFICIAL_SOURCES.some(function(s) { return h.source.indexOf(s) !== -1; });
+          });
+          allRedditItems = data.filter(function(h) {
+            return h.tier === "social" && new Date(h.published).getTime() >= cutoff72;
+          });
+          allRedditGeneralItems = allRedditItems.filter(function(h) {
+            return !REDDIT_ECON_SUBS.some(function(s) { return h.source === s; });
+          });
+          allRedditEconItems = data.filter(function(h) {
+            return h.tier === "social" && REDDIT_ECON_SUBS.some(function(s) { return h.source === s; }) && new Date(h.published).getTime() >= cutoff168;
+          });
+          if (!socialInitialized) { renderSocialPage(); socialInitialized = true; }
+          else { renderSocialView(socialViewIndex % 4); }
+        })
+        .catch(function(e) { console.log("Fetch error:", e); });
+    }
+
+    loadHeadlines();
+    setInterval(loadHeadlines, 15000);
+    setInterval(renderMainPage, 30000);
+    setInterval(renderBreakingPage, 90000);
+    setInterval(renderSocialPage, 30000);
+    setInterval(function() {
+      var elapsed = Date.now() - mainLastRender;
+      var pct = Math.max(0, 100 - (elapsed / MAIN_INTERVAL) * 100);
+      var bar = document.getElementById('main-progress-bar');
+      if (bar) bar.style.width = pct + '%';
+    }, 1000);
+
+    // ── MARKET WIDGET ─────────────────────────────────────────
+    var MW_CORS = 'https://corsproxy.io/?url=';
+    var MW_YF   = 'https://query1.finance.yahoo.com/v8/finance/chart/';
+    var MW_IMPACT = { bull:'🟢 Bullish', bear:'🔴 Bearish', vol:'🟡 Volatile' };
+    var MW_GROUPS = [
+      { icon:'🛢️', label:'Energy', two:false, assets:[
+        { id:'BZ=F',   name:'Brent Crude', src:'yf', impact:'bull' },
+        { id:'CL=F',   name:'WTI Crude',   src:'yf', impact:'bull' },
+        { id:'NG=F',   name:'Natural Gas', src:'yf', impact:'vol'  },
+        { id:'USO',    name:'Oil ETF',     src:'yf', impact:'bull' },
+        { id:'BNO',    name:'Brent ETF',   src:'yf', impact:'bull' },
+      ]},
+      { icon:'🥇', label:'Safe Havens', two:false, assets:[
+        { id:'GC=F',   name:'Gold',       src:'yf', impact:'bull' },
+        { id:'SI=F',   name:'Silver',     src:'yf', impact:'bull' },
+        { id:'CHF',    name:'CHF/USD',    src:'fx', impact:'bull' },
+        { id:'JPY',    name:'JPY/USD',    src:'fx', impact:'bull' },
+        { id:'UUP',    name:'USD Index',  src:'yf', impact:'vol'  },
+      ]},
+      { icon:'📉', label:'Currencies', two:false, assets:[
+        { id:'PHP',    name:'PHP/USD',  src:'fx', impact:'bear' },
+        { id:'AED',    name:'AED/USD',  src:'fx', impact:'vol'  },
+        { id:'RUB',    name:'RUB/USD',  src:'fx', impact:'bear' },
+      ]},
+      { icon:'📊', label:'Equities', two:true, assets:[
+        { id:'SPY',    name:'S&P 500',    src:'yf', impact:'bear' },
+        { id:'QQQ',    name:'Nasdaq',     src:'yf', impact:'bear' },
+        { id:'XOM',    name:'ExxonMobil', src:'yf', impact:'bull' },
+        { id:'CVX',    name:'Chevron',    src:'yf', impact:'bull' },
+        { id:'RTX',    name:'Raytheon',   src:'yf', impact:'bull' },
+        { id:'LMT',    name:'Lockheed',   src:'yf', impact:'bull' },
+        { id:'UAL',    name:'United Air', src:'yf', impact:'bear' },
+        { id:'LUV',    name:'Southwest',  src:'yf', impact:'bear' },
+      ]},
+      { icon:'₿', label:'Crypto', two:false, assets:[
+        { id:'bitcoin', name:'Bitcoin', src:'cg', impact:'vol' },
+      ]},
+      { icon:'🌾', label:'Commodities', two:false, assets:[
+        { id:'ALI=F', name:'Aluminum', src:'yf', impact:'vol' },
+        { id:'ZC=F',  name:'Corn',     src:'yf', impact:'vol' },
+      ]},
+    ];
+    var mwCache = {};
+
+    function mwFmtPrice(v, isFx) {
+      if (v == null) return null;
+      if (v >= 10000) return v.toLocaleString('en-US', {maximumFractionDigits:0});
+      if (v >= 1000)  return v.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+      if (v >= 10)    return v.toFixed(2);
+      return v.toFixed(4);
+    }
+    function mwChg(chg) {
+      if (chg == null) return '<span class="mw-chg na">—</span>';
+      var cls = chg >= 0 ? 'up' : 'down', arr = chg >= 0 ? '▲' : '▼';
+      return '<span class="mw-chg ' + cls + '">' + arr + Math.abs(chg).toFixed(2) + '%</span>';
+    }
+    function mwRender(sk) {
+      var track = document.getElementById('mw-track');
+      if (sk) {
+        track.innerHTML = '<span class="mw-tick"><span class="mw-tick-name" style="color:#333">Loading markets...</span></span>';
+        return;
+      }
+      var allAssets = [];
+      MW_GROUPS.forEach(function(g) { g.assets.forEach(function(a) { allAssets.push(a); }); });
+      var items = allAssets.filter(function(a) { return mwCache[a.id] && mwCache[a.id].price != null; });
+      if (!items.length) return;
+      var html = items.map(function(a) {
+        var d = mwCache[a.id], isFx = (a.src === 'fx');
+        return '<span class="mw-tick">'
+          + '<span class="mw-tick-name">' + a.name + '</span>'
+          + '<span class="mw-tick-price">' + mwFmtPrice(d.price, isFx) + '</span>'
+          + mwChg(d.change)
+          + '<span class="mw-badge ' + a.impact + '">' + MW_IMPACT[a.impact] + '</span>'
+          + '</span>';
+      }).join('');
+      track.innerHTML = html + html + html + html;
+    }
+    function mwFetchCG() {
+      return fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,gold,silver&vs_currencies=usd&include_24hr_change=true')
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          ['bitcoin','gold','silver'].forEach(function(id) {
+            if (d[id]) mwCache[id] = { price: d[id].usd, change: d[id].usd_24h_change };
+          });
+        });
+    }
+    function mwFetchFX() {
+      var base = 'https://api.frankfurter.app/';
+      var prev = new Date(); prev.setDate(prev.getDate() - 3);
+      var pd = prev.toISOString().split('T')[0];
+      return Promise.all([
+        fetch(base + 'latest?from=USD&to=JPY,CHF,PHP,AED,RUB').then(function(r) { return r.json(); }),
+        fetch(base + pd + '?from=USD&to=JPY,CHF,PHP,AED,RUB').then(function(r) { return r.json(); })
+      ]).then(function(res) {
+        Object.keys(res[0].rates || {}).forEach(function(k) {
+          var v = res[0].rates[k], p = res[1].rates && res[1].rates[k];
+          mwCache[k] = { price: v, change: p ? ((v - p) / p * 100) : null };
+        });
+      });
+    }
+    function mwFetchYF(ticker) {
+      var url = MW_CORS + encodeURIComponent(MW_YF + ticker);
+      return fetch(url, { cache:'no-store' })
+        .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function(d) {
+          var m = d.chart.result[0].meta;
+          var price = m.regularMarketPrice, prev = m.previousClose;
+          mwCache[ticker] = { price: price, change: (prev && prev !== 0) ? ((price - prev) / prev * 100) : null };
+        });
+    }
+    function mwLoad(isRefresh) {
+      if (!isRefresh) mwRender(true);
+      var yfIds = [];
+      MW_GROUPS.forEach(function(g) { g.assets.forEach(function(a) { if (a.src === 'yf' && yfIds.indexOf(a.id) < 0) yfIds.push(a.id); }); });
+      var yfP = yfIds.map(function(t, i) {
+        return new Promise(function(res) { setTimeout(function() { mwFetchYF(t).then(res).catch(res); }, i * 60); });
+      });
+      Promise.allSettled([mwFetchCG(), mwFetchFX()].concat(yfP)).then(function() {
+        mwRender(false);
+        var now = new Date();
+        document.getElementById('mw-ts').textContent = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+      });
+    }
+    var mwCountdown = 60;
+    function mwTick() {
+      mwCountdown--;
+      document.getElementById('mw-cd').textContent = mwCountdown;
+      if (mwCountdown <= 0) { mwCountdown = 60; mwLoad(true); }
+    }
+    mwLoad(false);
+    setInterval(mwTick, 1000);
+
+  </script>
+</body>
+</html>

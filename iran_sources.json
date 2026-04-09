@@ -1,0 +1,3234 @@
+{
+  "meta": {
+    "title": "Iran News Coverage — Editorial Intelligence",
+    "description": "RSS/API sources covering Iran across 14+ countries + EU member states, with editorial notes on what each source uniquely covers",
+    "total_sources": 117,
+    "total_countries": 41,
+    "generated": "2026-03-23"
+  },
+  "countries": [
+    {
+      "country": "Iran",
+      "flag": "🇮🇷",
+      "region": "mideast",
+      "sources": [
+        {
+          "id": "iran_01",
+          "must_watch": true,
+          "name": "Tehran Times",
+          "rss_url": "tehrantimes.com/rss.xml",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "The official mouthpiece of the Islamic Republic in English. Essential for understanding how Tehran wants to frame every story internationally — what language it uses, what it emphasises, what it ignores. Read it to understand the regime's narrative, not the facts. Unusually reliable for official statements, minister quotes, and diplomatic communiqués. Covers domestic politics, nuclear file, and \"resistance axis\" allies (Hezbollah, Hamas, Houthis) with approving tone.",
+          "tags": [
+            {
+              "label": "Official narrative",
+              "priority": "high"
+            },
+            {
+              "label": "Nuclear file",
+              "priority": "medium"
+            },
+            {
+              "label": "Resistance axis",
+              "priority": "medium"
+            },
+            {
+              "label": "Diplomacy",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "iran_02",
+          "must_watch": true,
+          "name": "Press TV",
+          "rss_url": "presstv.ir/rss.xml",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "State-run international broadcaster targeting English-speaking audiences globally. More aggressively anti-Western than Tehran Times — closer to RT in tone. Strong on coverage of US/Israel military activity that Iran perceives as threatening. Excellent for tracking how Iran frames US sanctions as economic warfare . Blocked in EU and many Western networks — use a proxy or RSS fetch via server-side. Very active on social media amplification stories.",
+          "tags": [
+            {
+              "label": "Anti-US framing",
+              "priority": "high"
+            },
+            {
+              "label": "Israel-Iran",
+              "priority": "high"
+            },
+            {
+              "label": "Sanctions narrative",
+              "priority": "medium"
+            },
+            {
+              "label": "Gaza/Hezbollah",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "iran_03",
+          "must_watch": false,
+          "name": "IRNA",
+          "rss_url": "irna.ir/en/rss.xml",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "The Islamic Republic News Agency — Iran's official wire. Drier and more factual than Tehran Times or Press TV. Best source for verbatim government statements, presidential speeches, and foreign ministry press releases . If you need the exact quote from the Foreign Minister or Supreme Leader, IRNA is where it appears first in English. Not analytical — purely transactional. Low noise, high signal for official positions.",
+          "tags": [
+            {
+              "label": "Gov't statements",
+              "priority": "medium"
+            },
+            {
+              "label": "FM press releases",
+              "priority": "medium"
+            },
+            {
+              "label": "Wire",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "iran_04",
+          "must_watch": true,
+          "name": "IFP News",
+          "rss_url": "ifpnews.com/feed",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "The single most useful English-language window into what Iran's Persian-language press is actually saying . Every day IFP translates and summarises front pages and key stories from papers like Keyhan, Shargh, Etemad, Hamshahri — giving you reformist vs. hardliner domestic debate without needing Farsi. Use this as your daily Iran press digest. Covers factional politics (IRGC vs moderates), economic grievances, and public mood stories that don't reach Western press.",
+          "tags": [
+            {
+              "label": "Persian press mirror",
+              "priority": "high"
+            },
+            {
+              "label": "Factional politics",
+              "priority": "medium"
+            },
+            {
+              "label": "Public mood",
+              "priority": "medium"
+            },
+            {
+              "label": "Reformist debate",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "iran_05",
+          "must_watch": false,
+          "name": "Financial Tribune",
+          "rss_url": "financialtribune.com/rss.xml",
+          "lean": "business",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "The only genuinely non-governmental Iranian English daily. Focus is economic — covers sanctions impact on the rial, inflation, oil export volumes, and private sector survival strategies . Invaluable for the domestic economic story that Tehran Times would never report honestly. Also covers Iran's trade with China, Russia, and India. Provides the clearest picture of how ordinary businesses and consumers experience the sanctions regime.",
+          "tags": [
+            {
+              "label": "Rial / inflation",
+              "priority": "medium"
+            },
+            {
+              "label": "Sanctions economics",
+              "priority": "medium"
+            },
+            {
+              "label": "Oil exports",
+              "priority": "normal"
+            },
+            {
+              "label": "China-Iran trade",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Saudi Arabia",
+      "flag": "🇸🇦",
+      "region": "mideast",
+      "sources": [
+        {
+          "id": "saudi_arabia_01",
+          "must_watch": true,
+          "name": "Arab News",
+          "rss_url": "arabnews.com/rss.xml",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "The most important anti-Iran English-language source in the Arab world . Reflects Riyadh's official position with high quality writing. Essential for tracking Saudi framing of Iranian proxy activity — Yemen/Houthi coverage is relentless and detailed. Covers every Iran-linked attack in the Gulf, Iranian weapons seizures, and Hezbollah financing. The go-to source for understanding what worries Saudi Arabia most about Iran.",
+          "tags": [
+            {
+              "label": "Saudi-Iran rivalry",
+              "priority": "high"
+            },
+            {
+              "label": "Yemen/Houthis",
+              "priority": "high"
+            },
+            {
+              "label": "Gulf security",
+              "priority": "medium"
+            },
+            {
+              "label": "Proxy networks",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "saudi_arabia_02",
+          "must_watch": true,
+          "name": "Al Arabiya English",
+          "rss_url": "english.alarabiya.net/tools/mrss",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "MBC Group (Saudi state-adjacent) broadcaster. Faster-breaking than Arab News. First to publish Iran-related strikes, incidents, and diplomatic flare-ups . The tone is more tabloid and urgent than Arab News — better for live events, worse for analysis. Extremely active on Houthi attacks, Iranian drone/missile activity, and IRGC-linked incidents. Watch for its \"In Translation\" feed — it translates Arabic-language stories that haven't yet reached Western press.",
+          "tags": [
+            {
+              "label": "Breaking incidents",
+              "priority": "high"
+            },
+            {
+              "label": "Drone/missile",
+              "priority": "medium"
+            },
+            {
+              "label": "In Translation",
+              "priority": "normal"
+            },
+            {
+              "label": "IRGC",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "saudi_arabia_03",
+          "must_watch": false,
+          "name": "Saudi Press Agency",
+          "rss_url": "spa.gov.sa/en/rss",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Dry official wire. Only useful for verbatim Saudi government statements on Iran — MBS quotes, foreign ministry positions, and formal reactions to Iranian actions. Nothing analytical. If Saudi Arabia officially condemns an Iranian action, SPA is where the statement appears first.",
+          "tags": [
+            {
+              "label": "Official statements",
+              "priority": "medium"
+            },
+            {
+              "label": "Gov't reactions",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "saudi_arabia_04",
+          "must_watch": false,
+          "name": "Arabian Business",
+          "rss_url": "arabianbusiness.com/rss",
+          "lean": "business",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Best GCC business outlet for OPEC+ dynamics and how Iranian oil return scenarios affect Saudi production . Covers UAE-Iran business (many UAE companies still trade with Iran despite tensions). Useful for economic intelligence that political outlets overlook. Tracks Iranian sanctions evasion through UAE free zones.",
+          "tags": [
+            {
+              "label": "OPEC+ / oil",
+              "priority": "medium"
+            },
+            {
+              "label": "UAE-Iran trade",
+              "priority": "medium"
+            },
+            {
+              "label": "Sanctions evasion",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "saudi_arabia_05",
+          "must_watch": false,
+          "name": "Saudi Gazette",
+          "rss_url": "saudigazette.com.sa/rss.xml",
+          "lean": "right",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Less high-profile than Arab News but covers domestic Saudi anxiety about Iranian influence on Saudi Shia communities in the Eastern Province. Useful for the internal Saudi-Shia dimension of the Saudi-Iran conflict that larger outlets underreport.",
+          "tags": [
+            {
+              "label": "Saudi Shia",
+              "priority": "niche"
+            },
+            {
+              "label": "Eastern Province",
+              "priority": "normal"
+            },
+            {
+              "label": "Domestic security",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "UAE",
+      "flag": "🇦🇪",
+      "region": "mideast",
+      "sources": [
+        {
+          "id": "uae_01",
+          "must_watch": true,
+          "name": "The National",
+          "rss_url": "thenationalnews.com/rss.xml",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Abu Dhabi-backed but editorially sophisticated. The best-quality journalism in the Gulf on Iran . Strong on nuclear negotiations, IRGC structure, Iran's domestic politics, and UAE-Iran trade relations (UAE has large Iranian diaspora and significant informal trade). Covers the Strait of Hormuz and tanker incidents better than anyone. Has dedicated Middle East correspondents who actually travel to the region.",
+          "tags": [
+            {
+              "label": "Strait of Hormuz",
+              "priority": "high"
+            },
+            {
+              "label": "Nuclear talks",
+              "priority": "medium"
+            },
+            {
+              "label": "UAE-Iran trade",
+              "priority": "medium"
+            },
+            {
+              "label": "Tanker incidents",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "uae_02",
+          "must_watch": false,
+          "name": "Gulf News",
+          "rss_url": "gulfnews.com//feed",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Highest circulation English paper in the UAE. More moderate than Khaleej Times on Iran. Good for Iranian diaspora stories in the UAE — there are ~400,000 Iranians in Dubai — and for how UAE businesses navigate US sanctions while maintaining Iran trade. Covers UAE-Iran maritime incidents and Emirati property ownership by Iranians.",
+          "tags": [
+            {
+              "label": "Iranian diaspora UAE",
+              "priority": "niche"
+            },
+            {
+              "label": "Dubai-Iran business",
+              "priority": "medium"
+            },
+            {
+              "label": "Maritime",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "uae_03",
+          "must_watch": false,
+          "name": "Khaleej Times",
+          "rss_url": "khaleejtimes.com/rss",
+          "lean": "right",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "More hawkish on Iran than Gulf News. Covers Iranian maritime harassment, IRGC naval incidents, and threats to UAE-flagged or UAE-bound ships with heightened alarm. Useful for the security-focused Dubai business community's perspective. Also covers Iranian espionage operations in the UAE.",
+          "tags": [
+            {
+              "label": "IRGC naval",
+              "priority": "medium"
+            },
+            {
+              "label": "Espionage",
+              "priority": "normal"
+            },
+            {
+              "label": "UAE security",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "uae_04",
+          "must_watch": false,
+          "name": "WAM (Emirates News Agency)",
+          "rss_url": "wam.ae/rss/en/all",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Official UAE wire. Only useful for formal UAE government statements on Iran . The UAE has been more pragmatic about Iran than Saudi Arabia — notable when UAE makes conciliatory or reconciliatory statements toward Tehran, WAM is where it first appears.",
+          "tags": [
+            {
+              "label": "Official UAE position",
+              "priority": "medium"
+            },
+            {
+              "label": "Diplomacy",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "uae_05",
+          "must_watch": false,
+          "name": "MENAFN",
+          "rss_url": "menafn.com/Rss",
+          "lean": "business",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Middle East North Africa Financial Network. High volume, lower quality. Good for sanctions enforcement actions, Iranian asset freezes, and energy market moves . Also aggregates regional business press that would otherwise require translation. Useful as a bulk feed filtered by keyword.",
+          "tags": [
+            {
+              "label": "Sanctions enforcement",
+              "priority": "medium"
+            },
+            {
+              "label": "Energy markets",
+              "priority": "normal"
+            },
+            {
+              "label": "Asset freezes",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Qatar",
+      "flag": "🇶🇦",
+      "region": "mideast",
+      "sources": [
+        {
+          "id": "qatar_01",
+          "must_watch": true,
+          "name": "Al Jazeera English",
+          "rss_url": "aljazeera.com/xml/rss/all.xml",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "The most sympathetic major news organisation toward Iranian civil society and protest movements among Gulf outlets — the opposite of Al Arabiya. While Saudi press frames Iran as a regional threat, Al Jazeera gives space to Iranian dissidents, women's rights activists, and domestic opposition. Excellent on Mahsa Amini protests, executions, and human rights. Also uniquely nuanced on Hamas-Iran ties given Qatar's Hamas relations. Best single Gulf source for the human dimension of Iran.",
+          "tags": [
+            {
+              "label": "Civil society",
+              "priority": "high"
+            },
+            {
+              "label": "Protest movements",
+              "priority": "high"
+            },
+            {
+              "label": "Human rights",
+              "priority": "medium"
+            },
+            {
+              "label": "Hamas-Iran",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "qatar_02",
+          "must_watch": false,
+          "name": "The Peninsula Qatar",
+          "rss_url": "thepeninsulaqatar.com/rss.xml",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Reflects Doha's pragmatic stance — Qatar shares the world's largest gas field (North Dome/South Pars) with Iran and cannot afford hostility. Covers Qatar-Iran gas field cooperation and Doha's role as back-channel mediator between Iran and the West. When Qatar hosts secret Iran-US or Iran-Israel indirect talks, Peninsula often has early signals.",
+          "tags": [
+            {
+              "label": "Gas field cooperation",
+              "priority": "niche"
+            },
+            {
+              "label": "Qatar-Iran mediation",
+              "priority": "medium"
+            },
+            {
+              "label": "Back-channel",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "qatar_03",
+          "must_watch": false,
+          "name": "Qatar News Agency (QNA)",
+          "rss_url": "qna.org.qa/en/rss",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Official Qatari wire. Useful for tracking Qatar's diplomatic moves involving Iran — prisoner exchanges, hostage negotiations, and mediation roles. Qatar has brokered multiple US-Iran indirect deals; QNA is first with official Qatari confirmation.",
+          "tags": [
+            {
+              "label": "Mediation",
+              "priority": "medium"
+            },
+            {
+              "label": "Prisoner swaps",
+              "priority": "normal"
+            },
+            {
+              "label": "Official positions",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "qatar_04",
+          "must_watch": false,
+          "name": "Gulf Times",
+          "rss_url": "gulf-times.com/rss",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Broader Gulf view. Moderate centrist. Useful as a temperature check on how Gulf consensus (minus Saudi hawkishness) views Iran . Often shows where Qatar diverges from Saudi/UAE positions on Iran-related GCC decisions.",
+          "tags": [
+            {
+              "label": "Gulf consensus",
+              "priority": "normal"
+            },
+            {
+              "label": "GCC politics",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "qatar_05",
+          "must_watch": false,
+          "name": "Doha News",
+          "rss_url": "dohanews.co/feed",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Independent and occasionally critical of the Gulf consensus. Best Qatar-based source for Iranian stories that challenge the Saudi-Emirati anti-Iran narrative . Covers Iranian cultural influence in Qatar and the Shia community in Bahrain with more nuance than Gulf establishment press.",
+          "tags": [
+            {
+              "label": "Counter-narrative",
+              "priority": "niche"
+            },
+            {
+              "label": "Bahrain Shia",
+              "priority": "normal"
+            },
+            {
+              "label": "Cultural Iran",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Bahrain",
+      "flag": "🇧🇭",
+      "region": "mideast",
+      "sources": [
+        {
+          "id": "bahrain_01",
+          "must_watch": true,
+          "name": "Bahrain News Agency (BNA)",
+          "rss_url": "bna.bh/en/rss",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Uniquely valuable for Bahrain's obsession with Iranian interference in its Shia majority population . Bahrain severed relations with Iran in 2016 and blames Tehran for every domestic unrest. BNA covers Iranian-linked arms shipments to Bahraini Shia groups, bomb plots, and IRGC recruitment operations inside Bahrain with specific operational detail that no other outlet reports. Best source for the Iran-Bahrain covert conflict.",
+          "tags": [
+            {
+              "label": "Iran-Bahrain covert",
+              "priority": "high"
+            },
+            {
+              "label": "Shia networks",
+              "priority": "high"
+            },
+            {
+              "label": "Arms smuggling",
+              "priority": "medium"
+            },
+            {
+              "label": "IRGC recruitment",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "bahrain_02",
+          "must_watch": false,
+          "name": "Gulf Daily News",
+          "rss_url": "gulf-daily-news.com/rss.xml",
+          "lean": "right",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Covers Bahraini government prosecutions of Iran-linked individuals — court cases, terrorism charges, and intelligence disclosures about Iranian operatives in Bahrain. Unique primary-source court reporting you won't find in Western press. Also covers Bahraini view of Hezbollah and Iranian links to the 2011 uprising.",
+          "tags": [
+            {
+              "label": "Iran-linked trials",
+              "priority": "niche"
+            },
+            {
+              "label": "Terrorism charges",
+              "priority": "normal"
+            },
+            {
+              "label": "2011 uprising",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "bahrain_03",
+          "must_watch": false,
+          "name": "Daily Tribune Bahrain",
+          "rss_url": "dt.bh/feed",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Establishment English paper. Covers GCC security meetings and Bahrain's lobbying within the GCC for stronger anti-Iran measures . Also useful for Bahrain's hosting of the US Fifth Fleet — covers naval movements and US-Iran incidents in Gulf waters from an American ally's perspective.",
+          "tags": [
+            {
+              "label": "US Fifth Fleet",
+              "priority": "medium"
+            },
+            {
+              "label": "GCC security",
+              "priority": "normal"
+            },
+            {
+              "label": "Gulf incidents",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "bahrain_04",
+          "must_watch": false,
+          "name": "Trade Arabia",
+          "rss_url": "tradearabia.com/rss",
+          "lean": "business",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "GCC trade portal. Covers how Bahrain's financial sector navigates Iran sanctions — Bahrain is a key GCC banking hub and Iran-linked money movement through its banks is a recurring story. Also covers Gulf petrochemical trade that competes with Iranian exports.",
+          "tags": [
+            {
+              "label": "Banking sanctions",
+              "priority": "niche"
+            },
+            {
+              "label": "Petrochem",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Oman",
+      "flag": "🇴🇲",
+      "region": "mideast",
+      "sources": [
+        {
+          "id": "oman_01",
+          "must_watch": true,
+          "name": "Oman News Agency (ONA)",
+          "rss_url": "onanews.gov.om/rss",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "The single most important early-warning source for US-Iran back-channel diplomacy. Oman has been the secret mediator for every major US-Iran negotiation since the 1980s — the Obama-era nuclear talks started in Muscat. When a diplomatic breakthrough is happening, Oman's foreign ministry makes a statement and ONA runs it. Watch for any unusual Iran-related ONA diplomatic traffic as a leading indicator. Also covers Omani-Iranian cooperation on the Strait of Hormuz and fishing rights.",
+          "tags": [
+            {
+              "label": "Back-channel diplomacy",
+              "priority": "high"
+            },
+            {
+              "label": "US-Iran talks",
+              "priority": "high"
+            },
+            {
+              "label": "Strait of Hormuz",
+              "priority": "medium"
+            },
+            {
+              "label": "Mediation",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "oman_02",
+          "must_watch": false,
+          "name": "Times of Oman",
+          "rss_url": "timesofoman.com/rss.xml",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Covers Oman-Iran bilateral trade, gas pipeline discussions, and port cooperation . Oman imports gas from Iran and has various infrastructure tie-ins. The balanced tone reflects Muscat's deliberate neutrality. Useful for stories about how Oman maintains economic relations with Iran despite regional pressure.",
+          "tags": [
+            {
+              "label": "Oman-Iran gas",
+              "priority": "niche"
+            },
+            {
+              "label": "Trade relations",
+              "priority": "normal"
+            },
+            {
+              "label": "Port cooperation",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "oman_03",
+          "must_watch": false,
+          "name": "Oman Observer",
+          "rss_url": "omanobserver.om/rss.xml",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Government-owned but often first to report Muscat's hosting of Iran-related diplomatic meetings . When an Iranian minister or US envoy visits Oman quietly, Oman Observer may acknowledge the visit in neutral language before Western press catches on.",
+          "tags": [
+            {
+              "label": "Diplomatic visits",
+              "priority": "medium"
+            },
+            {
+              "label": "Muscat meetings",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Jordan",
+      "flag": "🇯🇴",
+      "region": "mideast",
+      "sources": [
+        {
+          "id": "jordan_01",
+          "must_watch": false,
+          "name": "Jordan Times",
+          "rss_url": "jordantimes.com/rss.xml",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Covers Iran through Jordan's frontline exposure to Iranian-backed militias in Iraq and Syria . Jordan has repeatedly intercepted Iranian arms and drug shipments crossing its border from Iraq. Covers the Hashemite Kingdom's anxiety about Iranian entrenchment in Syria and the \"Shia crescent\" reaching its northern border.",
+          "tags": [
+            {
+              "label": "Arms smuggling Jordan",
+              "priority": "high"
+            },
+            {
+              "label": "Shia crescent",
+              "priority": "medium"
+            },
+            {
+              "label": "Syria-Iraq corridor",
+              "priority": "normal"
+            },
+            {
+              "label": "Captagon",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "jordan_02",
+          "must_watch": false,
+          "name": "Petra News Agency",
+          "rss_url": "petra.gov.jo/en/rss",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Official Jordanian wire. Key for Jordanian military statements on Iranian-linked drug and weapons smuggling — Jordan's army has shot down drones and intercepted caravans from Iraq carrying Captagon and weapons linked to IRGC-affiliated networks. Petra is first with official Jordan military communiqués.",
+          "tags": [
+            {
+              "label": "Military ops",
+              "priority": "medium"
+            },
+            {
+              "label": "Drone intercepts",
+              "priority": "normal"
+            },
+            {
+              "label": "Captagon",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "jordan_03",
+          "must_watch": false,
+          "name": "Roya News English",
+          "rss_url": "en.roya.news/feed",
+          "lean": "left",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Liberal-leaning TV outlet. More sympathetic to Palestinian connections with Iran than official Jordanian press. Covers the Palestinian public's view of Iranian support for resistance movements — a dimension the monarchy's official press avoids.",
+          "tags": [
+            {
+              "label": "Palestinian-Iran ties",
+              "priority": "niche"
+            },
+            {
+              "label": "Jordanian street",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "USA",
+      "flag": "🇺🇸",
+      "region": "west",
+      "sources": [
+        {
+          "id": "usa_01",
+          "must_watch": true,
+          "name": "Reuters",
+          "rss_url": "feeds.reuters.com/reuters/topNews",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "The fastest and most neutral primary wire on Iran . Reuters Dubai bureau is the global leader for Gulf-Iran breaking news. Best for oil price reactions to Iran events, tanker incidents, and IAEA report summaries. Wire copy that all other outlets reference. Essential for your aggregator's real-time layer.",
+          "tags": [
+            {
+              "label": "Breaking news",
+              "priority": "high"
+            },
+            {
+              "label": "Oil markets",
+              "priority": "medium"
+            },
+            {
+              "label": "IAEA reports",
+              "priority": "medium"
+            },
+            {
+              "label": "Tankers",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "usa_02",
+          "must_watch": false,
+          "name": "NPR World",
+          "rss_url": "feeds.npr.org/1004/rss.xml",
+          "lean": "left",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Best American outlet for Iranian human rights, women's movement, and diaspora voices . NPR's Middle East team does long-form narrative journalism on Iran that Washington Post and NYT don't match. Covers Iranian-Americans, the hostage crisis legacy, and the human cost of sanctions on ordinary Iranians.",
+          "tags": [
+            {
+              "label": "Human rights",
+              "priority": "medium"
+            },
+            {
+              "label": "Diaspora",
+              "priority": "medium"
+            },
+            {
+              "label": "Women's movement",
+              "priority": "normal"
+            },
+            {
+              "label": "Sanctions impact",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "usa_03",
+          "must_watch": false,
+          "name": "Fox News World",
+          "rss_url": "moxie.foxnews.com/google-publisher/world.xml",
+          "lean": "right",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Essential for understanding the hawkish Republican/MAGA framing of Iran as existential threat . Heavy on Iranian nuclear breakout timelines, IRGC terrorism designations, and criticism of any diplomatic engagement. Reflects the policy world that most directly shapes US sanctions and military options. Strong on Iran-linked attacks on US bases in Iraq/Syria.",
+          "tags": [
+            {
+              "label": "Hawkish framing",
+              "priority": "high"
+            },
+            {
+              "label": "Nuclear breakout",
+              "priority": "medium"
+            },
+            {
+              "label": "US base attacks",
+              "priority": "medium"
+            },
+            {
+              "label": "IRGC terrorism",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "usa_04",
+          "must_watch": true,
+          "name": "Foreign Policy",
+          "rss_url": "foreignpolicy.com/feed",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "The gold standard for analytical depth on Iran's nuclear programme and JCPOA diplomacy . Contributors include former US negotiators and IAEA officials. Covers Iran's enrichment levels, centrifuge count, and weaponisation timeline with technical precision. Also covers Iranian influence operations and cyber capabilities. Use for your analytical/context layer.",
+          "tags": [
+            {
+              "label": "Nuclear analysis",
+              "priority": "high"
+            },
+            {
+              "label": "JCPOA",
+              "priority": "medium"
+            },
+            {
+              "label": "Enrichment",
+              "priority": "medium"
+            },
+            {
+              "label": "Cyber/IO",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "usa_05",
+          "must_watch": false,
+          "name": "The Nation",
+          "rss_url": "thenation.com/feed",
+          "lean": "left",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "The loudest US anti-war left voice on Iran. Covers the humanitarian cost of sanctions, critiques of US Iran policy as counterproductive , and arguments for diplomacy over pressure. If you want the \"anti-intervention\" American perspective, this is it. Also strong on the Israel lobby's influence on US-Iran policy.",
+          "tags": [
+            {
+              "label": "Anti-war left",
+              "priority": "niche"
+            },
+            {
+              "label": "Sanctions critique",
+              "priority": "normal"
+            },
+            {
+              "label": "Pro-diplomacy",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "UK",
+      "flag": "🇬🇧",
+      "region": "west",
+      "sources": [
+        {
+          "id": "uk_01",
+          "must_watch": true,
+          "name": "BBC News — Middle East",
+          "rss_url": "feeds.bbci.co.uk/news/world/middle_east/rss.xml",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "The most trusted and widely consumed source on Iran globally . BBC Persian service is the #1 news source for Iranians inside Iran. BBC English covers Iran with high production standards across nuclear, human rights, and geopolitics. Uniquely credible because Iranians themselves rely on it. BBC Persian's reporting on executions, protests, and domestic politics often breaks internationally via BBC English.",
+          "tags": [
+            {
+              "label": "Most trusted globally",
+              "priority": "high"
+            },
+            {
+              "label": "BBC Persian mirror",
+              "priority": "medium"
+            },
+            {
+              "label": "Executions",
+              "priority": "medium"
+            },
+            {
+              "label": "Human rights",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "uk_02",
+          "must_watch": true,
+          "name": "The Guardian — Iran tag",
+          "rss_url": "theguardian.com/world/iran/rss",
+          "lean": "left",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Has a dedicated Iran RSS tag feed — the only major paper with this. Best UK source for Mahsa Amini aftermath, executions of dual nationals, and feminist resistance coverage . Strong on Iranian diaspora in the UK and the British-Iranian hostage cases (Nazanin Zaghari-Ratcliffe, etc). Left-liberal framing is critical of both Iranian government and Western sanctions.",
+          "tags": [
+            {
+              "label": "Dedicated Iran feed",
+              "priority": "high"
+            },
+            {
+              "label": "Dual nationals",
+              "priority": "medium"
+            },
+            {
+              "label": "Mahsa Amini",
+              "priority": "medium"
+            },
+            {
+              "label": "UK diaspora",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "uk_03",
+          "must_watch": false,
+          "name": "The Telegraph",
+          "rss_url": "telegraph.co.uk/rss.xml",
+          "lean": "right",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "UK conservative establishment view. Strongly pro-sanctions, critical of any European appeasement of Iran . Covers Iranian missile programme as existential threat to Israel and Europe. Good on Iranian espionage operations in the UK — there have been multiple IRGC assassination plots against UK-based Iranian dissidents.",
+          "tags": [
+            {
+              "label": "UK espionage/plots",
+              "priority": "medium"
+            },
+            {
+              "label": "Missile threat",
+              "priority": "medium"
+            },
+            {
+              "label": "Sanctions",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "uk_04",
+          "must_watch": false,
+          "name": "Financial Times",
+          "rss_url": "ft.com/world?format=rss",
+          "lean": "business",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Best-in-class for Iran sanctions economics, oil market impact, and European business exposure to Iran . FT tracks which European companies comply vs. circumvent sanctions and the financial penalties. Also best source for US Treasury OFAC actions against Iran-linked entities. Essential for the economic dimension of your aggregator.",
+          "tags": [
+            {
+              "label": "Sanctions economics",
+              "priority": "high"
+            },
+            {
+              "label": "OFAC actions",
+              "priority": "medium"
+            },
+            {
+              "label": "Oil market",
+              "priority": "medium"
+            },
+            {
+              "label": "European business",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "uk_05",
+          "must_watch": false,
+          "name": "Middle East Eye",
+          "rss_url": "middleeasteye.net/rss",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "London-based, independent, often perceived as sympathetic to Islamist-adjacent politics. Gives more space to Iranian government arguments and criticises Western Iran policy . Strong on UK-based Iranian activists and IRGC surveillance of diaspora in the UK. Covers stories Western mainstream press often ignores — e.g. the plight of Iranians detained in UK jails on US extradition requests.",
+          "tags": [
+            {
+              "label": "Diaspora surveillance",
+              "priority": "niche"
+            },
+            {
+              "label": "UK-Iran legal",
+              "priority": "normal"
+            },
+            {
+              "label": "Alternative framing",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "China",
+      "flag": "🇨🇳",
+      "region": "asia",
+      "sources": [
+        {
+          "id": "china_01",
+          "must_watch": true,
+          "name": "Xinhua English",
+          "rss_url": "xinhuanet.com/english/rss",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "China's official framing of Iran as partner in the anti-hegemonic multipolar world order . Covers the 25-year China-Iran Comprehensive Strategic Partnership, Chinese oil purchases from Iran, and Chinese opposition to US sanctions as \"unilateral coercive measures.\" The counter-narrative to Western sanctions discourse. First to report official Chinese statements defending Iranian sovereignty.",
+          "tags": [
+            {
+              "label": "25-year pact",
+              "priority": "high"
+            },
+            {
+              "label": "Anti-sanctions",
+              "priority": "medium"
+            },
+            {
+              "label": "China-Iran oil",
+              "priority": "medium"
+            },
+            {
+              "label": "Official framing",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "china_02",
+          "must_watch": false,
+          "name": "Global Times",
+          "rss_url": "globaltimes.cn/rss",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "More aggressive and nationalistic than Xinhua. Frames every US Iran action as imperialism . Valuable as the most extreme pro-Iran/anti-US Chinese voice — useful for understanding where Chinese public opinion is being pushed. Often amplifies Iranian government talking points. Good at quantifying \"Western hypocrisy\" arguments.",
+          "tags": [
+            {
+              "label": "Nationalistic framing",
+              "priority": "niche"
+            },
+            {
+              "label": "Anti-US amplification",
+              "priority": "normal"
+            },
+            {
+              "label": "Chinese public opinion",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "china_03",
+          "must_watch": false,
+          "name": "CGTN",
+          "rss_url": "cgtn.com/subscribe/rss.html",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Chinese state international broadcaster — smoother and more internationally oriented than Global Times. Covers China-Iran infrastructure and Belt & Road investment , Chinese construction of Iranian ports and railways, and Chinese companies filling the vacuum left by European firms post-sanctions. The face of China-Iran economic partnership.",
+          "tags": [
+            {
+              "label": "Belt & Road Iran",
+              "priority": "medium"
+            },
+            {
+              "label": "Infrastructure",
+              "priority": "normal"
+            },
+            {
+              "label": "Investment",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "china_04",
+          "must_watch": true,
+          "name": "South China Morning Post",
+          "rss_url": "rss.scmp.com/rss/2/feed",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Hong Kong-based — the most independent and analytically rigorous of the China-based English press. Best for understanding the internal Chinese debate about Iran : economic benefits vs. diplomatic costs, China's role as Iran's oil buyer vs. international pressure. Covers stories like Chinese companies caught violating Iran sanctions. The one Chinese source that will report things the mainland press suppresses.",
+          "tags": [
+            {
+              "label": "Internal Chinese debate",
+              "priority": "high"
+            },
+            {
+              "label": "Sanctions violations",
+              "priority": "medium"
+            },
+            {
+              "label": "Independent analysis",
+              "priority": "medium"
+            }
+          ]
+        },
+        {
+          "id": "china_05",
+          "must_watch": false,
+          "name": "Caixin Global",
+          "rss_url": "caixinglobal.com/rss/latest.xml",
+          "lean": "business",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "China's most credible independent financial journalism. Tracks actual Chinese crude oil imports from Iran with data — the real volumes behind the official denials. Also covers Chinese banking exposure to Iran, payments in yuan and barter, and Chinese companies' quiet withdrawal from Iran deals under US pressure. Indispensable for the financial intelligence layer.",
+          "tags": [
+            {
+              "label": "Oil import data",
+              "priority": "high"
+            },
+            {
+              "label": "Yuan payments",
+              "priority": "medium"
+            },
+            {
+              "label": "Banking exposure",
+              "priority": "normal"
+            },
+            {
+              "label": "Sanctions evasion",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "India",
+      "flag": "🇮🇳",
+      "region": "asia",
+      "sources": [
+        {
+          "id": "india_01",
+          "must_watch": true,
+          "name": "The Hindu",
+          "rss_url": "thehindu.com/news/feeder/default.rss",
+          "lean": "left",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "India's best foreign affairs journalism. Indispensable for India-Iran Chabahar port negotiations — The Hindu's diplomatic editor is often first to report Indian government discussions about using Chabahar to bypass Pakistan and reach Afghanistan/Central Asia. Covers India's dilemma between Iran trade ties and US pressure with more nuance than any other Indian outlet. Also best on India-Iran connectivity projects.",
+          "tags": [
+            {
+              "label": "Chabahar port",
+              "priority": "high"
+            },
+            {
+              "label": "India-Iran diplomacy",
+              "priority": "medium"
+            },
+            {
+              "label": "US sanctions dilemma",
+              "priority": "medium"
+            },
+            {
+              "label": "Connectivity",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "india_02",
+          "must_watch": false,
+          "name": "Times of India",
+          "rss_url": "timesofindia.indiatimes.com/rssfeedstopstories.cms",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "World's largest English daily by circulation. Centrist. Best for how India's general public and business community perceive Iran sanctions — particularly when US waivers for Indian oil purchases expire and Indian refiners must scramble for alternatives. Covers the rupee-rial trade mechanism India used to pay Iran pre-sanctions.",
+          "tags": [
+            {
+              "label": "India oil sanctions",
+              "priority": "medium"
+            },
+            {
+              "label": "Rupee-Rial trade",
+              "priority": "normal"
+            },
+            {
+              "label": "Refinery impact",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "india_03",
+          "must_watch": false,
+          "name": "India Today",
+          "rss_url": "indiatoday.in/rss/home",
+          "lean": "right",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Centre-right. Strong strategic affairs section. Covers Iran from India's complex dual perspective — both a Chabahar partner and Israel's close defence ally . When Israel strikes Iran, India Today covers the impact on India-Israel defence deals alongside India-Iran trade. Useful for how BJP-era India navigates the Israel-Iran axis.",
+          "tags": [
+            {
+              "label": "India-Israel-Iran triangle",
+              "priority": "medium"
+            },
+            {
+              "label": "BJP Iran policy",
+              "priority": "normal"
+            },
+            {
+              "label": "Defence",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "india_04",
+          "must_watch": false,
+          "name": "The Wire",
+          "rss_url": "thewire.in/feed",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Left-investigative. Critical of US-Israeli pressure campaigns. Covers the human cost of Iran sanctions from a Global South solidarity perspective and gives voice to Indian academics and former diplomats who argue for engagement over isolation. Unusual in giving credence to Iran's own narrative about US aggression.",
+          "tags": [
+            {
+              "label": "Global South view",
+              "priority": "niche"
+            },
+            {
+              "label": "Pro-engagement",
+              "priority": "normal"
+            },
+            {
+              "label": "Sanctions critique",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "india_05",
+          "must_watch": false,
+          "name": "The Print",
+          "rss_url": "theprint.in/feed",
+          "lean": "business",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Policy-focused independent. Best Indian source for how Indian government officials actually think about Iran — former foreign secretaries, ambassadors, and defence analysts write here. Covers India's \"strategic autonomy\" concept as applied to Iran policy: buying oil despite US pressure, investing in Chabahar, and maintaining contact with Tehran.",
+          "tags": [
+            {
+              "label": "Indian strategic autonomy",
+              "priority": "high"
+            },
+            {
+              "label": "Policy analysis",
+              "priority": "medium"
+            },
+            {
+              "label": "Former officials",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Japan",
+      "flag": "🇯🇵",
+      "region": "asia",
+      "sources": [
+        {
+          "id": "japan_01",
+          "must_watch": true,
+          "name": "NHK World",
+          "rss_url": "nhk.or.jp/rss/news/cat0.xml",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Japan's public broadcaster. Best for Japan's energy security angle on Iran — Japan was historically one of Iran's largest oil customers and its dependence makes it sensitive to every supply disruption. Covers Japanese government efforts to mediate between Iran and the US (PM Abe visited Tehran in 2019). NHK frames Iran through the lens of energy vulnerability and economic disruption, not ideology.",
+          "tags": [
+            {
+              "label": "Japan energy security",
+              "priority": "high"
+            },
+            {
+              "label": "Japan-Iran mediation",
+              "priority": "medium"
+            },
+            {
+              "label": "Oil dependency",
+              "priority": "normal"
+            },
+            {
+              "label": "Supply risk",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "japan_02",
+          "must_watch": false,
+          "name": "Japan Times",
+          "rss_url": "japantimes.co.jp/feed",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Independent. Best English-language source for Japan's diplomatic relationship with Iran and how Tokyo balances US alliance obligations against energy needs. Covers Japanese oil company withdrawals from Iranian fields under US pressure (Inpex from Azadegan). Good on Japan-Iran trade and the impact of sanctions on Japanese businesses.",
+          "tags": [
+            {
+              "label": "Japan-Iran business",
+              "priority": "medium"
+            },
+            {
+              "label": "Inpex / oil companies",
+              "priority": "normal"
+            },
+            {
+              "label": "US-Japan-Iran triangle",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "japan_03",
+          "must_watch": true,
+          "name": "Nikkei Asia",
+          "rss_url": "asia.nikkei.com/rss/feed/nar",
+          "lean": "business",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Best financial source for Iranian oil export flows to Asia — Nikkei tracks tanker movements, secret crude shipments to China and India, and the grey-market oil trade that keeps Iran's economy running. Also best on Asian company exposure to Iran through subsidiaries and the compliance risk they face. Essential for the economic intelligence layer of your aggregator.",
+          "tags": [
+            {
+              "label": "Oil export flows",
+              "priority": "high"
+            },
+            {
+              "label": "Grey-market trade",
+              "priority": "high"
+            },
+            {
+              "label": "Asian compliance risk",
+              "priority": "medium"
+            },
+            {
+              "label": "Tanker tracking",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "japan_04",
+          "must_watch": false,
+          "name": "Kyodo News",
+          "rss_url": "english.kyodonews.net/feed",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Japan's official wire. Best for Japanese government statements on Iran — Kishida/Abe-era diplomatic missions to Tehran, Japan's IAEA positions, and Japanese reactions to Iranian nuclear milestones. When a Japanese PM visits Iran or hosts an Iranian minister, Kyodo has the official readout.",
+          "tags": [
+            {
+              "label": "Diplomatic readouts",
+              "priority": "medium"
+            },
+            {
+              "label": "IAEA votes",
+              "priority": "normal"
+            },
+            {
+              "label": "PM visits",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "japan_05",
+          "must_watch": false,
+          "name": "The Diplomat",
+          "rss_url": "thediplomat.com/feed",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Asia-Pacific foreign affairs magazine. Best for long-form analysis of Iran-Asia strategic relationships — how South Korea, Japan, India, and ASEAN navigate US sanctions. Covers Iran's pivot to Asia as a sanctions adaptation strategy. Contributors are academics and former officials who provide context Western breaking news misses.",
+          "tags": [
+            {
+              "label": "Iran-Asia strategy",
+              "priority": "medium"
+            },
+            {
+              "label": "Pivot to Asia",
+              "priority": "normal"
+            },
+            {
+              "label": "Long-form analysis",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Australia",
+      "flag": "🇦🇺",
+      "region": "asia",
+      "sources": [
+        {
+          "id": "australia_01",
+          "must_watch": false,
+          "name": "ABC News Australia",
+          "rss_url": "abc.net.au/news/feed/1948/rss.xml",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Australia's public broadcaster. Reflects Five Eyes Western consensus on Iran — closely aligned with US/UK framing. Useful for how the Anglo-Pacific security community views Iranian nuclear and terrorism threats. Covers Iranian espionage and influence operations in Australia. Occasionally covers Australian-Iranians detained in Iran (dual national cases).",
+          "tags": [
+            {
+              "label": "Five Eyes framing",
+              "priority": "medium"
+            },
+            {
+              "label": "Dual nationals",
+              "priority": "normal"
+            },
+            {
+              "label": "Australian-Iranian",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "australia_02",
+          "must_watch": false,
+          "name": "The Guardian Australia",
+          "rss_url": "theguardian.com/australia-news/rss",
+          "lean": "left",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Left-liberal. Covers Iranian women's movement and feminist resistance with strong sympathy. Best Australian source for the human rights and civil society dimension . Publishes opinion from Iranian-Australian writers and academics with lived experience. Frames the Iran story as fundamentally about human rights rather than geopolitics.",
+          "tags": [
+            {
+              "label": "Women's rights",
+              "priority": "medium"
+            },
+            {
+              "label": "Iranian-Australian voices",
+              "priority": "normal"
+            },
+            {
+              "label": "Civil society",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "australia_03",
+          "must_watch": false,
+          "name": "The Australian",
+          "rss_url": "theaustralian.com.au/feed",
+          "lean": "right",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "News Corp / Murdoch. Hawkish — frames Iran as existential threat to the Western rules-based order . Strong pro-Israel, pro-sanctions position. Covers Iranian nuclear programme with alarm and frames any diplomatic engagement as appeasement. Represents the conservative foreign policy establishment's view in Australia.",
+          "tags": [
+            {
+              "label": "Hawkish West",
+              "priority": "medium"
+            },
+            {
+              "label": "Pro-Israel",
+              "priority": "normal"
+            },
+            {
+              "label": "Nuclear threat",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "australia_04",
+          "must_watch": false,
+          "name": "SBS News",
+          "rss_url": "sbs.com.au/news/feed",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Australia's multicultural broadcaster. Unique for covering the Iranian diaspora community in Australia — SBS produces Persian-language content and covers stories of Iranians who fled the Islamic Republic and now live in Melbourne/Sydney. These diaspora community stories and reactions are not covered by any other outlet on this list.",
+          "tags": [
+            {
+              "label": "Iranian diaspora AU",
+              "priority": "high"
+            },
+            {
+              "label": "Persian-language content",
+              "priority": "niche"
+            },
+            {
+              "label": "Community reactions",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "australia_05",
+          "must_watch": false,
+          "name": "Australian Financial Review",
+          "rss_url": "afr.com/rss",
+          "lean": "business",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Australia's FT equivalent. Covers how global oil market disruptions from Iran affect Australian LNG exports and energy prices . When Iran threatens to close the Strait of Hormuz, AFR is first in the Antipodean press to model the energy market impact on Australian gas contracts and shipping rates.",
+          "tags": [
+            {
+              "label": "LNG / energy impact",
+              "priority": "medium"
+            },
+            {
+              "label": "Hormuz risk",
+              "priority": "normal"
+            },
+            {
+              "label": "Shipping rates",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Germany",
+      "flag": "🇩🇪",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "germany_01",
+          "must_watch": true,
+          "name": "Deutsche Welle",
+          "rss_url": "rss.dw.com/xml/rss-en-all",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Germany's state international broadcaster — the BBC of German public media. Excellent balance: covers both Iranian nuclear threat AND human rights/civil society . DW is a key information source for Iranians inside Iran (Deutsche Welle Persian). Strong on German-Iranian trade (Germany was Iran's largest European trading partner before sanctions), the fate of German businesses that stayed vs. left, and E3 negotiation dynamics where Germany plays a central role.",
+          "tags": [
+            {
+              "label": "E3 negotiations",
+              "priority": "high"
+            },
+            {
+              "label": "German-Iran trade",
+              "priority": "medium"
+            },
+            {
+              "label": "DW Persian mirror",
+              "priority": "normal"
+            },
+            {
+              "label": "Civil society",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "germany_02",
+          "must_watch": true,
+          "name": "Frankfurter Allgemeine Zeitung",
+          "rss_url": "faz.net/rss/aktuell",
+          "lean": "right",
+          "language": "DE",
+          "requires_translation": true,
+          "editorial_note": "Germany's most authoritative centre-right paper. Best German-language source for E3 negotiation insider reporting — FAZ's foreign desk has sources inside the German Foreign Ministry. Covers the thorny issue of German companies (BASF, Siemens) that maintained Iran operations and the legal battles that followed. Good on the IRGC asset freezes of German nationals in Iran as diplomatic leverage.",
+          "tags": [
+            {
+              "label": "E3 insider",
+              "priority": "high"
+            },
+            {
+              "label": "German companies Iran",
+              "priority": "medium"
+            },
+            {
+              "label": "IRGC hostages",
+              "priority": "medium"
+            },
+            {
+              "label": "FM sourcing",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "germany_03",
+          "must_watch": false,
+          "name": "Der Spiegel International",
+          "rss_url": "spiegel.de/international/rss",
+          "lean": "left",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Left-liberal investigative magazine. English section. Breaks German intelligence stories on Iran — BND (German intelligence) warnings about Iranian nuclear progress, IRGC surveillance of Iranian dissidents in Germany, and Iranian assassination plots on German soil. Germany has a large Iranian diaspora and is a prime IRGC target for covert operations. Spiegel covers this with depth.",
+          "tags": [
+            {
+              "label": "BND / German intel",
+              "priority": "high"
+            },
+            {
+              "label": "Diaspora surveillance",
+              "priority": "medium"
+            },
+            {
+              "label": "IRGC plots Germany",
+              "priority": "medium"
+            },
+            {
+              "label": "Investigative",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "germany_04",
+          "must_watch": false,
+          "name": "Die Zeit",
+          "rss_url": "zeit.de/news",
+          "lean": "left",
+          "language": "DE",
+          "requires_translation": true,
+          "editorial_note": "Germany's leading liberal weekly. Publishes the best long-form German journalism on Iranian society, culture, and the Iranian diaspora in Germany (~150,000 Iranians live in Germany). Covers the generational split in German-Iranian community between those who left before and after 1979, and how German-Iranian academics and artists engage with the Islamic Republic.",
+          "tags": [
+            {
+              "label": "German-Iranian diaspora",
+              "priority": "niche"
+            },
+            {
+              "label": "Cultural Iran",
+              "priority": "normal"
+            },
+            {
+              "label": "Long-form",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "France",
+      "flag": "🇫🇷",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "france_01",
+          "must_watch": true,
+          "name": "France 24 English",
+          "rss_url": "france24.com/en/rss",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Best English-language source for the French diplomatic perspective on Iran — France is part of the E3 and France's positions often diverge from the US. France 24 breaks French FM statements, Élysée positions, and French IAEA votes. Covers French hostages in Iran (several cases), and French arms sales affected by Iran sanctions. Also covers Francophone coverage of Iranian proxy activity in Lebanon and North Africa.",
+          "tags": [
+            {
+              "label": "French E3 position",
+              "priority": "high"
+            },
+            {
+              "label": "Élysée statements",
+              "priority": "medium"
+            },
+            {
+              "label": "French hostages",
+              "priority": "normal"
+            },
+            {
+              "label": "Lebanon-Iran",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "france_02",
+          "must_watch": false,
+          "name": "RFI English",
+          "rss_url": "rfi.fr/en/rss",
+          "lean": "left",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Radio France Internationale. Left-liberal French perspective. Uniquely good on Iranian influence in the Francophone world — Iran's ties to Lebanese Hezbollah which deeply affects Lebanon's Francophone community, Iranian presence in West Africa (Sahel), and Iran-France diplomatic friction. Covers stories ignored by Anglo-American press.",
+          "tags": [
+            {
+              "label": "Iran-Francophone world",
+              "priority": "niche"
+            },
+            {
+              "label": "Lebanon focus",
+              "priority": "normal"
+            },
+            {
+              "label": "West Africa",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "france_03",
+          "must_watch": false,
+          "name": "Le Monde",
+          "rss_url": "lemonde.fr/rss/une.xml",
+          "lean": "left",
+          "language": "FR",
+          "requires_translation": true,
+          "editorial_note": "France's paper of record. Best French-language source for the JCPOA diplomatic process — Le Monde's diplomatic editor has been embedded in the P5+1 negotiations. Covers French-Iranian cultural ties (France was the preferred European exile destination for Iranian intellectuals), French hostages in Iran, and the Maryam Rajavi/MEK presence in France.",
+          "tags": [
+            {
+              "label": "JCPOA diplomatic depth",
+              "priority": "high"
+            },
+            {
+              "label": "French hostages",
+              "priority": "medium"
+            },
+            {
+              "label": "MEK/Rajavi France",
+              "priority": "medium"
+            },
+            {
+              "label": "Cultural ties",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "france_04",
+          "must_watch": false,
+          "name": "Le Figaro",
+          "rss_url": "lefigaro.fr/rss/figaro_actualites.xml",
+          "lean": "right",
+          "language": "FR",
+          "requires_translation": true,
+          "editorial_note": "Centre-right establishment. Covers Iran with harder line than Le Monde. Strong on French intelligence warnings about Iranian sponsored terrorism in France — there have been several foiled Iranian assassination plots against French-based Iranian dissidents and Israeli targets. Covers Iran's support for Hamas and Hezbollah as threats to French citizens in Lebanon.",
+          "tags": [
+            {
+              "label": "Iranian plots France",
+              "priority": "medium"
+            },
+            {
+              "label": "DGSE intel",
+              "priority": "normal"
+            },
+            {
+              "label": "Lebanon-France",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "france_05",
+          "must_watch": false,
+          "name": "Mediapart",
+          "rss_url": "mediapart.fr/articles/feed",
+          "lean": "independent",
+          "language": "FR",
+          "requires_translation": true,
+          "editorial_note": "France's leading investigative outlet. Unique for investigative work on Iranian state repression — financial flows of Iranian elites in France, luxury assets owned by IRGC-linked figures in Paris, and the French judicial cases against Iranian agents. Has published exclusive reporting on the Iranian government's use of French banking system to circumvent sanctions.",
+          "tags": [
+            {
+              "label": "Iranian elite assets France",
+              "priority": "high"
+            },
+            {
+              "label": "IRGC France",
+              "priority": "medium"
+            },
+            {
+              "label": "Banking sanctions evasion",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "EU",
+      "flag": "🇪🇺",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "eu_01",
+          "must_watch": true,
+          "name": "Euronews",
+          "rss_url": "feeds.feedburner.com/euronews/en/news",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Pan-EU broadcaster funded by EU member states. Best for EU institutional positions on Iran — European Council decisions, EU sanctions packages, and High Representative statements. When the EU extends or tightens Iran sanctions, Euronews is the primary English source. Covers Iranian drone supply to Russia from a European security perspective.",
+          "tags": [
+            {
+              "label": "EU institutional",
+              "priority": "high"
+            },
+            {
+              "label": "EU sanctions packages",
+              "priority": "medium"
+            },
+            {
+              "label": "Iran drones→Russia",
+              "priority": "medium"
+            },
+            {
+              "label": "HR/VP statements",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "eu_02",
+          "must_watch": true,
+          "name": "POLITICO Europe",
+          "rss_url": "politico.eu/feed/",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "The single best source for how EU member state divisions on Iran play out in Brussels . Covers the internal EU debates: which countries want stronger sanctions (Baltics, Poland), which want economic exemptions (Italy, Greece), and how the Iran file intersects with EU-US relations and the Ukraine war (Iran drone supply). Deep institutional sourcing inside the European Council and EEAS.",
+          "tags": [
+            {
+              "label": "EU internal debate",
+              "priority": "high"
+            },
+            {
+              "label": "Member state divisions",
+              "priority": "medium"
+            },
+            {
+              "label": "EEAS",
+              "priority": "medium"
+            },
+            {
+              "label": "EU-US Iran policy",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Italy",
+      "flag": "🇮🇹",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "italy_01",
+          "must_watch": false,
+          "name": "ANSA English",
+          "rss_url": "ansa.it/english/news/rss",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Italy's state wire with English section. Covers Italy-Iran bilateral economic relations — Italy was one of Iran's biggest European trade partners before 2012 sanctions (machinery, steel, fashion). Covers Italian company cases in Iran and the Mediterranean energy picture (Iranian gas as alternative to Russian gas — relevant after Ukraine war). Also covers Italian naval activity near Iran in Gulf waters.",
+          "tags": [
+            {
+              "label": "Italy-Iran trade",
+              "priority": "medium"
+            },
+            {
+              "label": "Italian companies Iran",
+              "priority": "normal"
+            },
+            {
+              "label": "Mediterranean energy",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "italy_02",
+          "must_watch": false,
+          "name": "La Repubblica",
+          "rss_url": "repubblica.it/rss/homepage/rss2.0.xml",
+          "lean": "left",
+          "language": "IT",
+          "requires_translation": true,
+          "editorial_note": "Italy's most-read left-liberal daily. Covers Iran through a human rights and feminist lens . Italy has a notable Iranian diaspora and La Repubblica covers Italian-Iranian cultural bridges and the stories of Iranian academics at Italian universities. Also covers Italian government's often more conciliatory position toward Iran within the EU.",
+          "tags": [
+            {
+              "label": "Human rights",
+              "priority": "medium"
+            },
+            {
+              "label": "Italian-Iranian community",
+              "priority": "normal"
+            },
+            {
+              "label": "Italy EU stance",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "italy_03",
+          "must_watch": false,
+          "name": "Corriere della Sera",
+          "rss_url": "corriere.it/rss/homepage.xml",
+          "lean": "right",
+          "language": "IT",
+          "requires_translation": true,
+          "editorial_note": "Italy's most prestigious paper. Centre-right establishment. Best Italian source for ENI (Italy's national energy company) activities related to Iran — ENI had major investments in Iranian oil fields and its forced withdrawal under US sanctions is a recurring story. Covers Italy's energy alternatives to Russian gas and Iran's relevance to that debate.",
+          "tags": [
+            {
+              "label": "ENI / Italian energy",
+              "priority": "medium"
+            },
+            {
+              "label": "Post-Russian gas",
+              "priority": "normal"
+            },
+            {
+              "label": "Italian establishment",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Spain",
+      "flag": "🇪🇸",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "spain_01",
+          "must_watch": true,
+          "name": "El País English",
+          "rss_url": "english.elpais.com/rss",
+          "lean": "left",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Spain's most-read quality paper — English section is excellent. Left-liberal. Best Iberian source for Iran's women's movement and feminist resistance . El País covers the gender dimension of Iranian politics more deeply than most European papers. Also covers Spain's role in EU Iran sanctions discussions and Spanish-Iranian academic and cultural exchanges.",
+          "tags": [
+            {
+              "label": "Women's movement depth",
+              "priority": "medium"
+            },
+            {
+              "label": "Feminist resistance",
+              "priority": "normal"
+            },
+            {
+              "label": "Spain-EU Iran",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "spain_02",
+          "must_watch": false,
+          "name": "El Mundo",
+          "rss_url": "elmundo.es/rss/elmundo/portada.xml",
+          "lean": "right",
+          "language": "ES",
+          "requires_translation": true,
+          "editorial_note": "Spain's centre-right daily. Covers Iran from a harder security line — focuses on Iranian terrorism financing in Europe and Hezbollah's European network (which includes Spain as a logistics base). Covers Spanish CNI (intelligence) operations against Iranian agents and the Iran-Venezuela relationship which Madrid monitors closely due to Latin American ties.",
+          "tags": [
+            {
+              "label": "Hezbollah Spain",
+              "priority": "niche"
+            },
+            {
+              "label": "Iran-Venezuela",
+              "priority": "normal"
+            },
+            {
+              "label": "CNI intel",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Netherlands",
+      "flag": "🇳🇱",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "netherlands_01",
+          "must_watch": true,
+          "name": "NRC Handelsblad",
+          "rss_url": "nrc.nl/rss",
+          "lean": "left",
+          "language": "NL",
+          "requires_translation": true,
+          "editorial_note": "Netherlands' most respected quality paper. Best Dutch source for ICJ/ICC proceedings related to Iran — the International Court of Justice in The Hague has handled multiple Iran-related cases (Ukraine vs Russia over MH17 with Iranian missile link, Albania vs Iran over cyberattacks). NRC covers these international law angles better than anyone. Also covers Dutch companies' Iran compliance cases.",
+          "tags": [
+            {
+              "label": "ICJ/ICC Iran cases",
+              "priority": "high"
+            },
+            {
+              "label": "International law",
+              "priority": "medium"
+            },
+            {
+              "label": "Dutch companies",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "netherlands_02",
+          "must_watch": false,
+          "name": "Dutch News",
+          "rss_url": "dutchnews.nl/feed",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "English-language Dutch outlet. Covers Dutch government Iran policy, Shell's Iran withdrawal, and Dutch court cases involving Iran-linked entities . The Netherlands is home to several major multinationals that had Iran exposure; Dutch courts have handled Iran-linked shipping cases and sanctions busting trials.",
+          "tags": [
+            {
+              "label": "Shell Iran",
+              "priority": "medium"
+            },
+            {
+              "label": "Dutch court cases",
+              "priority": "normal"
+            },
+            {
+              "label": "Sanctions busting trials",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "netherlands_03",
+          "must_watch": false,
+          "name": "De Telegraaf",
+          "rss_url": "telegraaf.nl/rss",
+          "lean": "right",
+          "language": "NL",
+          "requires_translation": true,
+          "editorial_note": "Right-populist tabloid. Covers Iranian espionage and assassination plots on Dutch soil — AIVD (Dutch intelligence) has publicly warned about Iranian threats against dissidents in the Netherlands. Telegraaf amplifies these security threats with populist urgency. Useful for how Iranian covert operations are framed in the European right-wing media.",
+          "tags": [
+            {
+              "label": "AIVD warnings",
+              "priority": "medium"
+            },
+            {
+              "label": "Plots Netherlands",
+              "priority": "normal"
+            },
+            {
+              "label": "Right-wing framing",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Austria",
+      "flag": "🇦🇹",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "austria_01",
+          "must_watch": true,
+          "name": "Der Standard",
+          "rss_url": "derstandard.at/rss",
+          "lean": "left",
+          "language": "DE",
+          "requires_translation": true,
+          "editorial_note": "The single most important EU source for JCPOA process reporting — Vienna hosted the Iran nuclear talks and Der Standard's diplomatic correspondent was physically present for every round. Covers the Grand Hotel Wien negotiations, IAEA inspection results published in Vienna, and Austrian hotel/venue logistics that signal when talks are happening. Watch for any unusual Iran-Vienna hotel bookings reported by Standard.",
+          "tags": [
+            {
+              "label": "Vienna talks firsthand",
+              "priority": "high"
+            },
+            {
+              "label": "IAEA Vienna",
+              "priority": "high"
+            },
+            {
+              "label": "Negotiation signals",
+              "priority": "medium"
+            }
+          ]
+        },
+        {
+          "id": "austria_02",
+          "must_watch": false,
+          "name": "Die Presse",
+          "rss_url": "diepresse.com/rss",
+          "lean": "right",
+          "language": "DE",
+          "requires_translation": true,
+          "editorial_note": "Austria's conservative quality paper. Covers IAEA Director General Rafael Grossi's statements and Vienna-based IAEA inspections from an informed local perspective. Also covers Austrian banks' historical Iran relationships (Raiffeisen had Iranian exposure pre-sanctions) and Austrian government's position as neutral host.",
+          "tags": [
+            {
+              "label": "IAEA Grossi",
+              "priority": "medium"
+            },
+            {
+              "label": "Austrian banks Iran",
+              "priority": "normal"
+            },
+            {
+              "label": "Neutral host",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "austria_03",
+          "must_watch": false,
+          "name": "APA (Austrian Press Agency)",
+          "rss_url": "apa.at/wire/politik",
+          "lean": "center",
+          "language": "DE",
+          "requires_translation": true,
+          "editorial_note": "Austria's official wire. Primary distribution point for IAEA press releases — since the IAEA is headquartered in Vienna, APA has first-mover advantage on IAEA reports, inspection findings, and Director General briefings. Wire-level factual, no analysis, but indispensable for IAEA primary documents.",
+          "tags": [
+            {
+              "label": "IAEA primary documents",
+              "priority": "high"
+            },
+            {
+              "label": "Inspection findings",
+              "priority": "medium"
+            },
+            {
+              "label": "Vienna-first",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Belgium",
+      "flag": "🇧🇪",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "belgium_01",
+          "must_watch": true,
+          "name": "The Brussels Times",
+          "rss_url": "brusselstimes.com/feed",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "English-language outlet covering EU institutions. Best English source for inside-Brussels Iran policy making — covers European Parliament debates on Iran sanctions, Federica Mogherini/Josep Borrell statements on JCPOA, and the INSTEX mechanism (Europe's attempt to trade with Iran outside the dollar system). Covers EU-US friction on Iran policy from a Brussels-insider view.",
+          "tags": [
+            {
+              "label": "INSTEX mechanism",
+              "priority": "high"
+            },
+            {
+              "label": "EP Iran debates",
+              "priority": "medium"
+            },
+            {
+              "label": "Borrell/EEAS",
+              "priority": "medium"
+            },
+            {
+              "label": "EU-US friction",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "belgium_02",
+          "must_watch": false,
+          "name": "Le Soir",
+          "rss_url": "lesoir.be/arc/outboundfeeds/rss",
+          "lean": "left",
+          "language": "FR",
+          "requires_translation": true,
+          "editorial_note": "Belgium's major French-language daily. Unique for covering Belgian-Iranian diplomatic incidents — Belgium arrested an Iranian diplomat (Assadollah Assadi) for planning a bomb attack on an opposition rally near Paris. Le Soir covered this case in extraordinary detail. Also covers EU human rights sanctions on Iranian officials.",
+          "tags": [
+            {
+              "label": "Assadi bomb plot Belgium",
+              "priority": "high"
+            },
+            {
+              "label": "Belgian-Iranian diplomacy",
+              "priority": "medium"
+            },
+            {
+              "label": "Human rights sanctions",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "belgium_03",
+          "must_watch": false,
+          "name": "De Standaard",
+          "rss_url": "standaard.be/rss/section/iq",
+          "lean": "center",
+          "language": "NL",
+          "requires_translation": true,
+          "editorial_note": "Flemish quality paper. Covers Belgian parliament debates on Iran and the Assadi diplomatic immunity case — Belgium's decision to prosecute an accredited Iranian diplomat was unprecedented in EU legal history and De Standaard documented it closely. Good for Belgian government positions in EU Iran policy councils.",
+          "tags": [
+            {
+              "label": "Diplomatic immunity case",
+              "priority": "niche"
+            },
+            {
+              "label": "Belgian parliament Iran",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Poland",
+      "flag": "🇵🇱",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "poland_01",
+          "must_watch": true,
+          "name": "Notes from Poland",
+          "rss_url": "notesfrompoland.com/feed",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "English-language Polish current affairs outlet. Best English source for Eastern European hawkish perspective on Iran as part of the Russia-China-Iran authoritarian axis . Poland has been most vocal in EU about designating IRGC as terrorist organisation and linking Iran drone supply to Russia's war in Ukraine. Covers Polish government lobbying within EU for stronger Iran measures.",
+          "tags": [
+            {
+              "label": "Iran-Russia axis framing",
+              "priority": "high"
+            },
+            {
+              "label": "IRGC terrorist designation",
+              "priority": "medium"
+            },
+            {
+              "label": "Iran drones Ukraine",
+              "priority": "medium"
+            }
+          ]
+        },
+        {
+          "id": "poland_02",
+          "must_watch": false,
+          "name": "Gazeta Wyborcza",
+          "rss_url": "wyborcza.pl/rss",
+          "lean": "left",
+          "language": "PL",
+          "requires_translation": true,
+          "editorial_note": "Poland's leading liberal paper. Covers Iran's women's movement and protest culture as parallel to Polish democratic struggles — Polish liberals draw explicit comparisons between Iranian women resisting theocracy and Polish women resisting conservative governance. This cross-cultural solidarity framing is unique to the Polish liberal press.",
+          "tags": [
+            {
+              "label": "Polish-Iranian solidarity",
+              "priority": "niche"
+            },
+            {
+              "label": "Democracy parallels",
+              "priority": "normal"
+            },
+            {
+              "label": "Women's rights",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "poland_03",
+          "must_watch": false,
+          "name": "TVP World",
+          "rss_url": "tvpworld.com/feed",
+          "lean": "right",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Polish state broadcaster's English-language channel. Right-leaning, pro-government. Covers Iran from Poland's hawkish security perspective — Iranian drone supply to Russia framed as a direct threat to Polish and NATO security. Covers Polish government lobbying for IRGC terrorist designation and Polish parliamentary resolutions on Iran. Useful as the official Polish state voice on Iran, balancing Gazeta Wyborcza's liberal framing.",
+          "tags": [
+            {
+              "label": "Polish state Iran position",
+              "priority": "medium"
+            },
+            {
+              "label": "IRGC designation",
+              "priority": "normal"
+            },
+            {
+              "label": "Iran-Russia NATO threat",
+              "priority": "medium"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Sweden",
+      "flag": "🇸🇪",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "sweden_01",
+          "must_watch": false,
+          "name": "Aftonbladet",
+          "rss_url": "aftonbladet.se/rss.xml",
+          "lean": "left",
+          "language": "SV",
+          "requires_translation": true,
+          "editorial_note": "Sweden's largest daily. Left-tabloid. Covers personal stories of Iranian asylum seekers in Sweden and the political debate over deportation to Iran. Sweden has deported Iranian asylum seekers back to Iran — a deeply controversial issue. Aftonbladet covers the human stories and political fallout that formal news wires miss.",
+          "tags": [
+            {
+              "label": "Iranian asylum Sweden",
+              "priority": "niche"
+            },
+            {
+              "label": "Deportation debate",
+              "priority": "normal"
+            },
+            {
+              "label": "Personal narratives",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "sweden_02",
+          "must_watch": false,
+          "name": "Svenska Dagbladet",
+          "rss_url": "svd.se/rss.xml",
+          "lean": "right",
+          "language": "SV",
+          "requires_translation": true,
+          "editorial_note": "Centre-right quality paper. Best Swedish source for SÄPO (security service) Iran threat assessments . Sweden has been a specific IRGC target because it hosts Hamid Nouri (Iranian official convicted of mass executions) and major opposition media. SVD covers the security dimension of Sweden's status as an Iranian regime target with conservative alarm.",
+          "tags": [
+            {
+              "label": "SÄPO threat assessments",
+              "priority": "medium"
+            },
+            {
+              "label": "Hamid Nouri trial",
+              "priority": "normal"
+            },
+            {
+              "label": "Sweden as IRGC target",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Estonia",
+      "flag": "🇪🇪",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "estonia_01",
+          "must_watch": true,
+          "name": "ERR News",
+          "rss_url": "news.err.ee/feed",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Estonia's public broadcaster English RSS. Most consistently hawkish EU voice on Iran — all three Baltic states have been loudest in EU about designating IRGC as terrorist organisation and sanctioning Iran for drone supply to Russia. ERR covers this with detail: specific drone models used in Ukraine, Iranian technicians in Russia, and Baltic government proposals in EU councils. Essential for the Iran-Russia-Ukraine triangle.",
+          "tags": [
+            {
+              "label": "Iran-Russia drones",
+              "priority": "high"
+            },
+            {
+              "label": "IRGC terrorist designation",
+              "priority": "high"
+            },
+            {
+              "label": "Baltic EU lobbying",
+              "priority": "medium"
+            }
+          ]
+        },
+        {
+          "id": "estonia_02",
+          "must_watch": false,
+          "name": "Postimees",
+          "rss_url": "postimees.ee/rss",
+          "lean": "right",
+          "language": "ET",
+          "requires_translation": true,
+          "editorial_note": "Estonia's largest paper. Conservative. Covers the Shahed-136 drone threat to Ukrainian infrastructure with technical detail — Estonia's defence community is obsessed with the Iranian drone technology transfer to Russia. Postimees covers this from a front-line NATO state perspective: fear, technical analysis, and policy demands.",
+          "tags": [
+            {
+              "label": "Shahed drone detail",
+              "priority": "medium"
+            },
+            {
+              "label": "NATO frontline view",
+              "priority": "normal"
+            },
+            {
+              "label": "Technical analysis",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Hungary",
+      "flag": "🇭🇺",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "hungary_01",
+          "must_watch": true,
+          "name": "Telex",
+          "rss_url": "telex.hu/rss",
+          "lean": "left",
+          "language": "HU",
+          "requires_translation": true,
+          "editorial_note": "Hungary's leading independent opposition news site. Covers Orbán government's quiet rapprochement with Iran — Hungary has blocked or diluted EU Iran sanctions packages on multiple occasions, angering its allies. Telex investigates the business and political interests behind Fidesz's softer Iran stance. Unique window into the EU's Iran policy fracture.",
+          "tags": [
+            {
+              "label": "Orbán-Iran ties",
+              "priority": "high"
+            },
+            {
+              "label": "Hungary blocking EU sanctions",
+              "priority": "medium"
+            },
+            {
+              "label": "EU fracture",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "hungary_02",
+          "must_watch": false,
+          "name": "Hungary Today",
+          "rss_url": "hungarytoday.hu/feed",
+          "lean": "right",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Pro-Orbán English outlet. Use it solely as the official Fidesz justification for Hungary's softer Iran policy — sovereignty arguments, economic interests, and anti-American foreign policy framing. Useful for understanding why one EU member consistently undermines consensus on Iran. Read alongside Telex for the full picture.",
+          "tags": [
+            {
+              "label": "Fidesz Iran rationale",
+              "priority": "niche"
+            },
+            {
+              "label": "EU sovereignty argument",
+              "priority": "normal"
+            },
+            {
+              "label": "Anti-sanctions EU voice",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "hungary_03",
+          "must_watch": false,
+          "name": "Euractiv Hungary",
+          "rss_url": "euractiv.com/sections/politics/hungary",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Euractiv's Hungary desk in English. Best neutral source for documenting exactly where and how Hungary has blocked or diluted EU Iran sanctions — specific council votes, procedural vetoes, and the diplomatic fallout with allies. Covers the Brussels-Budapest tension on Iran policy from an institutional angle that neither Telex nor Hungary Today captures fully.",
+          "tags": [
+            {
+              "label": "Hungary Iran veto record",
+              "priority": "high"
+            },
+            {
+              "label": "Council blocking detail",
+              "priority": "medium"
+            },
+            {
+              "label": "Brussels-Budapest tension",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Greece",
+      "flag": "🇬🇷",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "greece_01",
+          "must_watch": false,
+          "name": "Ekathimerini",
+          "rss_url": "ekathimerini.com/rss",
+          "lean": "right",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Greece's best English daily. Covers Iran through the Eastern Mediterranean energy lens — Greece has explored importing Iranian gas as an alternative to Russian gas via existing Eastern Med infrastructure. Covers Greek-Iranian shipping ties (Greek ship-owners are deeply embedded in Iranian oil transport and sanctions evasion routes via flag-of-convenience vessels).",
+          "tags": [
+            {
+              "label": "Greek ships Iran oil",
+              "priority": "high"
+            },
+            {
+              "label": "East Med energy",
+              "priority": "medium"
+            },
+            {
+              "label": "Sanctions evasion shipping",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "greece_02",
+          "must_watch": false,
+          "name": "Athens News Agency (AMNA)",
+          "rss_url": "amna.gr/en/rss",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Official Greek wire. Covers Greek government statements on Iranian sanctions enforcement — particularly relevant given Greece's role as a major ship-registering state and US Treasury OFAC actions against Greek shipping companies caught transporting Iranian oil. Greek government's balancing act between US pressure and ship-owner lobby interests.",
+          "tags": [
+            {
+              "label": "OFAC vs Greek shipping",
+              "priority": "medium"
+            },
+            {
+              "label": "Greek gov't statements",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Ireland",
+      "flag": "🇮🇪",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "ireland_01",
+          "must_watch": false,
+          "name": "The Irish Times",
+          "rss_url": "irishtimes.com/feed",
+          "lean": "left",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Ireland's paper of record. Ireland has a traditional non-alignment and neutrality stance. Covers Iran from a multilateralist, dialogue-first angle — critical of military options and supports diplomatic engagement. Covers Iranian human rights cases referred to the UN Human Rights Council (where Ireland is active). Good on Iranian political prisoners and death penalty cases.",
+          "tags": [
+            {
+              "label": "UN Human Rights Council",
+              "priority": "medium"
+            },
+            {
+              "label": "Multilateralist framing",
+              "priority": "normal"
+            },
+            {
+              "label": "Death penalty",
+              "priority": "normal"
+            },
+            {
+              "label": "Irish neutrality",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "ireland_02",
+          "must_watch": false,
+          "name": "RTÉ News",
+          "rss_url": "rte.ie/news/rss/news-world.xml",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Irish state broadcaster. Reflects the Irish government's historically neutral diplomatic tradition . RTÉ covers Iran from a non-interventionist angle — useful as a European voice that doesn't reflexively align with US/UK positions. Covers Iran in the context of UN proceedings and international humanitarian law.",
+          "tags": [
+            {
+              "label": "Irish neutrality",
+              "priority": "medium"
+            },
+            {
+              "label": "UN proceedings",
+              "priority": "normal"
+            },
+            {
+              "label": "Non-interventionist",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Latvia",
+      "flag": "🇱🇻",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "latvia_01",
+          "must_watch": true,
+          "name": "The Baltic Times",
+          "rss_url": "baltictimes.com/rss",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Pan-Baltic English weekly covering all three Baltic states. Best single English source for the Baltic bloc's coordinated lobbying on Iran within the EU . All three Baltic states have pushed jointly for IRGC terrorist designation, for linking Iran sanctions to the Ukraine war, and for tougher secondary sanctions on Iran drone buyers. Covers Baltic foreign ministers' statements and EU council positions.",
+          "tags": [
+            {
+              "label": "Baltic bloc lobbying",
+              "priority": "high"
+            },
+            {
+              "label": "IRGC designation push",
+              "priority": "medium"
+            },
+            {
+              "label": "Iran-Ukraine link",
+              "priority": "normal"
+            },
+            {
+              "label": "Secondary sanctions",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "latvia_02",
+          "must_watch": false,
+          "name": "LSM English",
+          "rss_url": "eng.lsm.lv/rss",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Latvian public broadcaster English section. Covers Latvian government Iran positions and Meduza (Russia's independent exiled media, based in Riga) — Meduza is Latvia-hosted and covers Iran-Russia arms extensively; LSM provides context on the Latvia-Russia-Iran news ecosystem.",
+          "tags": [
+            {
+              "label": "Meduza ecosystem",
+              "priority": "medium"
+            },
+            {
+              "label": "Latvian FM Iran",
+              "priority": "normal"
+            },
+            {
+              "label": "Russia-Iran arms via Riga",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Lithuania",
+      "flag": "🇱🇹",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "lithuania_01",
+          "must_watch": false,
+          "name": "LRT English",
+          "rss_url": "lrt.lt/en/news-in-english/rss",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Lithuanian public broadcaster English RSS. Covers Iran through the lens of Iranian drone technology killing Ukrainian civilians near Lithuania's borders. Lithuania has been the most outspoken Baltic state on this issue. Also covers Lithuanian intelligence (SSD) assessments of Iran as part of the hostile authoritarian state category alongside Russia and Belarus.",
+          "tags": [
+            {
+              "label": "SSD intel assessment",
+              "priority": "medium"
+            },
+            {
+              "label": "Drones Ukraine border",
+              "priority": "normal"
+            },
+            {
+              "label": "Authoritarian axis",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Malta",
+      "flag": "🇲🇹",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "malta_01",
+          "must_watch": false,
+          "name": "Times of Malta",
+          "rss_url": "timesofmalta.com/rss",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Uniquely valuable for Iran oil sanctions evasion via maritime. Malta is the world's largest ship-registering flag state — hundreds of tankers carrying Iranian oil have been found flagged under Malta. Times of Malta covers OFAC actions against Malta-registered vessels, IMO (International Maritime Organisation) debates, and Maltese government's uncomfortable position as a sanctions enforcement problem. No other EU outlet covers this maritime angle.",
+          "tags": [
+            {
+              "label": "Malta-flag tankers Iran",
+              "priority": "high"
+            },
+            {
+              "label": "Sanctions evasion maritime",
+              "priority": "high"
+            },
+            {
+              "label": "OFAC Malta ships",
+              "priority": "medium"
+            },
+            {
+              "label": "IMO enforcement",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "malta_02",
+          "must_watch": false,
+          "name": "Malta Independent",
+          "rss_url": "independent.com.mt/feed",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Covers Maltese financial and corporate services sector exposure to Iranian sanctions — Malta is also a financial centre and Iranian-linked shell companies have been found registered there. Covers Maltese regulatory response and the government's balancing act between the ship registry revenue and US sanctions compliance pressure.",
+          "tags": [
+            {
+              "label": "Maltese shell companies",
+              "priority": "medium"
+            },
+            {
+              "label": "Financial exposure",
+              "priority": "normal"
+            },
+            {
+              "label": "Regulatory response",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Cyprus",
+      "flag": "🇨🇾",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "cyprus_01",
+          "must_watch": false,
+          "name": "Cyprus Mail",
+          "rss_url": "cyprus-mail.com/feed",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Covers Iran through the Eastern Mediterranean energy security lens . Cyprus sits between the Middle East and Europe, and the EastMed pipeline proposals involve Iranian competition. Covers Iranian-flagged vessels in Eastern Mediterranean waters, Iranian naval presence near Cyprus, and the Cyprus-Israel energy partnership that competes with Iran. Also covers Russian-Iranian financial flows via Cyprus banks.",
+          "tags": [
+            {
+              "label": "EastMed vs Iran gas",
+              "priority": "medium"
+            },
+            {
+              "label": "Iranian vessels East Med",
+              "priority": "normal"
+            },
+            {
+              "label": "Cyprus banks Iran-Russia",
+              "priority": "niche"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Czech Rep.",
+      "flag": "🇨🇿",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "czech_rep._01",
+          "must_watch": false,
+          "name": "Czech Radio Int'l",
+          "rss_url": "radio.cz/en/rss/82",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Czech public broadcaster English section. Covers Czech government Iran positions — Czech Republic has been a vocal supporter of strong EU Iran sanctions and of the IRGC terrorist designation. Covers Czech intelligence (BIS) warnings about Iranian espionage in Central Europe and the Czech parliament's Iran resolutions.",
+          "tags": [
+            {
+              "label": "Czech-Iran policy",
+              "priority": "medium"
+            },
+            {
+              "label": "BIS intelligence",
+              "priority": "normal"
+            },
+            {
+              "label": "Central European view",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Portugal",
+      "flag": "🇵🇹",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "portugal_01",
+          "must_watch": false,
+          "name": "Euractiv Portugal",
+          "rss_url": "euractiv.com/sections/politics/portugal",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Euractiv's Portuguese-focused section in English. The most reliable free English window into Portuguese EU policy positions. Portugal held the EU Council presidency in H1 2021 — directly overlapping with the restart of Vienna nuclear talks — giving Lisbon an outsized role in coordinating EU Iran diplomacy during that period. Euractiv Portugal covered those presidency priorities in detail. Also covers Portugal's traditionally non-confrontational diplomatic tradition as it applies to Iran in EU council votes.",
+          "tags": [
+            {
+              "label": "Portugal EU presidency 2021",
+              "priority": "medium"
+            },
+            {
+              "label": "Vienna talks overlap",
+              "priority": "medium"
+            },
+            {
+              "label": "EU Iran coordination",
+              "priority": "normal"
+            },
+            {
+              "label": "Non-confrontational stance",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Denmark",
+      "flag": "🇩🇰",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "denmark_01",
+          "must_watch": false,
+          "name": "Politiken",
+          "rss_url": "politiken.dk/rss",
+          "lean": "left",
+          "language": "DA",
+          "requires_translation": true,
+          "editorial_note": "Denmark's leading liberal quality paper. Covers Danish-Iranian community and Denmark's controversial asylum policy toward Iranians — Denmark has returned asylum seekers to Iran and Politiken investigates the consequences. Also covers the foiled Iranian assassination plot on Danish soil (2018 — Iran planned to kill an Arab opposition figure in Denmark). Deep coverage of Iran's dissident threats in Scandinavia.",
+          "tags": [
+            {
+              "label": "2018 Iran Denmark plot",
+              "priority": "high"
+            },
+            {
+              "label": "Danish asylum policy",
+              "priority": "medium"
+            },
+            {
+              "label": "Dissident threats",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "denmark_02",
+          "must_watch": false,
+          "name": "Berlingske",
+          "rss_url": "berlingske.dk/rss",
+          "lean": "right",
+          "language": "DA",
+          "requires_translation": true,
+          "editorial_note": "Denmark's oldest conservative paper. Covers Danish intelligence (PET) operations against Iranian agents — the 2018 foiled assassination plot was broken by Danish intelligence and Berlingske had extensive sourcing. Covers Danish government lobbying in NATO and EU for stronger Iran measures and the Danish navy's Gulf of Oman patrols.",
+          "tags": [
+            {
+              "label": "PET intelligence",
+              "priority": "medium"
+            },
+            {
+              "label": "Danish navy Gulf",
+              "priority": "normal"
+            },
+            {
+              "label": "NATO lobbying",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Finland",
+      "flag": "🇫🇮",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "finland_01",
+          "must_watch": false,
+          "name": "Yle News English",
+          "rss_url": "yle.fi/news/feed/rss",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Finnish public broadcaster English RSS. Covers Finland's Iran positions through a Nordic multilateralist lens — Finland has historically been a strong supporter of diplomacy over sanctions and contributed to JCPOA monitoring. Covers Finnish energy security as it relates to Iran (Finland has been active in finding Russian gas alternatives; Iranian LNG is part of that discussion).",
+          "tags": [
+            {
+              "label": "Nordic multilateralism",
+              "priority": "medium"
+            },
+            {
+              "label": "JCPOA monitoring",
+              "priority": "normal"
+            },
+            {
+              "label": "Finnish energy security",
+              "priority": "normal"
+            }
+          ]
+        },
+        {
+          "id": "finland_02",
+          "must_watch": false,
+          "name": "Helsingin Sanomat International",
+          "rss_url": "hs.fi/english",
+          "lean": "left",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Finland's largest paper. Has a free English-language section covering major stories. Best Finnish source for how Iran sanctions affect Nordic energy markets — Finland accelerated its search for non-Russian gas alternatives after 2022 and Iranian LNG periodically enters those discussions. Also covers Iranian students and researchers at Finnish universities, and Finland's JCPOA monitoring contributions. Iran-specific stories are infrequent but when they appear they reflect the Finnish government's position accurately.",
+          "tags": [
+            {
+              "label": "Nordic energy markets",
+              "priority": "medium"
+            },
+            {
+              "label": "JCPOA monitoring",
+              "priority": "normal"
+            },
+            {
+              "label": "Iranian students Finland",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Romania",
+      "flag": "🇷🇴",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "romania_01",
+          "must_watch": false,
+          "name": "HotNews.ro",
+          "rss_url": "hotnews.ro/rss",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Romania's most-read serious independent news site, with an English section. More reliable than blog-style outlets for Romanian government positions. Covers Romania's hawkish EU stance on Iran — Romania consistently supports US and Baltic positions on Iran sanctions. Uniquely covers the Deveselu missile defence base in Romania, which is specifically designed to intercept Iranian ballistic missiles targeting Europe. When US upgrades or activates Deveselu in response to Iranian missile threats, HotNews covers it from the host nation's perspective.",
+          "tags": [
+            {
+              "label": "Deveselu missile defense",
+              "priority": "medium"
+            },
+            {
+              "label": "Romania pro-US Iran",
+              "priority": "medium"
+            },
+            {
+              "label": "Eastern EU view",
+              "priority": "normal"
+            },
+            {
+              "label": "Ballistic missile intercept",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Slovakia",
+      "flag": "🇸🇰",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "slovakia_01",
+          "must_watch": false,
+          "name": "Slovak Spectator",
+          "rss_url": "spectator.sme.sk/rss",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Slovakia's English-language weekly. Useful for tracking Fico government's softer Iran stance — like Orbán's Hungary, Fico's Slovakia has occasionally diverged from EU consensus on Russia and Iran sanctions. Slovak Spectator covers this internal EU tension and Slovakia's energy dependence calculations.",
+          "tags": [
+            {
+              "label": "Fico government Iran",
+              "priority": "niche"
+            },
+            {
+              "label": "Slovakia EU divergence",
+              "priority": "normal"
+            },
+            {
+              "label": "Energy dependence",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Luxembourg",
+      "flag": "🇱🇺",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "luxembourg_01",
+          "must_watch": false,
+          "name": "POLITICO Europe — CJEU coverage",
+          "rss_url": "politico.eu/feed/",
+          "lean": "independent",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "The Luxembourg-specific Iran angle is best covered by POLITICO Europe rather than any domestic Luxembourgish outlet. POLITICO Europe has the deepest English-language reporting on EU Court of Justice (CJEU) proceedings related to Iran — Iranian entities and individuals challenging EU asset freezes in Luxembourg courts, landmark rulings that changed how EU sanctions are structured, and the legal battles by Iranian banks to get off EU blacklists. Also covers Luxembourg's role as host of EU Council legal services that draft Iran sanctions packages.",
+          "tags": [
+            {
+              "label": "CJEU Iran sanctions appeals",
+              "priority": "high"
+            },
+            {
+              "label": "Asset freeze challenges",
+              "priority": "medium"
+            },
+            {
+              "label": "EU sanctions legal drafting",
+              "priority": "medium"
+            },
+            {
+              "label": "Iranian banks blacklist",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Bulgaria",
+      "flag": "🇧🇬",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "bulgaria_01",
+          "must_watch": false,
+          "name": "Novinite (Sofia News Agency)",
+          "rss_url": "novinite.com/rss",
+          "lean": "center",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Bulgaria's main English-language wire service. Best source for the 2012 Burgas bus bombing — Hezbollah/Iran killed five Israeli tourists in Bulgaria, a case that has never been fully resolved judicially. Novinite covers the ongoing investigation, Bulgarian government statements on attributing the attack to Iran, and Bulgaria's EU votes on Iran-Hezbollah sanctions. Also covers Bulgarian government positions within the EU on Iran policy and periodic IRGC-linked incidents on Bulgarian soil.",
+          "tags": [
+            {
+              "label": "Burgas bombing 2012",
+              "priority": "high"
+            },
+            {
+              "label": "Hezbollah Europe",
+              "priority": "medium"
+            },
+            {
+              "label": "Bulgarian-Iranian relations",
+              "priority": "medium"
+            },
+            {
+              "label": "EU votes",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Croatia",
+      "flag": "🇭🇷",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "croatia_01",
+          "must_watch": false,
+          "name": "HRT English",
+          "rss_url": "hrt.hr/en/news",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Croatian state broadcaster's English section. Covers the Balkan dimension of Iranian arms and drug smuggling routes — Croatia sits on the Western Balkans corridor through which Iranian-linked organised crime and weapons move toward Western Europe. Covers Croatian government positions in EU Iran sanctions votes and Croatian intelligence (SOA) assessments of Iranian-linked networks operating through the region. Also covers Croatian naval and coast guard activity in the Adriatic relevant to arms interdiction.",
+          "tags": [
+            {
+              "label": "Balkan smuggling routes",
+              "priority": "niche"
+            },
+            {
+              "label": "SOA intelligence",
+              "priority": "normal"
+            },
+            {
+              "label": "Western Balkans Iran",
+              "priority": "normal"
+            },
+            {
+              "label": "Adriatic interdiction",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Slovenia",
+      "flag": "🇸🇮",
+      "region": "eu",
+      "sources": [
+        {
+          "id": "slovenia_01",
+          "must_watch": false,
+          "name": "RTV Slovenija English",
+          "rss_url": "rtvslo.si/news-in-english",
+          "lean": "official",
+          "language": "EN",
+          "requires_translation": false,
+          "editorial_note": "Slovenian state broadcaster's dedicated English-language news section. Slovenia held the EU Council presidency in H2 2021 — directly overlapping with active Vienna nuclear talks rounds — giving Ljubljana a coordinating role in EU Iran diplomacy during that period. RTV covered those presidency priorities in detail. Also covers Slovenian intelligence (SOVA) assessments of Iranian-linked actors transiting the Western Balkans corridor, and Slovenian government positions in EU Iran sanctions votes.",
+          "tags": [
+            {
+              "label": "Slovenia EU presidency 2021",
+              "priority": "medium"
+            },
+            {
+              "label": "Vienna talks overlap",
+              "priority": "medium"
+            },
+            {
+              "label": "SOVA intelligence",
+              "priority": "normal"
+            },
+            {
+              "label": "EU Iran votes",
+              "priority": "normal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

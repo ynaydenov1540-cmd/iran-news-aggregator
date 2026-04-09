@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iran War Market Impact</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a; --bg2: #111; --bg3: #141414;
+  --border: #1e1e1e; --border2: #252525;
+  --text: #bbb; --dim: #555; --dim2: #333;
+  --green: #22c55e; --red: #ef4444; --amber: #f59e0b;
+  --white: #fff; --blue: #38bdf8;
+}
+html, body {
+  height: 100%; background: var(--bg);
+  color: var(--text); font-family: 'Courier New', monospace;
+  font-size: 11px;
+}
+
+/* ── HEADER ─────────────────────────────────────────────── */
+#hdr {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 28px; padding: 0 10px;
+  background: #0d0d0d; border-bottom: 1px solid #1c1c1c;
+  flex-shrink: 0; position: sticky; top: 0; z-index: 10;
+}
+#hdr-title { color: var(--white); font-size: 11px; font-weight: bold; letter-spacing: 1.5px; }
+#hdr-meta { font-size: 9px; color: var(--dim); display: flex; align-items: center; gap: 8px; }
+#hdr-meta .sep { color: var(--dim2); }
+#ts { color: #888; }
+#cdown { color: var(--amber); font-weight: bold; min-width: 20px; display: inline-block; }
+
+/* ── SCROLL CONTAINER ────────────────────────────────────── */
+#main {
+  display: flex; flex-direction: row;
+  overflow-x: auto; overflow-y: hidden;
+  gap: 0; padding: 6px 6px 4px;
+  height: calc(100% - 28px - 14px);
+  align-items: flex-start;
+}
+#main::-webkit-scrollbar { height: 3px; }
+#main::-webkit-scrollbar-track { background: var(--bg); }
+#main::-webkit-scrollbar-thumb { background: #1e1e1e; border-radius: 2px; }
+
+/* ── CATEGORY ────────────────────────────────────────────── */
+.cat {
+  flex-shrink: 0; display: flex; flex-direction: column; gap: 3px;
+  padding: 0 8px 0 4px;
+  border-right: 1px solid #161616;
+}
+.cat:first-child { padding-left: 2px; }
+.cat:last-child { border-right: none; }
+
+.cat-hdr {
+  font-size: 9px; font-weight: bold; color: #666;
+  letter-spacing: 0.8px; text-transform: uppercase;
+  padding-bottom: 3px; white-space: nowrap;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+/* ── CARD GRIDS ──────────────────────────────────────────── */
+.cards { display: flex; flex-direction: column; gap: 3px; }
+.cards.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+
+/* ── CARD ────────────────────────────────────────────────── */
+.card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 3px; padding: 4px 7px; width: 120px;
+  display: flex; flex-direction: column; gap: 2px;
+  transition: border-color 0.2s;
+}
+.cards.two-col .card { width: 108px; }
+.card:hover { border-color: #2e2e2e; }
+
+.c-name { font-size: 8.5px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.c-price { font-size: 13px; color: var(--white); font-weight: bold; line-height: 1.2; }
+.c-foot { display: flex; align-items: center; justify-content: space-between; gap: 2px; }
+
+.chg { font-size: 9px; font-weight: bold; white-space: nowrap; }
+.chg.up   { color: var(--green); }
+.chg.down { color: var(--red); }
+.chg.na   { color: var(--dim); }
+
+.badge { font-size: 8px; white-space: nowrap; padding: 1px 3px; border-radius: 2px; }
+.badge.bull { color: var(--green); background: rgba(34,197,94,0.08); }
+.badge.bear { color: var(--red);   background: rgba(239,68,68,0.08);  }
+.badge.vol  { color: var(--amber); background: rgba(245,158,11,0.08); }
+
+/* Unavailable card */
+.card.unavail .c-price { font-size: 10px; color: var(--dim); }
+
+/* ── SKELETON ────────────────────────────────────────────── */
+.sk { background: linear-gradient(90deg,#141414 25%,#1c1c1c 50%,#141414 75%); background-size:200% 100%; animation:shimmer 1.8s ease-in-out infinite; border-radius:2px; }
+@keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+.sk-name  { height: 8px;  width: 70%; }
+.sk-price { height: 14px; width: 90%; margin-top: 2px; }
+.sk-foot  { height: 8px;  width: 100%; margin-top: 2px; }
+
+/* ── DISCLAIMER ──────────────────────────────────────────── */
+#disc {
+  height: 14px; line-height: 14px; text-align: center;
+  font-size: 8px; color: #252525; border-top: 1px solid #111;
+  background: var(--bg);
+}
+</style>
+</head>
+<body>
+
+<div id="hdr">
+  <div id="hdr-title">⚡ IRAN WAR &middot; MARKET IMPACT</div>
+  <div id="hdr-meta">
+    <span>Updated: <span id="ts">—</span></span>
+    <span class="sep">|</span>
+    <span>↻ <span id="cdown">60</span>s</span>
+  </div>
+</div>
+
+<div id="main"><!-- populated by JS --></div>
+
+<div id="disc">Data from public free APIs (CoinGecko, Frankfurter, Yahoo Finance). Not financial advice.</div>
+
+<script>
+// ── CONFIG ────────────────────────────────────────────────────
+var CORS  = 'https://corsproxy.io/?url=';
+var YF    = 'https://query1.finance.yahoo.com/v8/finance/chart/';
+var CG    = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,gold,silver&vs_currencies=usd&include_24hr_change=true';
+var FK    = 'https://api.frankfurter.app/latest?from=USD&to=JPY,CHF,PHP,AED,RUB';
+
+var IMPACT_LABEL = { bull: '🟢 Bullish', bear: '🔴 Bearish', vol: '🟡 Volatile' };
+
+var GROUPS = [
+  { icon: '🛢️', label: 'Energy', twoCol: false, assets: [
+    { id: 'BZ=F',   name: 'Brent Crude', src: 'yf', impact: 'bull' },
+    { id: 'CL=F',   name: 'WTI Crude',   src: 'yf', impact: 'bull' },
+    { id: 'NG=F',   name: 'Natural Gas', src: 'yf', impact: 'vol'  },
+    { id: 'USO',    name: 'Oil ETF',     src: 'yf', impact: 'bull' },
+    { id: 'BNO',    name: 'Brent ETF',   src: 'yf', impact: 'bull' },
+  ]},
+  { icon: '🥇', label: 'Safe Havens', twoCol: false, assets: [
+    { id: 'gold',   name: 'Gold',       src: 'cg', impact: 'bull' },
+    { id: 'silver', name: 'Silver',     src: 'cg', impact: 'bull' },
+    { id: 'GLD',    name: 'Gold ETF',   src: 'yf', impact: 'bull' },
+    { id: 'CHF',    name: 'CHF/USD',    src: 'fx', impact: 'bull' },
+    { id: 'JPY',    name: 'JPY/USD',    src: 'fx', impact: 'bull' },
+    { id: 'UUP',    name: 'USD Index',  src: 'yf', impact: 'vol'  },
+  ]},
+  { icon: '📉', label: 'Currencies', twoCol: false, assets: [
+    { id: 'PHP',    name: 'PHP/USD',  src: 'fx', impact: 'bear' },
+    { id: 'AED',    name: 'AED/USD',  src: 'fx', impact: 'vol'  },
+    { id: 'RUB',    name: 'RUB/USD',  src: 'fx', impact: 'bear' },
+  ]},
+  { icon: '📊', label: 'Equities', twoCol: true, assets: [
+    { id: 'SPY',    name: 'S&P 500',   src: 'yf', impact: 'bear' },
+    { id: 'QQQ',    name: 'Nasdaq',    src: 'yf', impact: 'bear' },
+    { id: 'XOM',    name: 'ExxonMobil',src: 'yf', impact: 'bull' },
+    { id: 'CVX',    name: 'Chevron',   src: 'yf', impact: 'bull' },
+    { id: 'RTX',    name: 'Raytheon',  src: 'yf', impact: 'bull' },
+    { id: 'LMT',    name: 'Lockheed',  src: 'yf', impact: 'bull' },
+    { id: 'UAL',    name: 'United Air',src: 'yf', impact: 'bear' },
+    { id: 'LUV',    name: 'Southwest', src: 'yf', impact: 'bear' },
+  ]},
+  { icon: '₿', label: 'Crypto', twoCol: false, assets: [
+    { id: 'bitcoin',name: 'Bitcoin',   src: 'cg', impact: 'vol'  },
+  ]},
+  { icon: '🌾', label: 'Commodities', twoCol: false, assets: [
+    { id: 'ALI=F',  name: 'Aluminum',  src: 'yf', impact: 'vol'  },
+    { id: 'ZC=F',   name: 'Corn',      src: 'yf', impact: 'vol'  },
+  ]},
+];
+
+// ── DATA CACHE ────────────────────────────────────────────────
+var cache = {};
+
+// ── FORMATTING ────────────────────────────────────────────────
+function fmtPrice(v, isFx) {
+  if (v == null) return null;
+  if (v >= 10000) return v.toLocaleString('en-US', {maximumFractionDigits: 0});
+  if (v >= 1000)  return v.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  if (v >= 10)    return v.toFixed(2);
+  if (isFx)       return v.toFixed(4);
+  return v.toFixed(4);
+}
+
+function chgHtml(chg) {
+  if (chg == null) return '<span class="chg na">—</span>';
+  var cls = chg >= 0 ? 'up' : 'down';
+  var arr = chg >= 0 ? '▲' : '▼';
+  return '<span class="chg ' + cls + '">' + arr + Math.abs(chg).toFixed(2) + '%</span>';
+}
+
+// ── RENDER ────────────────────────────────────────────────────
+function cardHtml(a) {
+  var d = cache[a.id];
+  var isFx = (a.src === 'fx');
+  var priceStr = d ? fmtPrice(d.price, isFx) : null;
+  var pricePart = priceStr
+    ? ('<div class="c-price">' + priceStr + '</div>')
+    : '<div class="c-price" style="font-size:10px;color:#444">Unavailable</div>';
+  var chgPart = d ? chgHtml(d.change) : '<span class="chg na">—</span>';
+  var badge = '<span class="badge ' + a.impact + '">' + IMPACT_LABEL[a.impact] + '</span>';
+  return '<div class="card' + (d ? '' : ' unavail') + '">'
+    + '<div class="c-name">' + a.name + '</div>'
+    + pricePart
+    + '<div class="c-foot">' + chgPart + badge + '</div>'
+    + '</div>';
+}
+
+function skCardHtml() {
+  return '<div class="card"><div class="sk sk-name"></div><div class="sk sk-price"></div><div class="sk sk-foot"></div></div>';
+}
+
+function buildHtml(skeleton) {
+  return GROUPS.map(function(g) {
+    var cls = 'cards' + (g.twoCol ? ' two-col' : '');
+    var cards = g.assets.map(function(a) {
+      return skeleton ? skCardHtml() : cardHtml(a);
+    }).join('');
+    return '<div class="cat"><div class="cat-hdr">' + g.icon + ' ' + g.label
+      + '</div><div class="' + cls + '">' + cards + '</div></div>';
+  }).join('');
+}
+
+function render(skeleton) {
+  document.getElementById('main').innerHTML = buildHtml(skeleton);
+}
+
+// ── FETCH: CoinGecko ──────────────────────────────────────────
+function fetchCG() {
+  return fetch(CG)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      ['bitcoin','gold','silver'].forEach(function(id) {
+        if (d[id]) cache[id] = { price: d[id].usd, change: d[id].usd_24h_change };
+      });
+    });
+}
+
+// ── FETCH: Frankfurter (latest + prev business day for % chg) ─
+function fetchFX() {
+  var prev = new Date();
+  prev.setDate(prev.getDate() - 3); // go back 3 days to safely hit a weekday
+  var prevDate = prev.toISOString().split('T')[0];
+  return Promise.all([
+    fetch(FK).then(function(r) { return r.json(); }),
+    fetch(FK.replace('latest', prevDate)).then(function(r) { return r.json(); })
+  ]).then(function(results) {
+    var today = results[0], yest = results[1];
+    Object.keys(today.rates || {}).forEach(function(k) {
+      var v = today.rates[k], p = yest.rates && yest.rates[k];
+      cache[k] = { price: v, change: p ? ((v - p) / p * 100) : null };
+    });
+  });
+}
+
+// ── FETCH: Yahoo Finance (via CORS proxy) ─────────────────────
+function fetchYF(ticker) {
+  var url = CORS + encodeURIComponent(YF + ticker);
+  return fetch(url, { cache: 'no-store' })
+    .then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(function(d) {
+      var meta = d.chart.result[0].meta;
+      var price = meta.regularMarketPrice;
+      var prev  = meta.previousClose || meta.chartPreviousClose;
+      cache[ticker] = { price: price, change: (prev && prev !== 0) ? ((price - prev) / prev * 100) : null };
+    });
+}
+
+// ── LOAD ALL ──────────────────────────────────────────────────
+function loadAll(isRefresh) {
+  if (!isRefresh) render(true); // skeleton on first load
+
+  // Collect unique YF tickers
+  var yfTickers = [];
+  GROUPS.forEach(function(g) {
+    g.assets.forEach(function(a) {
+      if (a.src === 'yf' && yfTickers.indexOf(a.id) === -1) yfTickers.push(a.id);
+    });
+  });
+
+  // Stagger YF calls 60ms apart to avoid rate-limiting
+  var yfPromises = yfTickers.map(function(ticker, i) {
+    return new Promise(function(resolve) {
+      setTimeout(function() {
+        fetchYF(ticker).then(resolve).catch(resolve);
+      }, i * 60);
+    });
+  });
+
+  Promise.allSettled([fetchCG(), fetchFX()].concat(yfPromises)).then(function() {
+    render(false);
+    var now = new Date();
+    document.getElementById('ts').textContent =
+      now.getHours().toString().padStart(2,'0') + ':' +
+      now.getMinutes().toString().padStart(2,'0');
+  });
+}
+
+// ── COUNTDOWN TIMER ───────────────────────────────────────────
+var countdownVal = 60;
+function tick() {
+  countdownVal--;
+  document.getElementById('cdown').textContent = countdownVal;
+  if (countdownVal <= 0) {
+    countdownVal = 60;
+    loadAll(true);
+  }
+}
+
+loadAll(false);
+setInterval(tick, 1000);
+</script>
+</body>
+</html>

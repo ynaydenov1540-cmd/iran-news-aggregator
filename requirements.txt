@@ -1,0 +1,6 @@
+flask
+feedparser
+requests
+yfinance
+beautifulsoup4
+lxml
