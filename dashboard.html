@@ -420,7 +420,6 @@
     }
 
     var allOfficialItems = [];
-    var officialViewIndex = 0;
     var officialPageOffset = 0;
 
     // Each entity: label shown in header, key matches source name from aggregator
@@ -444,33 +443,36 @@
       { label: "🌐 IAEA / UN / NATO",   keys: ["IAEA","UN News","NATO"] },
     ];
 
+    function buildOfficialPool() {
+      // One latest item per entity (country/bloc), in entity order
+      return OFFICIAL_ENTITIES.map(function(entity) {
+        var match = allOfficialItems.filter(function(h) {
+          return entity.keys.some(function(k) { return h.source.indexOf(k) !== -1; });
+        });
+        if (!match.length) return null;
+        // return most recent
+        return match.sort(function(a, b) {
+          return new Date(b.published).getTime() - new Date(a.published).getTime();
+        })[0];
+      }).filter(Boolean);
+    }
+
     function renderOfficialPage() {
-      // Cycle through entities one at a time, show up to 4 items each
-      var entityIdx = officialViewIndex % OFFICIAL_ENTITIES.length;
-      var entity = OFFICIAL_ENTITIES[entityIdx];
-      var items = allOfficialItems.filter(function(h) {
-        return entity.keys.some(function(k) { return h.source.indexOf(k) !== -1; });
-      });
-      // page through items for this entity
-      var start = items.length > 0 ? (officialPageOffset * 4) % items.length : 0;
-      var page = items.slice(start, start + 4);
-      if (page.length < 4 && items.length >= 4) {
-        page = page.concat(items.slice(0, 4 - page.length));
+      var pool = buildOfficialPool();
+      if (!pool.length) {
+        document.getElementById("body-social").innerHTML = '<div style="color:#555;font-size:13px;padding:8px">Loading official positions...</div>';
+        return;
       }
-      // advance page offset; advance entity every full cycle
+      var start = (officialPageOffset * 4) % pool.length;
+      var page = pool.slice(start, start + 4);
+      if (page.length < 4 && pool.length >= 4) {
+        page = page.concat(pool.slice(0, 4 - page.length));
+      }
       officialPageOffset++;
-      if (officialPageOffset * 4 >= Math.max(items.length, 4)) {
-        officialPageOffset = 0;
-        officialViewIndex++;
-      } else {
-        officialViewIndex++;
-      }
       var header = document.querySelector("#col-social .col-header span:first-child");
-      if (header) { header.textContent = "● " + entity.label; header.style.color = "#e2b03f"; }
-      document.getElementById("count-social").textContent = items.length + " items";
-      document.getElementById("body-social").innerHTML = page.length
-        ? page.map(function(h) { return makeCard(h, "official"); }).join("")
-        : '<div style="color:#555;font-size:13px;padding:8px">No statements yet for ' + entity.label + '</div>';
+      if (header) { header.textContent = "● OFFICIAL POSITIONS"; header.style.color = "#e2b03f"; }
+      document.getElementById("count-social").textContent = pool.length + " actors";
+      document.getElementById("body-social").innerHTML = page.map(function(h) { return makeCard(h, "official"); }).join("");
     }
 
     var mainInitialized = false;
