@@ -133,13 +133,16 @@ def fetch_one_feed(feed, tier):
             title = entry.get("title", "").strip()
             link = entry.get("link", "")
             if is_relevant(title):
-                results.append({
+                item = {
                     "source": feed["name"],
                     "title": title,
                     "link": link,
                     "published": parse_time(entry),
                     "tier": tier
-                })
+                }
+                if tier == "official":
+                    item["pos_score"] = position_score(title)
+                results.append(item)
     except Exception as e:
         print(f"Error fetching {feed['name']}: {e}")
     return results
@@ -287,45 +290,62 @@ def save(headlines):
     summary = " · ".join(f"{v} {k}" for k, v in counts.items())
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Saved {len(headlines)} headlines — {summary}")
 
+# Position-language keywords — used to score and rank official statements
+POSITION_KEYWORDS = [
+    "condemns","condemned","warns","warned","threatens","threatened","vows","pledged",
+    "backs","backs down","supports","supported","opposes","opposed","rejects","rejected",
+    "calls for","urges","urged","demands","demanded","insists","insisting",
+    "sanctions","sanction","nuclear deal","ceasefire","military","strike","attack",
+    "will not","will never","must","must not","should","should not",
+    "ready to","prepared to","committed to","determined to",
+    "response","retaliation","deterrence","offensive","defensive",
+    "agreement","violation","breach","non-compliance","enrichment","uranium",
+    "red line","ultimatum","negotiate","talks","deal","treaty","accord",
+    "force","action","option","consequence","pressure","escalate","de-escalate",
+    "right to","obligation","responsibility","accountability",
+]
+
+def position_score(title):
+    t = title.lower()
+    return sum(1 for k in POSITION_KEYWORDS if k in t)
+
 OFFICIAL_FEEDS = [
-    # USA
-    {"name": "US State Dept",       "url": "https://news.google.com/rss/search?q=iran+site:state.gov&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "White House",         "url": "https://news.google.com/rss/search?q=iran+site:whitehouse.gov&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "Pentagon",            "url": "https://news.google.com/rss/search?q=iran+site:defense.gov&hl=en-US&gl=US&ceid=US:en"},
+    # USA — use statement/position search terms
+    {"name": "US State Dept",       "url": "https://news.google.com/rss/search?q=iran+(warns+OR+urges+OR+sanctions+OR+nuclear+OR+condemns+OR+demands+OR+military)+site:state.gov&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "White House",         "url": "https://news.google.com/rss/search?q=iran+(warns+OR+urges+OR+sanctions+OR+nuclear+OR+condemns+OR+military)+site:whitehouse.gov&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Pentagon",            "url": "https://news.google.com/rss/search?q=iran+(threat+OR+military+OR+strike+OR+force+OR+deterrence+OR+warns)+site:defense.gov&hl=en-US&gl=US&ceid=US:en"},
     # UK
     {"name": "UK Foreign Office",   "url": "https://www.gov.uk/search/news-and-communications.atom?keywords=iran&organisations[]=foreign-commonwealth-development-office"},
     # EU / Europe
-    {"name": "EU Council",          "url": "https://news.google.com/rss/search?q=iran+site:consilium.europa.eu&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "European Commission", "url": "https://news.google.com/rss/search?q=iran+site:ec.europa.eu&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "French MFA",          "url": "https://news.google.com/rss/search?q=iran+site:diplomatie.gouv.fr&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "German Foreign Ministry", "url": "https://news.google.com/rss/search?q=iran+site:auswaertiges-amt.de&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "EU Council",          "url": "https://news.google.com/rss/search?q=iran+(sanctions+OR+nuclear+OR+condemns+OR+urges+OR+position+OR+statement)+site:consilium.europa.eu&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "European Commission", "url": "https://news.google.com/rss/search?q=iran+(sanctions+OR+nuclear+OR+condemns+OR+urges+OR+statement)+site:ec.europa.eu&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "French MFA",          "url": "https://news.google.com/rss/search?q=iran+(position+OR+condemns+OR+nuclear+OR+sanctions+OR+urges)+site:diplomatie.gouv.fr&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "German Foreign Ministry", "url": "https://news.google.com/rss/search?q=iran+(position+OR+condemns+OR+nuclear+OR+sanctions+OR+urges)+site:auswaertiges-amt.de&hl=en-US&gl=US&ceid=US:en"},
     # Russia
-    {"name": "Russian MFA",         "url": "https://news.google.com/rss/search?q=iran+site:mid.ru&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "Kremlin",             "url": "https://news.google.com/rss/search?q=iran+site:en.kremlin.ru&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Russian MFA",         "url": "https://news.google.com/rss/search?q=iran+(backs+OR+supports+OR+position+OR+nuclear+OR+warns+OR+rejects)+site:mid.ru&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Kremlin",             "url": "https://news.google.com/rss/search?q=iran+(backs+OR+supports+OR+nuclear+OR+military+OR+warns)+site:en.kremlin.ru&hl=en-US&gl=US&ceid=US:en"},
     # China
-    {"name": "Chinese MFA",         "url": "https://news.google.com/rss/search?q=iran+site:mfa.gov.cn&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "Xinhua Official",     "url": "https://news.google.com/rss/search?q=iran+china+position+site:xinhuanet.com&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Chinese MFA",         "url": "https://news.google.com/rss/search?q=iran+(position+OR+opposes+OR+supports+OR+nuclear+OR+sanctions+OR+urges)+site:mfa.gov.cn&hl=en-US&gl=US&ceid=US:en"},
     # Israel
-    {"name": "Israel MFA",          "url": "https://news.google.com/rss/search?q=iran+site:mfa.gov.il&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "IDF Spokesperson",    "url": "https://news.google.com/rss/search?q=iran+site:idf.il&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Israel MFA",          "url": "https://news.google.com/rss/search?q=iran+(threat+OR+nuclear+OR+warns+OR+condemns+OR+military+OR+attack+OR+strikes)+site:mfa.gov.il&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "IDF Spokesperson",    "url": "https://news.google.com/rss/search?q=iran+(threat+OR+military+OR+strike+OR+attack+OR+warns+OR+deterrence)+site:idf.il&hl=en-US&gl=US&ceid=US:en"},
     # Middle East
-    {"name": "Saudi MFA",           "url": "https://news.google.com/rss/search?q=iran+site:mofa.gov.sa&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "Saudi Press Agency",  "url": "https://news.google.com/rss/search?q=iran+site:spa.gov.sa&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "Iraq MFA",            "url": "https://news.google.com/rss/search?q=iran+site:mofa.gov.iq&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "UAE MFA",             "url": "https://news.google.com/rss/search?q=iran+site:mofaic.gov.ae&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Saudi MFA",           "url": "https://news.google.com/rss/search?q=iran+(nuclear+OR+threat+OR+sanctions+OR+urges+OR+position+OR+warns)+site:mofa.gov.sa&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Iraq MFA",            "url": "https://news.google.com/rss/search?q=iran+(position+OR+rejects+OR+urges+OR+nuclear+OR+military)+site:mofa.gov.iq&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "UAE MFA",             "url": "https://news.google.com/rss/search?q=iran+(position+OR+nuclear+OR+sanctions+OR+threat+OR+warns)+site:mofaic.gov.ae&hl=en-US&gl=US&ceid=US:en"},
     # Iran
-    {"name": "Iran MFA",            "url": "https://news.google.com/rss/search?q=site:mfa.ir&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "IRNA Official",       "url": "https://news.google.com/rss/search?q=iran+nuclear+position+site:irna.ir&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Iran MFA",            "url": "https://news.google.com/rss/search?q=(nuclear+OR+sanctions+OR+response+OR+rejects+OR+warns+OR+demands)+site:mfa.ir&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "IRNA Official",       "url": "https://news.google.com/rss/search?q=iran+(nuclear+OR+sanctions+OR+rejects+OR+warns+OR+demands+OR+response)+site:irna.ir&hl=en-US&gl=US&ceid=US:en"},
     # Asia
-    {"name": "India MEA",           "url": "https://news.google.com/rss/search?q=iran+site:mea.gov.in&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "Pakistan MFA",        "url": "https://news.google.com/rss/search?q=iran+site:mofa.gov.pk&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "Japan MOFA",          "url": "https://news.google.com/rss/search?q=iran+site:mofa.go.jp&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "India MEA",           "url": "https://news.google.com/rss/search?q=iran+(nuclear+OR+sanctions+OR+urges+OR+position+OR+condemns)+site:mea.gov.in&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Pakistan MFA",        "url": "https://news.google.com/rss/search?q=iran+(nuclear+OR+urges+OR+position+OR+condemns+OR+backs)+site:mofa.gov.pk&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Japan MOFA",          "url": "https://news.google.com/rss/search?q=iran+(nuclear+OR+sanctions+OR+urges+OR+condemns+OR+concern)+site:mofa.go.jp&hl=en-US&gl=US&ceid=US:en"},
     # Ukraine
-    {"name": "Ukraine MFA",         "url": "https://news.google.com/rss/search?q=iran+site:mfa.gov.ua&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Ukraine MFA",         "url": "https://news.google.com/rss/search?q=iran+(weapons+OR+condemns+OR+backs+OR+sanctions+OR+military)+site:mfa.gov.ua&hl=en-US&gl=US&ceid=US:en"},
     # International
-    {"name": "IAEA",                "url": "https://news.google.com/rss/search?q=iran+site:iaea.org&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "UN News",             "url": "https://news.google.com/rss/search?q=iran+site:news.un.org&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "NATO",                "url": "https://news.google.com/rss/search?q=iran+site:nato.int&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "IAEA",                "url": "https://news.google.com/rss/search?q=iran+(nuclear+OR+enrichment+OR+uranium+OR+compliance+OR+violation+OR+inspections)+site:iaea.org&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "UN News",             "url": "https://news.google.com/rss/search?q=iran+(nuclear+OR+sanctions+OR+condemns+OR+urges+OR+resolution+OR+military)+site:news.un.org&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "NATO",                "url": "https://news.google.com/rss/search?q=iran+(threat+OR+nuclear+OR+military+OR+warns+OR+deterrence)+site:nato.int&hl=en-US&gl=US&ceid=US:en"},
 ]
 
 def run():

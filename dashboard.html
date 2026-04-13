@@ -443,17 +443,38 @@
       { label: "🌐 IAEA / UN / NATO",   keys: ["IAEA","UN News","NATO"] },
     ];
 
+    var POSITION_WORDS = [
+      "condemn","warn","threat","vow","pledge","backs","support","oppos","reject","calls for",
+      "urge","demand","insist","sanction","nuclear","ceasefire","military","strike","attack",
+      "will not","will never","must","ready to","committed","deterren","offensive","retaliat",
+      "agreement","violation","enrichment","uranium","red line","ultimatum","negotiate","deal",
+      "force","escalat","de-escalat","right to","obligation","pressure","response",
+    ];
+
+    function posScore(title) {
+      var t = title.toLowerCase();
+      return POSITION_WORDS.reduce(function(n, w) { return n + (t.indexOf(w) !== -1 ? 1 : 0); }, 0);
+    }
+
     function buildOfficialPool() {
-      // One latest item per entity (country/bloc), in entity order
+      var cutoff7d = Date.now() - 7 * 24 * 60 * 60 * 1000;
       return OFFICIAL_ENTITIES.map(function(entity) {
         var match = allOfficialItems.filter(function(h) {
           return entity.keys.some(function(k) { return h.source.indexOf(k) !== -1; });
         });
         if (!match.length) return null;
-        // return most recent
-        return match.sort(function(a, b) {
-          return new Date(b.published).getTime() - new Date(a.published).getTime();
-        })[0];
+        // score each item: backend pos_score if available, otherwise compute client-side
+        // prefer items with score > 0 and recency within 7d
+        match.forEach(function(h) {
+          h._score = (h.pos_score || posScore(h.title));
+          h._ts = new Date(h.published).getTime();
+        });
+        // sort: high score first, then most recent
+        match.sort(function(a, b) {
+          if (b._score !== a._score) return b._score - a._score;
+          return b._ts - a._ts;
+        });
+        return match[0];
       }).filter(Boolean);
     }
 
