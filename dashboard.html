@@ -24,7 +24,7 @@
     .col-count { font-weight: normal; color: #777; letter-spacing: 0; font-size: 9px; }
     #col-main .col-header { color: #f0a500; }
     #col-breaking .col-header { color: #cc0000; }
-    #col-social .col-header { color: #0088cc; }
+    #col-social .col-header { color: #e2b03f; }
     #col-main .col-body { flex: 1; overflow: hidden; padding: 8px; gap: 8px; display: flex; flex-direction: column; }
     .card-main { background: #141414; border-left: 4px solid #f0a500; padding: 0 14px; border-radius: 0 4px 4px 0; flex: 1; display: flex; flex-direction: column; justify-content: center; margin-bottom: 0; overflow: hidden; transition: opacity 0.4s ease; }
     .card-main .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-shrink: 0; }
@@ -48,6 +48,8 @@
     .card.telegram:last-child { margin-bottom: 0; }
     .card.telegram-agg { border-left-color: #a855f7; flex: 1; display: flex; flex-direction: column; justify-content: center; }
     .card.telegram-agg:last-child { margin-bottom: 0; }
+    .card.official { border-left-color: #e2b03f; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .card.official:last-child { margin-bottom: 0; }
     .card-top { display: flex; justify-content: space-between; margin-bottom: 4px; gap: 4px; }
     .source { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 65%; }
     .card.breaking .source { color: #cc0000; }
@@ -57,6 +59,7 @@
     .card.social-market .source { color: #22c55e; }
     .card.telegram .source { color: #0088cc; }
     .card.telegram-agg .source { color: #a855f7; }
+    .card.official .source { color: #e2b03f; }
     .time { font-size: 9px; color: #999; white-space: nowrap; }
     .title { font-size: 14px; line-height: 1.4; color: #ffffff; text-decoration: none; display: block; }
     #main-progress { height: 3px; background: #1a1a1a; flex-shrink: 0; }
@@ -120,7 +123,7 @@
     </div>
     <div id="col-social">
       <div class="col-header">
-        <span>● TELEGRAM</span>
+        <span>● OFFICIAL POSITIONS</span>
         <span class="col-count" id="count-social"></span>
       </div>
       <div class="col-body" id="body-social"></div>
@@ -214,20 +217,37 @@
     }
 
     var SOURCE_REGIONS = {
-      "BBC":"UK","Sky News":"UK","The Guardian":"UK","The Telegraph":"UK","The Times":"UK","Daily Mail":"UK",
+      // UK
+      "BBC":"UK","Sky News":"UK","The Guardian":"UK","The Telegraph":"UK","The Times":"UK","Daily Mail":"UK","The Independent":"UK","Evening Standard":"UK",
+      // USA
       "AP News":"USA","NPR":"USA","Fox News":"USA","CNN":"USA","Washington Post":"USA","New York Times":"USA",
-      "Bloomberg":"USA","Wall Street Journal":"USA","The Nation":"USA","Foreign Policy":"USA",
+      "Bloomberg":"USA","Wall Street Journal":"USA","The Nation":"USA","Foreign Policy":"USA","Axios":"USA",
+      "The Intercept":"USA","Newsweek":"USA","Time":"USA","The Atlantic":"USA","Business Insider":"USA","Vice":"USA",
+      // Middle East
       "Al Jazeera":"Middle East","Arab News":"Middle East","Al Arabiya":"Middle East","The National UAE":"Middle East",
       "Gulf News":"Middle East","Khaleej Times":"Middle East","Anadolu Agency":"Middle East",
       "Middle East Eye":"Middle East","Saudi Gazette":"Middle East","Gulf Daily":"Middle East",
+      "Saudi Press Agency":"Middle East","Arabian Business":"Middle East","Times of Oman":"Middle East",
+      "Jordan Times":"Middle East","Roya News":"Middle East","Daily Tribune Bahrain":"Middle East",
+      // Iran
       "Iran International":"Iran","Radio Farda":"Iran","Tehran Times":"Iran","IRNA":"Iran","Press TV":"Iran",
-      "Reuters":"Global","AFP":"Global","Associated Press":"Global","The Diplomat":"Global","UN":"Global",
-      "TASS":"Russia","RT":"Russia","Kremlin":"Russia","Russian MFA":"Russia",
-      "Xinhua":"China","Global Times":"China","CGTN":"China","Caixin":"China",
-      "Haaretz":"Israel","Times of Israel":"Israel","Jerusalem Post":"Israel","YNet":"Israel",
-      "Dawn":"Asia","Geo News":"Asia","NHK World":"Asia","The Hindu":"Asia","South China Morning Post":"Asia",
+      "Iran Front Page":"Iran","Mehr News":"Iran","Tasnim":"Iran","Fars News":"Iran",
+      // Global / Wires
+      "Reuters":"Global","AFP":"Global","Associated Press":"Global","The Diplomat":"Global",
+      "UN":"Global","Foreign Affairs":"Global","Council on Foreign Relations":"Global","Bellingcat":"Global",
+      // Russia
+      "TASS":"Russia","RT":"Russia","Kremlin":"Russia","Russian MFA":"Russia","Sputnik":"Russia","Izvestia":"Russia",
+      // China
+      "Xinhua":"China","Global Times":"China","CGTN":"China","Caixin":"China","South China Morning Post":"China",
+      // Israel
+      "Haaretz":"Israel","Times of Israel":"Israel","Jerusalem Post":"Israel","YNet":"Israel","i24":"Israel",
+      // Asia/South Asia
+      "Dawn":"Asia","Geo News":"Asia","NHK World":"Asia","The Hindu":"Asia","India Today":"Asia",
+      "Nikkei":"Asia","Japan Times":"Asia","Korea Herald":"Asia","Yonhap":"Asia","The Print":"Asia",
+      // Europe
       "Euronews":"Europe","Deutsche Welle":"Europe","France 24":"Europe","POLITICO":"Europe",
-      "El Pais":"Europe","Le Monde":"Europe","Spiegel":"Europe",
+      "El Pais":"Europe","Le Monde":"Europe","Spiegel":"Europe","RFI":"Europe","EurActiv":"Europe",
+      "Radio Free Europe":"Europe","Voice of America":"Europe",
     };
 
     function getRegion(src) {
@@ -235,7 +255,7 @@
       for (var i = 0; i < keys.length; i++) {
         if (src.indexOf(keys[i]) !== -1) return SOURCE_REGIONS[keys[i]];
       }
-      return null;
+      return "Global";
     }
 
     function makeCard(h, tier) {
@@ -399,61 +419,63 @@
       document.getElementById("count-breaking").textContent = pool.length + " src";
     }
 
-    var allTelegramItems = [];
-    var allRedditItems = [];
-    var allRedditGeneralItems = [];
-    var allRedditEconItems = [];
-    var allTelegramOfficialItems = [];
-    var allTelegramAggregatorItems = [];
-    var socialViewIndex = 0;
-    var socialPageOffsets = [0, 0, 0, 0];
+    var allOfficialItems = [];
+    var officialViewIndex = 0;
+    var officialPageOffset = 0;
 
-    var REDDIT_ECON_SUBS = ["r/wallstreetbets","r/investing"];
-    var TELEGRAM_OFFICIAL_SOURCES = [
-      "IAEA","United Nations","NATO","Kremlin","UN News",
-      "Israel MFA","IDF","Ukraine MFA","US Department of State","US State Dept",
-      "European Commission","EU Council","CGTN","Russian MFA",
-      "Chinese MFA","Saudi MFA","UK Foreign Office","UAE Ministry","Qatar Ministry","French MFA"
+    // Each entity: label shown in header, key matches source name from aggregator
+    var OFFICIAL_ENTITIES = [
+      { label: "🇺🇸 USA",              keys: ["US State Dept","White House","Pentagon"] },
+      { label: "🇮🇱 ISRAEL",           keys: ["Israel MFA","IDF Spokesperson"] },
+      { label: "🇷🇺 RUSSIA",           keys: ["Russian MFA","Kremlin"] },
+      { label: "🇨🇳 CHINA",            keys: ["Chinese MFA","Xinhua Official"] },
+      { label: "🇮🇷 IRAN",             keys: ["Iran MFA","IRNA Official"] },
+      { label: "🇬🇧 UK",               keys: ["UK Foreign Office"] },
+      { label: "🇪🇺 EU",               keys: ["EU Council","European Commission"] },
+      { label: "🇫🇷 FRANCE",           keys: ["French MFA"] },
+      { label: "🇩🇪 GERMANY",          keys: ["German Foreign Ministry"] },
+      { label: "🇸🇦 SAUDI ARABIA",     keys: ["Saudi MFA","Saudi Press Agency"] },
+      { label: "🇮🇶 IRAQ",             keys: ["Iraq MFA"] },
+      { label: "🇦🇪 UAE",              keys: ["UAE MFA"] },
+      { label: "🇺🇦 UKRAINE",          keys: ["Ukraine MFA"] },
+      { label: "🇮🇳 INDIA",            keys: ["India MEA"] },
+      { label: "🇵🇰 PAKISTAN",         keys: ["Pakistan MFA"] },
+      { label: "🇯🇵 JAPAN",            keys: ["Japan MOFA"] },
+      { label: "🌐 IAEA / UN / NATO",   keys: ["IAEA","UN News","NATO"] },
     ];
 
-    var VIEW_CONFIG = [
-      { label: "💬 REDDIT · POLITICS",   color: "#f0a500", tier: "social",
-        getData: function() { return allRedditGeneralItems.slice(0, 16); } },
-      { label: "📡 TELEGRAM · OFFICIAL", color: "#0088cc", tier: "telegram",
-        getData: function() { return onePerSource(allTelegramOfficialItems); } },
-      { label: "📈 REDDIT · MARKETS",    color: "#22c55e", tier: "social", cssClass: "social-market",
-        getData: function() { return allRedditEconItems.slice(0, 16); } },
-      { label: "📡 TELEGRAM · NEWS",     color: "#a855f7", tier: "telegram-agg",
-        getData: function() { return onePerSource(allTelegramAggregatorItems); } },
-    ];
-
-    function renderSocialView(idx) {
-      var viewIdx = idx % 4;
-      var v = VIEW_CONFIG[viewIdx];
-      var allItems = v.getData();
-      var page = socialPageOffsets[viewIdx];
-      var start = allItems.length > 0 ? (page * 4) % allItems.length : 0;
-      var items = allItems.slice(start, start + 4);
-      if (items.length < 4 && allItems.length >= 4) {
-        items = items.concat(allItems.slice(0, 4 - items.length));
+    function renderOfficialPage() {
+      // Cycle through entities one at a time, show up to 4 items each
+      var entityIdx = officialViewIndex % OFFICIAL_ENTITIES.length;
+      var entity = OFFICIAL_ENTITIES[entityIdx];
+      var items = allOfficialItems.filter(function(h) {
+        return entity.keys.some(function(k) { return h.source.indexOf(k) !== -1; });
+      });
+      // page through items for this entity
+      var start = items.length > 0 ? (officialPageOffset * 4) % items.length : 0;
+      var page = items.slice(start, start + 4);
+      if (page.length < 4 && items.length >= 4) {
+        page = page.concat(items.slice(0, 4 - page.length));
       }
-      socialPageOffsets[viewIdx]++;
+      // advance page offset; advance entity every full cycle
+      officialPageOffset++;
+      if (officialPageOffset * 4 >= Math.max(items.length, 4)) {
+        officialPageOffset = 0;
+        officialViewIndex++;
+      } else {
+        officialViewIndex++;
+      }
       var header = document.querySelector("#col-social .col-header span:first-child");
-      if (header) { header.textContent = "● " + v.label; header.style.color = v.color; }
-      document.getElementById("body-social").innerHTML = items.length
-        ? items.map(function(h) { return makeCard(h, v.cssClass || v.tier); }).join("")
-        : '<div style="color:#333;font-size:13px;padding:8px">No updates yet</div>';
-      document.getElementById("count-social").textContent = items.length + " / " + allItems.length;
-    }
-
-    function renderSocialPage() {
-      renderSocialView(socialViewIndex % 4);
-      socialViewIndex++;
+      if (header) { header.textContent = "● " + entity.label; header.style.color = "#e2b03f"; }
+      document.getElementById("count-social").textContent = items.length + " items";
+      document.getElementById("body-social").innerHTML = page.length
+        ? page.map(function(h) { return makeCard(h, "official"); }).join("")
+        : '<div style="color:#555;font-size:13px;padding:8px">No statements yet for ' + entity.label + '</div>';
     }
 
     var mainInitialized = false;
     var breakingInitialized = false;
-    var socialInitialized = false;
+    var officialInitialized = false;
 
     function loadHeadlines() {
       fetch("/headlines")
@@ -466,29 +488,14 @@
           buildBreakingPool(data);
           if (!breakingInitialized) { renderBreakingPage(); breakingInitialized = true; }
 
-          var cutoff24 = Date.now() - 24 * 60 * 60 * 1000;
           var cutoff72 = Date.now() - 72 * 60 * 60 * 1000;
-          var cutoff168 = Date.now() - 168 * 60 * 60 * 1000;
-          allTelegramItems = data.filter(function(h) {
-            return h.tier === "telegram" && new Date(h.published).getTime() >= cutoff72;
+          allOfficialItems = data.filter(function(h) {
+            return h.tier === "official" && new Date(h.published).getTime() >= cutoff72;
           });
-          allTelegramOfficialItems = allTelegramItems.filter(function(h) {
-            return TELEGRAM_OFFICIAL_SOURCES.some(function(s) { return h.source.indexOf(s) !== -1; });
+          allOfficialItems.sort(function(a, b) {
+            return new Date(b.published).getTime() - new Date(a.published).getTime();
           });
-          allTelegramAggregatorItems = allTelegramItems.filter(function(h) {
-            return !TELEGRAM_OFFICIAL_SOURCES.some(function(s) { return h.source.indexOf(s) !== -1; });
-          });
-          allRedditItems = data.filter(function(h) {
-            return h.tier === "social" && new Date(h.published).getTime() >= cutoff72;
-          });
-          allRedditGeneralItems = allRedditItems.filter(function(h) {
-            return !REDDIT_ECON_SUBS.some(function(s) { return h.source === s; });
-          });
-          allRedditEconItems = data.filter(function(h) {
-            return h.tier === "social" && REDDIT_ECON_SUBS.some(function(s) { return h.source === s; }) && new Date(h.published).getTime() >= cutoff168;
-          });
-          if (!socialInitialized) { renderSocialPage(); socialInitialized = true; }
-          else { renderSocialView(socialViewIndex % 4); }
+          if (!officialInitialized) { renderOfficialPage(); officialInitialized = true; }
         })
         .catch(function(e) { console.log("Fetch error:", e); });
     }
@@ -497,7 +504,7 @@
     setInterval(loadHeadlines, 15000);
     setInterval(renderMainPage, 30000);
     setInterval(renderBreakingPage, 90000);
-    setInterval(renderSocialPage, 30000);
+    setInterval(renderOfficialPage, 30000);
     setInterval(function() {
       var elapsed = Date.now() - mainLastRender;
       var pct = Math.max(0, 100 - (elapsed / MAIN_INTERVAL) * 100);

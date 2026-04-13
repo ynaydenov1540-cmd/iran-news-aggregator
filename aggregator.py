@@ -288,15 +288,44 @@ def save(headlines):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Saved {len(headlines)} headlines — {summary}")
 
 OFFICIAL_FEEDS = [
-    {"name": "UK Foreign Office", "url": "https://www.gov.uk/search/news-and-communications.atom?keywords=iran&organisations[]=foreign-commonwealth-development-office"},
-    {"name": "US State Dept",     "url": "https://news.google.com/rss/search?q=iran+site:state.gov&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "EU Council",        "url": "https://news.google.com/rss/search?q=iran+site:consilium.europa.eu&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "Ukraine MFA",       "url": "https://news.google.com/rss/search?q=iran+site:mfa.gov.ua&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "Russian MFA",       "url": "https://news.google.com/rss/search?q=iran+site:mid.ru&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "French MFA",        "url": "https://news.google.com/rss/search?q=iran+site:diplomatie.gouv.fr/en&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "Saudi MFA",         "url": "https://news.google.com/rss/search?q=iran+site:mofa.gov.sa&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "Kremlin",           "url": "https://news.google.com/rss/search?q=iran+site:en.kremlin.ru&hl=en-US&gl=US&ceid=US:en"},
-    {"name": "IAEA",              "url": "https://news.google.com/rss/search?q=iran+site:iaea.org&hl=en-US&gl=US&ceid=US:en"},
+    # USA
+    {"name": "US State Dept",       "url": "https://news.google.com/rss/search?q=iran+site:state.gov&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "White House",         "url": "https://news.google.com/rss/search?q=iran+site:whitehouse.gov&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Pentagon",            "url": "https://news.google.com/rss/search?q=iran+site:defense.gov&hl=en-US&gl=US&ceid=US:en"},
+    # UK
+    {"name": "UK Foreign Office",   "url": "https://www.gov.uk/search/news-and-communications.atom?keywords=iran&organisations[]=foreign-commonwealth-development-office"},
+    # EU / Europe
+    {"name": "EU Council",          "url": "https://news.google.com/rss/search?q=iran+site:consilium.europa.eu&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "European Commission", "url": "https://news.google.com/rss/search?q=iran+site:ec.europa.eu&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "French MFA",          "url": "https://news.google.com/rss/search?q=iran+site:diplomatie.gouv.fr&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "German Foreign Ministry", "url": "https://news.google.com/rss/search?q=iran+site:auswaertiges-amt.de&hl=en-US&gl=US&ceid=US:en"},
+    # Russia
+    {"name": "Russian MFA",         "url": "https://news.google.com/rss/search?q=iran+site:mid.ru&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Kremlin",             "url": "https://news.google.com/rss/search?q=iran+site:en.kremlin.ru&hl=en-US&gl=US&ceid=US:en"},
+    # China
+    {"name": "Chinese MFA",         "url": "https://news.google.com/rss/search?q=iran+site:mfa.gov.cn&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Xinhua Official",     "url": "https://news.google.com/rss/search?q=iran+china+position+site:xinhuanet.com&hl=en-US&gl=US&ceid=US:en"},
+    # Israel
+    {"name": "Israel MFA",          "url": "https://news.google.com/rss/search?q=iran+site:mfa.gov.il&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "IDF Spokesperson",    "url": "https://news.google.com/rss/search?q=iran+site:idf.il&hl=en-US&gl=US&ceid=US:en"},
+    # Middle East
+    {"name": "Saudi MFA",           "url": "https://news.google.com/rss/search?q=iran+site:mofa.gov.sa&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Saudi Press Agency",  "url": "https://news.google.com/rss/search?q=iran+site:spa.gov.sa&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Iraq MFA",            "url": "https://news.google.com/rss/search?q=iran+site:mofa.gov.iq&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "UAE MFA",             "url": "https://news.google.com/rss/search?q=iran+site:mofaic.gov.ae&hl=en-US&gl=US&ceid=US:en"},
+    # Iran
+    {"name": "Iran MFA",            "url": "https://news.google.com/rss/search?q=site:mfa.ir&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "IRNA Official",       "url": "https://news.google.com/rss/search?q=iran+nuclear+position+site:irna.ir&hl=en-US&gl=US&ceid=US:en"},
+    # Asia
+    {"name": "India MEA",           "url": "https://news.google.com/rss/search?q=iran+site:mea.gov.in&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Pakistan MFA",        "url": "https://news.google.com/rss/search?q=iran+site:mofa.gov.pk&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Japan MOFA",          "url": "https://news.google.com/rss/search?q=iran+site:mofa.go.jp&hl=en-US&gl=US&ceid=US:en"},
+    # Ukraine
+    {"name": "Ukraine MFA",         "url": "https://news.google.com/rss/search?q=iran+site:mfa.gov.ua&hl=en-US&gl=US&ceid=US:en"},
+    # International
+    {"name": "IAEA",                "url": "https://news.google.com/rss/search?q=iran+site:iaea.org&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "UN News",             "url": "https://news.google.com/rss/search?q=iran+site:news.un.org&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "NATO",                "url": "https://news.google.com/rss/search?q=iran+site:nato.int&hl=en-US&gl=US&ceid=US:en"},
 ]
 
 def run():
@@ -313,15 +342,12 @@ def run():
                 rss_headlines = (
                     fetch_from_feeds(BIG_FEEDS, "big") +
                     fetch_from_feeds(BREAKING_FEEDS + iran_feeds, "breaking") +
-                    fetch_from_feeds(OFFICIAL_FEEDS, "telegram") +
+                    fetch_from_feeds(OFFICIAL_FEEDS, "official") +
                     fetch_telegram()
                 )
                 last_rss = now
 
-            # Always fetch fresh Reddit (every 60s)
-            reddit_headlines = fetch_reddit()
-
-            all_headlines = rss_headlines + reddit_headlines
+            all_headlines = rss_headlines
             seen = set()
             unique = []
             for h in all_headlines:
@@ -329,7 +355,7 @@ def run():
                     seen.add(h["title"])
                     unique.append(h)
             unique.sort(key=lambda x: x["published"], reverse=True)
-            print(f"[CYCLE] RSS: {len(rss_headlines)}, Reddit: {len(reddit_headlines)}, Total unique: {len(unique)}")
+            print(f"[CYCLE] RSS: {len(rss_headlines)}, Total unique: {len(unique)}")
             save(unique)
 
         except Exception as e:
