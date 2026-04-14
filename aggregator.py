@@ -350,6 +350,12 @@ OFFICIAL_FEEDS = [
     {"name": "IAEA",                "url": "https://news.google.com/rss/search?q=iran+(nuclear+OR+enrichment+OR+uranium+OR+compliance+OR+violation+OR+inspections)+site:iaea.org&hl=en-US&gl=US&ceid=US:en"},
     {"name": "UN News",             "url": "https://news.google.com/rss/search?q=iran+(nuclear+OR+sanctions+OR+condemns+OR+urges+OR+resolution+OR+military)+site:news.un.org&hl=en-US&gl=US&ceid=US:en"},
     {"name": "NATO",                "url": "https://news.google.com/rss/search?q=iran+(threat+OR+nuclear+OR+military+OR+warns+OR+deterrence)+site:nato.int&hl=en-US&gl=US&ceid=US:en"},
+    # Turkey
+    {"name": "Turkish MFA",         "url": "https://news.google.com/rss/search?q=iran+(position+OR+nuclear+OR+condemns+OR+urges+OR+warns+OR+sanctions+OR+mediat)+site:mfa.gov.tr&hl=en-US&gl=US&ceid=US:en"},
+    # Pakistan
+    {"name": "Pakistan MFA",        "url": "https://news.google.com/rss/search?q=iran+(nuclear+OR+urges+OR+position+OR+condemns+OR+backs+OR+relations)+site:mofa.gov.pk&hl=en-US&gl=US&ceid=US:en"},
+    # Israel press position (replacing Telegram-only MFA)
+    {"name": "Israel PM Office",    "url": "https://news.google.com/rss/search?q=iran+(threat+OR+nuclear+OR+warns+OR+strike+OR+attack+OR+red+line+OR+military+OR+condemns)+site:pmo.gov.il&hl=en-US&gl=US&ceid=US:en"},
 ]
 
 def run():

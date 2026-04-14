@@ -121,7 +121,7 @@
       "view": "official",
       "feed_slug": "israel-mfa",
       "description": "Official Israel Ministry of Foreign Affairs — policy statements, security updates, diplomatic affairs.",
-      "enabled": true,
+      "enabled": false,
       "tags": ["israel", "mfa", "diplomacy", "official", "middle-east"]
     },
     {
@@ -524,9 +524,48 @@
       "category": "neutral_aggregator",
       "view": "aggregator",
       "feed_slug": "iran-observer",
-      "description": "Iran-focused OSINT channel — 17/20 recent posts match Iran keywords. Covers IRGC, nuclear, sanctions, protests.",
+      "description": "Iran-focused OSINT channel — covers IRGC, nuclear, sanctions, protests.",
       "enabled": true,
       "tags": ["iran", "osint", "nuclear", "irgc", "aggregator"]
+    },
+    {
+      "id": 37,
+      "username": "real_DonaldJTrump",
+      "url": "https://t.me/real_DonaldJTrump",
+      "title": "Office of Donald J. Trump",
+      "language": "en",
+      "category": "global_official",
+      "view": "official",
+      "feed_slug": "trump-official",
+      "description": "Official repository of Donald Trump statements — US foreign policy, Iran sanctions, Middle East positions.",
+      "enabled": true,
+      "tags": ["usa", "trump", "official", "foreign-policy"]
+    },
+    {
+      "id": 38,
+      "username": "Netanyahu",
+      "url": "https://t.me/Netanyahu",
+      "title": "PM Netanyahu (Official)",
+      "language": "en",
+      "category": "official_mfa",
+      "view": "official",
+      "feed_slug": "netanyahu-official",
+      "description": "Official channel of Israeli PM Netanyahu — Iran strike decisions, military directives, diplomatic statements.",
+      "enabled": true,
+      "tags": ["israel", "netanyahu", "official", "prime-minister"]
+    },
+    {
+      "id": 39,
+      "username": "khamenei_ir",
+      "url": "https://t.me/khamenei_ir",
+      "title": "Khamenei (Supreme Leader)",
+      "language": "en",
+      "category": "official_mfa",
+      "view": "official",
+      "feed_slug": "khamenei-official",
+      "description": "Office of Ayatollah Khamenei — Iran's supreme policy positions on nuclear program, US, Israel, and the region.",
+      "enabled": true,
+      "tags": ["iran", "khamenei", "official", "supreme-leader"]
     }
   ]
 }
