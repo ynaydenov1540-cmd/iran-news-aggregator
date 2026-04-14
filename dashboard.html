@@ -139,22 +139,49 @@
   </div>
 
   <script>
-    var CITIES = [
-      { id: "tehran", tz: "Asia/Tehran" },
-      { id: "telaviv", tz: "Asia/Jerusalem" },
-      { id: "brussels", tz: "Europe/Brussels" },
-      { id: "washington", tz: "America/New_York" },
-      { id: "london", tz: "Europe/London" },
-    ];
+    function cityTime(offsetHours) {
+      var now = new Date();
+      var utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
+      var city = new Date(utcMs + offsetHours * 3600000);
+      var h = city.getHours().toString().padStart(2, "0");
+      var m = city.getMinutes().toString().padStart(2, "0");
+      var s = city.getSeconds().toString().padStart(2, "0");
+      return h + ":" + m + ":" + s;
+    }
+
+    function getDSTOffsets() {
+      // Returns dynamic offsets accounting for DST based on current date
+      var now = new Date();
+      var jan = new Date(now.getFullYear(), 0, 1);
+      var jul = new Date(now.getFullYear(), 6, 1);
+      var stdOff = Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+
+      // Tehran: UTC+3:30 standard, UTC+4:30 during IRST daylight (last Wed Mar – last Wed Sep approx)
+      var tehranDST = (now.getMonth() >= 2 && now.getMonth() <= 8) ? 4.5 : 3.5;
+      // Israel: UTC+2 standard, UTC+3 daylight (last Fri Mar – last Sun Oct)
+      var ilDST = (now.getMonth() >= 2 && now.getMonth() <= 9) ? 3 : 2;
+      // Brussels/CET: UTC+1 standard, UTC+2 CEST (last Sun Mar – last Sun Oct)
+      var bruDST = (now.getMonth() >= 2 && now.getMonth() <= 9) ? 2 : 1;
+      // London: UTC+0 GMT, UTC+1 BST (last Sun Mar – last Sun Oct)
+      var lonDST = (now.getMonth() >= 2 && now.getMonth() <= 9) ? 1 : 0;
+      // Washington DC: EST UTC-5, EDT UTC-4 (second Sun Mar – first Sun Nov)
+      var wasDST = (now.getMonth() >= 2 && now.getMonth() <= 9) ? -4 : -5;
+
+      return { tehran: tehranDST, telaviv: ilDST, brussels: bruDST, london: lonDST, washington: wasDST };
+    }
 
     function updateClocks() {
-      var now = new Date();
-      CITIES.forEach(function(c) {
-        var el = document.getElementById("clock-" + c.id);
-        if (el) el.textContent = now.toLocaleTimeString("en-GB", { timeZone: c.tz, hour: "2-digit", minute: "2-digit", second: "2-digit" });
-      });
+      var off = getDSTOffsets();
+      document.getElementById("clock-tehran").textContent     = cityTime(off.tehran);
+      document.getElementById("clock-telaviv").textContent    = cityTime(off.telaviv);
+      document.getElementById("clock-brussels").textContent   = cityTime(off.brussels);
+      document.getElementById("clock-washington").textContent = cityTime(off.washington);
+      document.getElementById("clock-london").textContent     = cityTime(off.london);
       var dateEl = document.getElementById("logo-date");
-      if (dateEl) dateEl.textContent = now.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+      if (dateEl) {
+        var now = new Date();
+        dateEl.textContent = now.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+      }
     }
     setInterval(updateClocks, 1000);
     updateClocks();
