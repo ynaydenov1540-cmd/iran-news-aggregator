@@ -248,7 +248,10 @@ def fetch_telegram():
                 if not text_el:
                     continue
                 text = text_el.get_text(" ", strip=True)[:280]
-                if not any(k in text.lower() for k in IRAN_TELEGRAM_KEYWORDS):
+                is_official = ch.get("view") == "official"
+                # Official channels: take any post (their position is always relevant)
+                # Aggregator channels: filter to Iran-relevant posts only
+                if not is_official and not any(k in text.lower() for k in IRAN_TELEGRAM_KEYWORDS):
                     continue
                 dt_raw = time_el.get("datetime", "") if time_el else ""
                 published = (dt_raw[:19] + "Z") if dt_raw else datetime.utcnow().strftime("%Y-%m-%dT%H:%M:00Z")

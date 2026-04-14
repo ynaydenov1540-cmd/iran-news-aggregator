@@ -564,7 +564,7 @@
       "view": "official",
       "feed_slug": "khamenei-official",
       "description": "Office of Ayatollah Khamenei — Iran's supreme policy positions on nuclear program, US, Israel, and the region.",
-      "enabled": true,
+      "enabled": false,
       "tags": ["iran", "khamenei", "official", "supreme-leader"]
     }
   ]
