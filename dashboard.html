@@ -116,7 +116,7 @@
     </div>
     <div id="col-breaking">
       <div class="col-header">
-        <span>● Breaking news</span>
+        <span>● Global Newsreel</span>
         <span class="col-count" id="count-breaking"></span>
       </div>
       <div class="col-body" id="body-breaking"></div>
@@ -424,7 +424,7 @@
       breakingPageOffset++;
       document.getElementById("body-breaking").innerHTML = items.map(function(h) { return makeCard(h, "breaking"); }).join("");
       var header = document.querySelector("#col-breaking .col-header span:first-child");
-      if (header) header.textContent = "● BREAKING NEWS";
+      if (header) header.textContent = "● Global Newsreel";
       document.getElementById("count-breaking").textContent = pool.length + " src";
     }
 
