@@ -253,13 +253,17 @@ def fetch_telegram():
                 dt_raw = time_el.get("datetime", "") if time_el else ""
                 published = (dt_raw[:19] + "Z") if dt_raw else datetime.utcnow().strftime("%Y-%m-%dT%H:%M:00Z")
                 link = link_el.get("href", "") if link_el else ""
-                headlines.append({
+                tier = "official" if ch.get("view") == "official" else "telegram"
+                item = {
                     "source": title,
                     "title": text,
                     "link": link,
                     "published": published,
-                    "tier": "telegram"
-                })
+                    "tier": tier
+                }
+                if tier == "official":
+                    item["pos_score"] = position_score(text)
+                headlines.append(item)
         except Exception as e:
             print(f"Error fetching Telegram @{username}: {e}")
     return headlines

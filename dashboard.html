@@ -422,25 +422,25 @@
     var allOfficialItems = [];
     var officialPageOffset = 0;
 
-    // Each entity: label shown in header, key matches source name from aggregator
+    // Keys must match the "source" field (title in telegram_feeds_config or name in OFFICIAL_FEEDS)
     var OFFICIAL_ENTITIES = [
-      { label: "🇺🇸 USA",              keys: ["US State Dept","White House","Pentagon"] },
-      { label: "🇮🇱 ISRAEL",           keys: ["Israel MFA","IDF Spokesperson"] },
-      { label: "🇷🇺 RUSSIA",           keys: ["Russian MFA","Kremlin"] },
-      { label: "🇨🇳 CHINA",            keys: ["Chinese MFA","Xinhua Official"] },
+      { label: "🇺🇸 USA",              keys: ["US Department of State","US State Dept (Spox)","US State Dept","White House","Pentagon"] },
+      { label: "🇮🇱 ISRAEL",           keys: ["Israel MFA (Official)","Israel MFA"] },
+      { label: "⚔️ IDF",               keys: ["IDF (Official)","IDF Spokesperson"] },
+      { label: "🇷🇺 RUSSIA",           keys: ["Kremlin (Official English)","Kremlin","Russian MFA"] },
+      { label: "🇨🇳 CHINA",            keys: ["Chinese MFA Spokesperson","Chinese MFA","CGTN (Official Chinese State)","Xinhua Official"] },
       { label: "🇮🇷 IRAN",             keys: ["Iran MFA","IRNA Official"] },
-      { label: "🇬🇧 UK",               keys: ["UK Foreign Office"] },
-      { label: "🇪🇺 EU",               keys: ["EU Council","European Commission"] },
-      { label: "🇫🇷 FRANCE",           keys: ["French MFA"] },
+      { label: "🇬🇧 UK",               keys: ["UK Foreign Office (FCDO)","UK Foreign Office"] },
+      { label: "🇪🇺 EU",               keys: ["European Commission (Official)","EU Council","European Commission"] },
+      { label: "🇫🇷 FRANCE",           keys: ["French MFA (Official)","French MFA"] },
       { label: "🇩🇪 GERMANY",          keys: ["German Foreign Ministry"] },
-      { label: "🇸🇦 SAUDI ARABIA",     keys: ["Saudi MFA","Saudi Press Agency"] },
-      { label: "🇮🇶 IRAQ",             keys: ["Iraq MFA"] },
-      { label: "🇦🇪 UAE",              keys: ["UAE MFA"] },
-      { label: "🇺🇦 UKRAINE",          keys: ["Ukraine MFA"] },
+      { label: "🇸🇦 SAUDI ARABIA",     keys: ["Saudi MFA (English)","Saudi MFA","Saudi Press Agency"] },
+      { label: "🇦🇪 UAE",              keys: ["UAE Ministry of Foreign Affairs","UAE MFA"] },
+      { label: "🇶🇦 QATAR",            keys: ["Qatar Ministry of Foreign Affairs"] },
+      { label: "🇺🇦 UKRAINE",          keys: ["Ukraine MFA (Official)","Ukraine MFA"] },
       { label: "🇮🇳 INDIA",            keys: ["India MEA"] },
-      { label: "🇵🇰 PAKISTAN",         keys: ["Pakistan MFA"] },
       { label: "🇯🇵 JAPAN",            keys: ["Japan MOFA"] },
-      { label: "🌐 IAEA / UN / NATO",   keys: ["IAEA","UN News","NATO"] },
+      { label: "🌐 IAEA / UN / NATO",   keys: ["IAEA (Official)","UN News Centre","United Nations (Official)","NATO Press (Official)","IAEA","UN News","NATO"] },
     ];
 
     var POSITION_WORDS = [
