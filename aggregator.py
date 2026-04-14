@@ -105,10 +105,13 @@ KEYWORDS = [
 
 IRAN_TELEGRAM_KEYWORDS = [
     "iran", "tehran", "irgc", "khamenei", "persian", "iranian",
-    "isfahan", "mashhad", "hormuz", "pezeshkian", "pahlavi", "mojtaba",
+    "isfahan", "mashhad", "hormuz", "pezeshkian", "pahlavi",
     "nuclear", "sanctions", "enrichment", "uranium", "jcpoa",
-    "hezbollah", "houthi", "missile", "tabriz", "proxy", "strait",
-    "middle east", "gulf", "security council", "diplomacy",
+    "hezbollah", "houthi", "missile", "proxy", "strait of hormuz",
+    "nuclear deal", "nuclear program", "nuclear talks", "nuclear weapon",
+    "us-iran", "israel-iran", "iran talks", "iran deal", "iran nuclear",
+    "iaea", "non-proliferation", "atomic", "centrifuge",
+    "revolutionary guard", "quds force", "axis of resistance",
 ]
 
 def is_relevant(text):
@@ -248,10 +251,14 @@ def fetch_telegram():
                 if not text_el:
                     continue
                 text = text_el.get_text(" ", strip=True)[:280]
-                is_official = ch.get("view") == "official"
-                # Official channels: take any post (their position is always relevant)
-                # Aggregator channels: filter to Iran-relevant posts only
-                if not is_official and not any(k in text.lower() for k in IRAN_TELEGRAM_KEYWORDS):
+                # Skip non-English posts: if >30% of letters are non-Latin (Cyrillic, Arabic, etc.) drop it
+                letters = [c for c in text if c.isalpha()]
+                if letters:
+                    non_latin = sum(1 for c in letters if ord(c) > 0x024F)
+                    if non_latin / len(letters) > 0.3:
+                        continue
+                # ALL channels must be Iran-relevant — official channels included
+                if not any(k in text.lower() for k in IRAN_TELEGRAM_KEYWORDS):
                     continue
                 dt_raw = time_el.get("datetime", "") if time_el else ""
                 published = (dt_raw[:19] + "Z") if dt_raw else datetime.utcnow().strftime("%Y-%m-%dT%H:%M:00Z")
