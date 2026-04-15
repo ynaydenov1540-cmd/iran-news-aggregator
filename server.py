@@ -65,6 +65,11 @@ def brief():
     except:
         return jsonify({"summary": None, "generated_at": None})
 
+@app.route("/brief/generate")
+def brief_now():
+    threading.Thread(target=generate_brief, daemon=True).start()
+    return jsonify({"status": "generating — refresh /brief in 15 seconds"})
+
 def generate_brief():
     if not GROQ_API_KEY:
         print("[BRIEF] No GROQ_API_KEY set — skipping")
@@ -76,8 +81,20 @@ def generate_brief():
     except Exception as e:
         print(f"[BRIEF] Could not read headlines: {e}")
         return
-    cutoff_str = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0).strftime("%Y-%m-%dT")
-    recent = [h for h in headlines if h.get("published", "") >= cutoff_str]
+    # Use rolling 24h window, not UTC midnight (more reliable on fresh deploys)
+    cutoff_ts = datetime.now(timezone.utc).timestamp() - 24 * 3600
+    recent = []
+    for h in headlines:
+        pub = h.get("published", "")
+        try:
+            pub_ts = datetime.fromisoformat(pub.replace("Z", "+00:00")).timestamp()
+            if pub_ts >= cutoff_ts:
+                recent.append(h)
+        except Exception:
+            pass
+    # Fall back to all headlines if 24h window is too narrow (e.g. fresh deploy)
+    if len(recent) < 10:
+        recent = headlines[:100]
     if len(recent) < 5:
         print(f"[BRIEF] Too few headlines ({len(recent)}) — skipping")
         return
@@ -119,10 +136,12 @@ def generate_brief():
         print(f"[BRIEF] Error: {e}")
 
 def brief_loop():
-    time.sleep(30)  # wait for aggregator first cycle
+    # Wait for aggregator to complete its first full cycle
+    time.sleep(120)
+    generate_brief()
     while True:
+        time.sleep(3600)
         generate_brief()
-        time.sleep(3600)  # regenerate every hour
 
 @app.route("/polymarket")
 def polymarket():
