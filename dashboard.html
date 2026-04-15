@@ -129,7 +129,7 @@
         <div id="summary-label">🧠 Daily Intelligence Brief <span id="summary-date"></span></div>
         <div id="summary-text">Loading...</div>
         <div id="summary-escalation"></div>
-        <button id="brief-generate-btn" onclick="generateBrief()">⚡ Generate Now</button>
+        <button id="brief-generate-btn" onclick="loadBrief()">↻ Refresh Brief</button>
       </div>
     </div>
     <div id="col-breaking">
@@ -567,11 +567,14 @@
 
     // ── INTELLIGENCE BRIEF ────────────────────────────────────
     function loadBrief() {
+      var btn = document.getElementById('brief-generate-btn');
+      if (btn) { btn.disabled = true; btn.textContent = '↻ Loading...'; }
       fetch('/brief')
         .then(function(r) { return r.json(); })
         .then(function(d) {
+          if (btn) { btn.disabled = false; btn.textContent = '↻ Refresh Brief'; }
           if (!d || !d.summary) {
-            document.getElementById('summary-text').textContent = 'Generating brief — check back shortly.';
+            document.getElementById('summary-text').textContent = 'Brief not yet generated — auto-generates hourly.';
             return;
           }
           // Extract escalation level from summary text
@@ -597,20 +600,22 @@
           document.getElementById('summary-text').textContent = text;
         })
         .catch(function() {
+          if (btn) { btn.disabled = false; btn.textContent = '↻ Refresh Brief'; }
           document.getElementById('summary-text').textContent = 'Brief unavailable.';
         });
     }
+    // Legacy stub kept for any direct calls — no longer triggers new API usage
     function generateBrief() {
       var btn = document.getElementById('brief-generate-btn');
       btn.disabled = true;
-      btn.textContent = '⏳ Generating...';
-      document.getElementById('summary-text').textContent = 'Generating brief — refresh in ~15 seconds...';
+      btn.textContent = '↻ Loading...';
+      document.getElementById('summary-text').textContent = 'Brief not yet generated — auto-generates hourly.';
       fetch('/brief/generate')
         .then(function() {
           setTimeout(function() {
             loadBrief();
             btn.disabled = false;
-            btn.textContent = '⚡ Generate Now';
+            btn.textContent = '↻ Refresh Brief';
           }, 15000);
         })
         .catch(function() {
