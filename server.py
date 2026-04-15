@@ -7,11 +7,8 @@ import requests
 import yfinance as yf
 import aggregator
 
-try:
-    import anthropic
-    ANTHROPIC_CLIENT = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY", ""))
-except Exception:
-    ANTHROPIC_CLIENT = None
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 
 app = Flask(__name__)
 
@@ -69,47 +66,47 @@ def brief():
         return jsonify({"summary": None, "generated_at": None})
 
 def generate_brief():
-    if not ANTHROPIC_CLIENT:
-        print("[BRIEF] No Anthropic API key — skipping")
+    if not GROQ_API_KEY:
+        print("[BRIEF] No GROQ_API_KEY set — skipping")
         return
+    from datetime import datetime, timezone
     try:
         with open(HEADLINES_FILE, "r", encoding="utf-8") as f:
             headlines = json.load(f)
-    except:
+    except Exception as e:
+        print(f"[BRIEF] Could not read headlines: {e}")
         return
-    from datetime import datetime, timezone
-    cutoff_dt = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
-    cutoff_str = cutoff_dt.strftime("%Y-%m-%dT")
+    cutoff_str = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0).strftime("%Y-%m-%dT")
     recent = [h for h in headlines if h.get("published", "") >= cutoff_str]
     if len(recent) < 5:
+        print(f"[BRIEF] Too few headlines ({len(recent)}) — skipping")
         return
-    # Build digest: group by tier, pick top headlines
+    # Build digest grouped by tier
     tiers = {}
     for h in recent:
-        t = h.get("tier","other")
-        if t not in tiers: tiers[t] = []
-        tiers[t].append(h["title"])
-    digest_parts = []
-    for tier, titles in tiers.items():
-        digest_parts.append(f"[{tier.upper()}]\n" + "\n".join(f"- {t}" for t in titles[:15]))
-    digest = "\n\n".join(digest_parts)
-    prompt = f"""You are a geopolitical intelligence analyst. Based on the following news headlines from the last 24 hours about Iran, write a concise strategic brief of 4-6 sentences maximum.
-
-Cover: (1) the most significant development today, (2) key official positions and any shifts, (3) market/economic angle if relevant, (4) your escalation assessment (low/medium/high/critical) with one sentence of reasoning.
-
-Be direct and factual. No filler. Write for a senior analyst audience.
-
-HEADLINES:
-{digest}
-
-BRIEF:"""
+        t = h.get("tier", "other")
+        tiers.setdefault(t, []).append(h["title"])
+    digest = "\n\n".join(
+        f"[{t.upper()}]\n" + "\n".join(f"- {title}" for title in titles[:15])
+        for t, titles in tiers.items()
+    )
+    prompt = (
+        "You are a geopolitical intelligence analyst. Based on these Iran-related news headlines from today, "
+        "write a concise strategic brief of 4-6 sentences.\n\n"
+        "Cover: (1) most significant development, (2) key official positions/shifts, "
+        "(3) market/economic angle if relevant, (4) escalation assessment: LOW / MEDIUM / HIGH / CRITICAL with one sentence of reasoning.\n\n"
+        "Be direct and factual. No filler. Senior analyst audience.\n\n"
+        f"HEADLINES:\n{digest}\n\nBRIEF:"
+    )
     try:
-        msg = ANTHROPIC_CLIENT.messages.create(
-            model="claude-sonnet-4-6",
-            max_tokens=300,
-            messages=[{"role": "user", "content": prompt}]
+        resp = requests.post(
+            GROQ_API_URL,
+            headers={"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"},
+            json={"model": "llama-3.3-70b-versatile", "messages": [{"role": "user", "content": prompt}], "max_tokens": 350, "temperature": 0.4},
+            timeout=30
         )
-        summary = msg.content[0].text.strip()
+        resp.raise_for_status()
+        summary = resp.json()["choices"][0]["message"]["content"].strip()
         result = {
             "summary": summary,
             "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:00Z"),
@@ -117,7 +114,7 @@ BRIEF:"""
         }
         with open(BRIEF_FILE, "w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False)
-        print(f"[BRIEF] Generated — {len(recent)} headlines → {len(summary)} chars")
+        print(f"[BRIEF] Generated via Groq — {len(recent)} headlines → {len(summary)} chars")
     except Exception as e:
         print(f"[BRIEF] Error: {e}")
 

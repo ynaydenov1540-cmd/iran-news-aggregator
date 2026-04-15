@@ -371,23 +371,31 @@ OFFICIAL_FEEDS = [
 def run():
     print("Starting Iran War Watch Aggregator...")
     rss_headlines = []
+    official_headlines = []
     last_rss = 0
+    last_official = 0
 
     while True:
         try:
             now = time.time()
-            # Refresh RSS + Telegram every 5 minutes
+            # Refresh main RSS every 5 minutes
             if now - last_rss >= 300:
                 iran_feeds = load_iran_sources()
                 rss_headlines = (
                     fetch_from_feeds(BIG_FEEDS, "big") +
-                    fetch_from_feeds(BREAKING_FEEDS + iran_feeds, "breaking") +
-                    fetch_from_feeds(OFFICIAL_FEEDS, "official") +
-                    fetch_telegram()
+                    fetch_from_feeds(BREAKING_FEEDS + iran_feeds, "breaking")
                 )
                 last_rss = now
 
-            all_headlines = rss_headlines
+            # Refresh official positions (RSS + Telegram) every 5 minutes independently
+            if now - last_official >= 300:
+                official_headlines = (
+                    fetch_from_feeds(OFFICIAL_FEEDS, "official") +
+                    fetch_telegram()
+                )
+                last_official = now
+
+            all_headlines = rss_headlines + official_headlines
             seen = set()
             unique = []
             for h in all_headlines:
