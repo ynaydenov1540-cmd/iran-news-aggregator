@@ -65,9 +65,9 @@
     #main-progress { height: 3px; background: #1a1a1a; flex-shrink: 0; }
     #main-progress-bar { height: 3px; background: #f0a500; width: 100%; transition: width 1s linear; }
     #summary-card { flex-shrink: 0; margin: 6px 8px 4px; background: #0e1a0e; border-left: 4px solid #4ade80; border-radius: 0 4px 4px 0; padding: 10px 14px; }
-    #summary-label { font-size: 10px; font-weight: bold; letter-spacing: 2px; color: #4ade80; text-transform: uppercase; margin-bottom: 6px; }
+    #summary-label { font-size: 11px; font-weight: bold; letter-spacing: 2px; color: #4ade80; text-transform: uppercase; margin-bottom: 6px; }
     #summary-date { font-size: 9px; color: #555; margin-left: 8px; font-weight: normal; letter-spacing: 0; text-transform: none; }
-    #summary-text { font-size: 12.5px; line-height: 1.55; color: #ccc; }
+    #summary-text { font-size: 14px; line-height: 1.55; color: #ccc; }
     #summary-escalation { margin-top: 6px; font-size: 10px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
     #summary-escalation.low    { color: #4ade80; }
     #summary-escalation.medium { color: #f0a500; }
@@ -487,22 +487,22 @@
     }
 
     function buildOfficialPool() {
-      var cutoff7d = Date.now() - 7 * 24 * 60 * 60 * 1000;
       return OFFICIAL_ENTITIES.map(function(entity) {
         var match = allOfficialItems.filter(function(h) {
           return entity.keys.some(function(k) { return h.source.indexOf(k) !== -1; });
         });
         if (!match.length) return null;
-        // score each item: backend pos_score if available, otherwise compute client-side
-        // prefer items with score > 0 and recency within 7d
         match.forEach(function(h) {
           h._score = (h.pos_score || posScore(h.title));
           h._ts = new Date(h.published).getTime();
         });
-        // sort: high score first, then most recent
+        // Sort: most recent first; use score only as tiebreaker within the same day
+        var DAY = 86400000;
         match.sort(function(a, b) {
-          if (b._score !== a._score) return b._score - a._score;
-          return b._ts - a._ts;
+          var dayA = Math.floor(a._ts / DAY);
+          var dayB = Math.floor(b._ts / DAY);
+          if (dayA !== dayB) return dayB - dayA; // newer day wins
+          return b._score - a._score;            // same day: higher score wins
         });
         return match[0];
       }).filter(Boolean);
@@ -541,9 +541,9 @@
           buildBreakingPool(data);
           if (!breakingInitialized) { renderBreakingPage(); breakingInitialized = true; }
 
-          var cutoff72 = Date.now() - 72 * 60 * 60 * 1000;
+          var cutoff7d = Date.now() - 7 * 24 * 60 * 60 * 1000;
           allOfficialItems = data.filter(function(h) {
-            return h.tier === "official" && new Date(h.published).getTime() >= cutoff72;
+            return h.tier === "official" && new Date(h.published).getTime() >= cutoff7d;
           });
           allOfficialItems.sort(function(a, b) {
             return new Date(b.published).getTime() - new Date(a.published).getTime();
