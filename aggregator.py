@@ -376,7 +376,30 @@ OFFICIAL_FEEDS = [
     {"name": "NATO",                "url": "https://news.google.com/rss/search?q=iran+(threat+OR+nuclear+OR+military+OR+warns+OR+deterrence)+site:nato.int&hl=en-US&gl=US&ceid=US:en"},
     # Turkey
     {"name": "Turkish MFA",         "url": "https://news.google.com/rss/search?q=iran+(position+OR+nuclear+OR+condemns+OR+urges+OR+warns+OR+sanctions+OR+mediat)+site:mfa.gov.tr&hl=en-US&gl=US&ceid=US:en"},
+    # GCC / ME — new actors
+    {"name": "Oman MFA",            "url": "https://news.google.com/rss/search?q=iran+site:fm.gov.om&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Bahrain MFA",         "url": "https://news.google.com/rss/search?q=iran+site:mofa.gov.bh&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Jordan MFA",          "url": "https://news.google.com/rss/search?q=iran+site:mfa.gov.jo&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Iran MFA",            "url": "https://news.google.com/rss/search?q=(nuclear+OR+sanctions+OR+talks+OR+response+OR+rejects+OR+warns)+site:mfa.ir&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "Germany MFA",         "url": "https://news.google.com/rss/search?q=iran+(nuclear+OR+sanctions+OR+condemns+OR+urges)+site:auswaertiges-amt.de&hl=en-US&gl=US&ceid=US:en"},
+    {"name": "India MEA",           "url": "https://news.google.com/rss/search?q=iran+(nuclear+OR+sanctions+OR+talks+OR+relations)+site:mea.gov.in&hl=en-US&gl=US&ceid=US:en"},
 ]
+
+def is_fresh(headline, max_age_hours=96):
+    """Return True if headline is within max_age_hours of now."""
+    try:
+        from datetime import timezone
+        pub = headline.get("published", "")
+        if not pub:
+            return True
+        dt = datetime.fromisoformat(pub.replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        from datetime import timezone as tz
+        age_hours = (datetime.now(tz.utc) - dt).total_seconds() / 3600
+        return age_hours <= max_age_hours
+    except Exception:
+        return True
 
 def run():
     print("Starting Iran War Watch Aggregator...")
@@ -413,6 +436,7 @@ def run():
                     seen.add(h["title"])
                     unique.append(h)
             unique.sort(key=lambda x: x["published"], reverse=True)
+            unique = [h for h in unique if is_fresh(h, max_age_hours=96)]
             print(f"[CYCLE] RSS: {len(rss_headlines)}, Total unique: {len(unique)}")
             save(unique)
 
