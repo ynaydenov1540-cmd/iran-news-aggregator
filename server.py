@@ -111,7 +111,7 @@ def generate_brief():
         "You are a geopolitical intelligence analyst. Based on these Iran-related news headlines from today, "
         "write a concise strategic brief of 4-6 sentences.\n\n"
         "Cover: (1) most significant development, (2) key official positions/shifts, "
-        "(3) market/economic angle if relevant, (4) escalation assessment: LOW / MEDIUM / HIGH / CRITICAL with one sentence of reasoning.\n\n"
+        "(3) market/economic angle if relevant.\n\n"
         "Be direct and factual. No filler. Senior analyst audience.\n\n"
         f"HEADLINES:\n{digest}\n\nBRIEF:"
     )

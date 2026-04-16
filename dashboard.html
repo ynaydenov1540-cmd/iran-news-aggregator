@@ -68,11 +68,6 @@
     #summary-label { font-size: 11px; font-weight: bold; letter-spacing: 2px; color: #4ade80; text-transform: uppercase; margin-bottom: 6px; }
     #summary-date { font-size: 9px; color: #555; margin-left: 8px; font-weight: normal; letter-spacing: 0; text-transform: none; }
     #summary-text { font-size: 14px; line-height: 1.55; color: #ccc; }
-    #summary-escalation { margin-top: 6px; font-size: 10px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
-    #summary-escalation.low    { color: #4ade80; }
-    #summary-escalation.medium { color: #f0a500; }
-    #summary-escalation.high   { color: #ef4444; }
-    #summary-escalation.critical { color: #ff00ff; }
     #brief-generate-btn { margin-top: 8px; background: #0d2a0d; border: 1px solid #4ade80; color: #4ade80; font-size: 10px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; cursor: pointer; }
     #brief-generate-btn:hover { background: #163d16; }
     #brief-generate-btn:disabled { opacity: 0.4; cursor: default; }
@@ -128,7 +123,6 @@
       <div id="summary-card">
         <div id="summary-label">🧠 Daily Intelligence Brief <span id="summary-date"></span></div>
         <div id="summary-text">Loading...</div>
-        <div id="summary-escalation"></div>
         <button id="brief-generate-btn" onclick="loadBrief()">↻ Refresh Brief</button>
       </div>
     </div>
@@ -577,18 +571,7 @@
             document.getElementById('summary-text').textContent = 'Brief not yet generated — auto-generates hourly.';
             return;
           }
-          // Extract escalation level from summary text
           var text = d.summary;
-          var escEl = document.getElementById('summary-escalation');
-          var escMatch = text.match(/escalation[^:]*:\s*(low|medium|high|critical)/i) ||
-                         text.match(/\b(low|medium|high|critical)\b.*escalat/i);
-          if (escMatch) {
-            var lvl = escMatch[1].toLowerCase();
-            escEl.textContent = '⚡ Escalation: ' + lvl.toUpperCase();
-            escEl.className = lvl;
-          } else {
-            escEl.textContent = '';
-          }
           // Show date
           if (d.generated_at) {
             var dt = new Date(d.generated_at);
